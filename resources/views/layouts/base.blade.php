@@ -1,138 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- Mirrored from demo.themesberg.com/volt-pro/pages/dashboard/traffic-sources.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 May 2023 08:02:09 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+
 <head>
-    @if(env('IS_DEMO')) 
-        <link rel="canonical" href="https://themesberg.com/product/laravel/volt-admin-dashboard-template">
-        <meta  name="keywords" content="themesberg, updivision, html dashboard, laravel, livewire, laravel livewire, alpine.js, html css dashboard laravel, Volt Laravel Admin Dashboard, livewire volt dashboard, volt admin, livewire dashboard, livewire admin, web dashboard, bootstrap 5 dashboard laravel, bootstrap 5, css3 dashboard, bootstrap 5 admin laravel, volt dashboard bootstrap 5 laravel, frontend, responsive bootstrap 5 dashboard, volt dashboard, volt laravel bootstrap 5 dashboard"></meta>
-        <meta  name="description" content="Volt Laravel Admin Dashboard features dozens of UI components and a Laravel backend with Livewire & Alpine.js"></meta>
-        <meta  itemprop="name" content="Volt Laravel Admin Dashboard by Themesberg & UPDIVISION"></meta>
-        <meta  itemprop="description" content="Volt Laravel Admin Dashboard features dozens of UI components and a Laravel backend with Livewire & Alpine.js"></meta>
-        <meta  itemprop="image" content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/volt-laravel-dashboard/volt-free-laravel-dashboard.jpg"></meta>
-        <meta  name="twitter:card" content="product"></meta>
-        <meta  name="twitter:site" content="@themesberg"></meta>
-        <meta  name="twitter:title" content="Volt Laravel Admin Dashboard by Themesberg & UPDIVISION"></meta>
-        <meta  name="twitter:description" content="Volt Laravel Admin Dashboard features dozens of UI components and a Laravel backend with Livewire & Alpine.js"></meta>
-        <meta  name="twitter:creator" content="@themesberg"></meta>
-        <meta  name="twitter:image" content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/volt-laravel-dashboard/volt-free-laravel-dashboard.jpg"></meta>
-        <meta  property="fb:app_id" content="655968634437471"></meta>
-        <meta  property="og:title" content="Volt Laravel Admin Dashboard by Themesberg & UPDIVISION"></meta>
-        <meta  property="og:type" content="article"></meta>
-        <meta  property="og:url" content="https://themesberg.com/product/laravel/volt-admin-dashboard-template/preview"></meta>
-        <meta  property="og:image" content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/volt-laravel-dashboard/volt-free-laravel-dashboard.jpg"></meta>
-        <meta  property="og:description" content="Volt Laravel Admin Dashboard features dozens of UI components and a Laravel backend with Livewire & Alpine.js"></meta>
-        <meta  property="og:site_name" content="Themesberg"></meta>
-    @endif
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Gestion de ferme-JoyFarm</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <meta name="title" content="Volt Premium Bootstrap Dashboard - Traffic Sources">
+  <meta name="author" content="Themesberg">
+  <meta name="description"
+    content="Volt Pro is a Premium Bootstrap 5 Admin Dashboard featuring over 800 components, 10+ plugins and 20 example pages using Vanilla JS.">
+  <meta name="keywords"
+    content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, themesberg, themesberg dashboard, themesberg admin dashboard">
+ 
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://demo.themesberg.com/volt-pro">
+  <meta property="og:title" content="Volt Premium Bootstrap Dashboard - Traffic Sources">
+  <meta property="og:description"
+    content="Volt Pro is a Premium Bootstrap 5 Admin Dashboard featuring over 800 components, 10+ plugins and 20 example pages using Vanilla JS.">
+  <meta property="og:image"
+    content="{{ asset('assets/img/brand/rabbit.svg') }}">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://demo.themesberg.com/volt-pro">
+  <meta property="twitter:title" content="Volt Premium Bootstrap Dashboard - Traffic Sources">
+  <meta property="twitter:description"
+    content="Volt Pro is a Premium Bootstrap 5 Admin Dashboard featuring over 800 components, 10+ plugins and 20 example pages using Vanilla JS.">
+  <meta property="twitter:image"
+    content="../../../../themesberg.s3.us-east-2.amazonaws.com/public/products/volt-pro-bootstrap-5-dashboard/volt-pro-preview.jpg">
+  <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('assets/img/brand/rabbit.svg') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/img/brand/rabbit.svg') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/img/brand/rabbit.svg') }}">
+  <link rel="manifest" href="{{ asset('assets/img/favicon/site.webmanifest') }}">
+  <link rel="mask-icon" href="{{ asset('assets/img/favicon/safari-pinned-tab.svg') }}" color="#ffffff">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  <link type="text/css" href="{{ asset('vendor/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
+  <link type="text/css" href="{{ asset('vendor/notyf/notyf.min.css') }}" rel="stylesheet">
+  <link type="text/css" href="{{ asset('vendor/fullcalendar/main.min.css') }}" rel="stylesheet">
+  <link type="text/css" href="{{ asset('vendor/apexcharts/apexcharts.css') }}" rel="stylesheet">
+  <link type="text/css" href="{{ asset('vendor/dropzone/min/dropzone.min.css') }}" rel="stylesheet">
+  <link type="text/css" href="{{ asset('vendor/choices.js/public/assets/styles/choices.min.css') }}" rel="stylesheet">
+  <link type="text/css" href="{{ asset('vendor/leaflet/leaflet.css') }}" rel="stylesheet">
+  <link type="text/css" href="{{ asset('css/volt.css') }}" rel="stylesheet">
+  @yield("style")
+  
+  @yield("top-script")
+  
+  <style>
+    .loading-area {
+      width: 100vw;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999999999;
+    }
+  </style>
+  <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141734189-6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
 
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" href="../../assets/img/favicon/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="../../assets/img/favicon/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="../../assets/img/favicon/favicon-16x16.png" sizes="16x16" type="image/png">
-
-    <link rel="mask-icon" href="../../assets/img/favicon/safari-pinned-tab.svg" color="#563d7c">
-    <link rel="icon" href="../../assets/img/favicon/favicon.ico">
-    <meta name="msapplication-config" content="../../assets/img/favicons/browserconfig.xml">
-    <meta name="theme-color" content="#563d7c">
-    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    
-    <!-- Apex Charts -->
-    <link type="text/css" href="/vendor/apexcharts/apexcharts.css" rel="stylesheet">
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <!-- Datepicker -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/css/datepicker.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/css/datepicker-bs4.min.css">
-
-    <!-- Fontawesome -->
-    <link type="text/css" href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    
-    <!-- Sweet Alert -->
-    <link type="text/css" href="/vendor/sweetalert2/sweetalert2.min.css" rel="stylesheet">
-    
-    <!-- Notyf -->
-    <link type="text/css" href="/vendor/notyf/notyf.min.css" rel="stylesheet">
-    
-    <!-- Volt CSS -->
-    <link type="text/css" href="/css/volt.css" rel="stylesheet">
-
-    @livewireStyles
-
-    @livewireScripts
-
-    <!-- Core -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
-
-    <!-- Vendor JS -->
-    <script src="/assets/js/on-screen.umd.min.js"></script>
-
-    <!-- Slider -->
-    <script src="/assets/js/nouislider.min.js"></script>
-
-    <!-- Smooth scroll -->
-    <script src="/assets/js/smooth-scroll.polyfills.min.js"></script>
-
-    <!-- Apex Charts -->
-    <script src="/vendor/apexcharts/apexcharts.min.js"></script>
-
-    <!-- Charts -->
-    <script src="/assets/js/chartist.min.js"></script>
-    <script src="/assets/js/chartist-plugin-tooltip.min.js"></script>
-
-    <!-- Datepicker -->
-    <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/js/datepicker.min.js"></script>
-
-    <!-- Sweet Alerts 2 -->
-    <script src="/assets/js/sweetalert2.all.min.js"></script>
-
-    <!-- Moment JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-
-    <!-- Notyf -->
-    <script src="/vendor/notyf/notyf.min.js"></script>
-
-    <!-- Simplebar -->
-    <script src="/assets/js/simplebar.min.js"></script>
-
-    <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    
-    <!-- Volt JS -->
-    <script src="/assets/js/volt.js"></script>
-
-    @if(env('IS_DEMO')) 
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141734189-6"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'UA-141734189-6');
-        </script>
-        <!-- Google Tag Manager -->
-        <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-            'gtm.start':
-                new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-THQTXJ7');</script>
-        <!-- End Google Tag Manager -->
-    @endif
-
-
+  gtag('config', 'UA-141734189-6');
+  </script>
+  <script>
+    (function (w, d, s, l, i) {
+    w[l] = w[l] || []; w[l].push({
+      'gtm.start':
+        new Date().getTime(), event: 'gtm.js'
+    }); var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+        '../../../../www.googletagmanager.com/gtm5445.html?id=' + i + dl; f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-THQTXJ7');
+  </script>
 </head>
 
-<body>
-    @if(env('IS_DEMO')) 
-        <!-- Google Tag Manager (noscript) -->
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THQTXJ7" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-        <!-- End Google Tag Manager (noscript) -->
-    @endif
+<body><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THQTXJ7" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- Begin page -->
+    
+  @include('sections.header')
+  
+  @include('sections.left_sidebar')
 
-    {{ $slot }}
+  <main class="content">
+    @include('sections.secondary-header')
+    
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+      <div class="d-block mb-4 mb-md-0">
+        <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
+          <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+            <li class="breadcrumb-item"><a href="#"><span class="fas fa-home"></span></a></li>
+            <li class="breadcrumb-item"><a href="#">Volt</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Widgets</li>
+          </ol>
+        </nav>
+        <h2 class="h4">Widgets</h2>
+        <p class="mb-0">You can easily show your stats content by using these cards.</p>
+      </div>
+    </div>
+    @yield('content')
+    @include('sections.footer')
 
+  </main>
+  <div class="loading-area">
+    <img src="{{ asset('loading.gif') }}" alt="">
+  </div>
+  <script src="{{ asset('vendor/popperjs/core/umd/popper.min.js') }}"></script>
+  <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('vendor/onscreen/on-screen.umd.min.js') }}"></script>
+  <script src="{{ asset('vendor/nouislider/distribute/nouislider.min.js') }}"></script>
+  <script src="{{ asset('vendor/smooth-scroll/smooth-scroll.polyfills.min.js') }}"></script>
+  <script src="{{ asset('vendor/countup.js/countUp.umd.js') }}"></script>
+  <script src="{{ asset('vendor/apexcharts/apexcharts.min.js') }}"></script>
+  <script src="{{ asset('vendor/vanillajs-datepicker/js/datepicker.min.js') }}"></script>
+  <script src="{{ asset('vendor/simple-datatables/umd/simple-datatables.js') }}"></script>
+  <script src="{{ asset('vendor/sweetalert2/sweetalert2.min.js') }}"></script>
+  <script src="{{ asset('assets/ajax/libs/moment.js/2.27.0/moment.min.js') }}"></script>
+  <script src="{{ asset('vendor/vanillajs-datepicker/js/datepicker.min.js') }}"></script>
+  <script src="{{ asset('vendor/fullcalendar/main.min.js') }}"></script>
+  <script src="{{ asset('vendor/dropzone/min/dropzone.min.js') }}"></script>
+  <script src="{{ asset('vendor/choices.js/public/assets/scripts/choices.min.js') }}"></script>
+  <script src="{{ asset('vendor/notyf/notyf.min.js') }}"></script>
+  <script src="{{ asset('vendor/leaflet/leaflet.js') }}"></script>
+  <script src="{{ asset('vendor/svg-pan-zoom/svg-pan-zoom.min.js') }}"></script>
+  <script src="{{ asset('vendor/svgmap/svgMap.min.js') }}"></script>
+  <script src="{{ asset('vendor/simplebar/simplebar.min.js') }}"></script>
+  <script src="{{ asset('vendor/sortablejs/Sortable.min.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+  <script src="{{ asset('assets/js/volt.js') }}"></script>
+  
+
+  <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    
+  <script>
+    @if (Session::get('error'))
+                      Swal.fire({
+                          position: 'top-end',
+                          background: 'var(--bs-danger)',
+                          color: '#fff',
+                          text: "{{Session::get('error')}}",
+                          showConfirmButton: false,
+                          timer: 1500
+                      })
+                  @endif
+      
+      
+                  @if (Session::get('success'))
+                      Swal.fire({
+                          position: 'top-end',
+                          background: 'var(--bs-success)',
+                          color: '#fff',
+                          text: "{{Session::get('success')}}",
+                          showConfirmButton: false,
+                          timer: 1500
+                      })
+                  @endif
+      
+                  $('.loading-area').hide()
+  </script>
+    
+  @yield("script")
 </body>
+<!-- Mirrored from demo.themesberg.com/volt-pro/pages/dashboard/traffic-sources.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 May 2023 08:02:09 GMT -->
 
 </html>
