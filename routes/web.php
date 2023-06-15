@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('pages.dashboard');
 })->name("home");
 
+
 Route::get('/list-animals', function () {
     return view('pages.list-animals');
 })->name("list-animals");
@@ -24,9 +25,3 @@ Route::get('/list-animals', function () {
 Route::get('/animals-create', function () {
     return view('pages.animals-create');
 })->name("animals-create");
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
-
-

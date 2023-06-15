@@ -1,9 +1,9 @@
-@extends('layouts.base')
+@extends('layouts.app')
 
 @section('content')
     <div class="row">
-        <div class="col-12 col-xl-7">
-            <div class="card-header d-flex align-items-center">
+        <div class="col-12 col-xl-8">
+            <div class="card-header d-flex align-items-center bg-success">
                 <h2 class="fs-5 fw-bold mb-0">General information</h2>
                 <div class="ms-auto"><a class="fw-normal d-inline-flex align-items-center" href="#"><svg class="icon icon-xxs me-2"
                             fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -134,12 +134,12 @@
             </div>
         
         </div>
-        <div class="col-12 col-xl-5">
+        <div class="col-12 col-xl-4">
             <div class="row">
                
                 <div class="col-12 mb-4">
                     <div class="card notification-card border-0 shadow">
-                        <div class="card-header d-flex align-items-center bg-success">
+                        <div class="card-header d-flex align-items-center bg-light ">
                             <h2 class="fs-5 fw-bold mb-0">Aide </h2>
                             <div class="ms-auto"><a class="fw-bold d-inline-flex align-items-center" href="#">?</a></div>
                         </div>
