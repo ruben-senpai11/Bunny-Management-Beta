@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.base')
 
 @section('content')
     <div class="row">
-        <div class="col-12 col-xl-8">
+        <div class="col-12 col-xl-9">
             <div class="card-header d-flex align-items-center bg-success">
                 <h2 class="fs-5 fw-bold mb-0">General information</h2>
                 <div class="ms-auto"><a class="fw-normal d-inline-flex align-items-center" href="#"><svg class="icon icon-xxs me-2"
@@ -134,7 +134,7 @@
             </div>
         
         </div>
-        <div class="col-12 col-xl-4">
+        <div class="col-12 col-xl-3">
             <div class="row">
                
                 <div class="col-12 mb-4">

@@ -18,10 +18,16 @@ Route::get('/', function () {
 })->name("home");
 
 
-Route::get('/list-animals', function () {
-    return view('pages.list-animals');
-})->name("list-animals");
+Route::get('/list-bunny', function () {
+    return view('pages.bunny-list');
+})->name("list-bunny");
 
-Route::get('/animals-create', function () {
-    return view('pages.animals-create');
-})->name("animals-create");
+Route::get('/create-bunny', function () {
+    return view('pages.bunny-create');
+})->name("create-bunny");
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
