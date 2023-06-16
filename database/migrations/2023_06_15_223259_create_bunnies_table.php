@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('bunnies', function (Blueprint $table) {
             $table->id();
             $table->string('Uid')->nullable();
-            $table->enum('sex', ['male', 'female']);
+            $table->enum('gender', ['male', 'female']);
             $table->enum('destination', ['fattening', 'mating']);
+            $table->enum('age', ['kitten', 'growth','weaning','young_adult_bunny','adult','old']);
+            $table->enum('status', ['mating', 'sick_bunny','dead','sold']);
             $table->string('weight')->nullable();
+            $table->string('color')->nullable();
             $table->date('date_birth')->nullable();
             $table->unsignedBigInteger('farm_houses_id')->nullable();
             $table->unsignedBigInteger('race_id')->nullable();
