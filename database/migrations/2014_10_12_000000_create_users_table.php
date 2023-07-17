@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('id')->unique();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
-            $table->string('gender')->nullable();
+            $table->string('provider_id')->nullable()->unique();
             $table->string('email')->unique();
             $table->string('password');
             $table->boolean('admin')->default(false);

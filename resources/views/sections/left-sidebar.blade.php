@@ -10,7 +10,8 @@
                 </div>
                 <div class="d-block">
                     <h2 class="h5 mb-3">Hi, Jane</h2>
-                    <a href="../../pages/examples/sign-in.html"
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                         document.getElementById('logout-form').submit();"
                         class="btn btn-secondary btn-sm d-inline-flex align-items-center">
                         <svg class="icon icon-xxs me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
@@ -20,6 +21,11 @@
                         </svg>
                         Sign Out
                     </a>
+                   
+                    
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </div>
             <div class="collapse-close d-md-none">
@@ -210,9 +216,11 @@
                     class="sidebar-text">Paramètres</span></a></li>
         <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
         
-        <li class="nav-item"><a href="https://themesberg.com/" target="_blank" class="nav-link d-flex align-items-center"><span
+        <li class="nav-item"><a href="{{ route('logout') }}"
+                    onclick="event.preventDefault();          document.getElementById('logout-form').submit();" target="_blank" class="nav-link d-flex align-items-center"><span
                     class="sidebar-icon"><img src="{{ asset('assets/img/logout.svg') }}" height="20" width="28" alt="Logout">
                 </span><span class="sidebar-text">Se déconnecter</span></a></li>
+              
         </ul>
     </div>
 </nav>
