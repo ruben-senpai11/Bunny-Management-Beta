@@ -20,22 +20,23 @@ class SocialiteController extends Controller
     {
         $user = Socialite::driver('google')->user();
         $data = collect($user->user);
-        //dd($user);
 
-        $finduser = User::where('provider_id', $user->id)->first();
+        $existingUser = User::where('email', $user->email)->first();
 
-        if ($finduser) {
+        if ($existingUser) {
 
-            Auth::login($finduser);
-          
+            // User exists, sign in the user
+            Auth::login($existingUser);
+
             return redirect()->intended('/home');
 
         } else {
+
             Session::flash('authGoogle', 'true');
             Session::flash('User', $data);
-            return redirect()->intended('/test');
+            return redirect('/register');
         }
-      
+
         // $user->token
     }
 }
