@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark"> 
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -8,13 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="title" content="Projet laravel bunny management">
     <meta name="author" content="Rodias Gohoue">
-    <meta name="description"
-        content="Projet laravel bunny management">
+    <meta name="description" content="Projet laravel bunny management">
     <meta name="keywords"
         content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, themesberg, themesberg dashboard, themesberg admin dashboard" />
     <link rel="canonical" href="https://themesberg.com/product/admin-dashboard/volt-premium-bootstrap-5-dashboard">
 
-      
+
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('assets/img/favicon/rabbit.svg') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/img/favicon/rabbit.svg') }}">
@@ -32,12 +31,12 @@
 
     <!-- Volt CSS -->
     <link type="text/css" href="   {{ asset('css/volt.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.css" />
     <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
     @yield("style")
-    
+
     @yield("top-script")
-    
+
     <style>
         .loading-area {
             width: 100vw;
@@ -51,6 +50,11 @@
             z-index: 9999999999;
         }
     </style>
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
 
 </head>
 
@@ -58,13 +62,13 @@
 
     <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
     @include('sections.header')
-    
+
     @include('sections.left-sidebar')
-    
+
 
     <main class="content">
         @include('sections.secondary-header')
-        
+
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
             <div class="d-block mb-4 mb-md-0">
                 <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
@@ -78,12 +82,11 @@
                 <p class="mb-0">You can easily show your stats content by using these cards.</p>
             </div>
         </div>
-
         @yield('content')
-        
+
         @include('sections.footer')
 
-     
+
     </main>
     <div class="loading-area">
         <img src="{{ asset('loading.gif') }}" alt="">
@@ -130,7 +133,8 @@
     <script src="../../assets/js/volt.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
-    
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.js"></script>
+
     <script>
         @if (Session::get('error'))
                           Swal.fire({
@@ -153,11 +157,11 @@
                               showConfirmButton: false,
                               timer: 1500
                           })
-                      @endif
-          
-                      $('.loading-area').hide()
+        @endif
+      
+        $('.loading-area').hide()
     </script>
-    
+
     @yield("script")
 </body>
 

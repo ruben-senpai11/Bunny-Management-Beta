@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css">
-  <script src="https://kit.fontawesome.com/4c82faa72f.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/4c82faa72f.js" crossorigin="anonymous"></script>
     <title>Gestion de l'élevage des lapins</title>
     <style>
         /* Couleurs personnalisées */
@@ -30,9 +30,9 @@
         .container.card {
             padding-top: 100px;
             text-align: center;
-        border-radius: 10px;
-        background: #37373784;
-        backdrop-filter: blur(10px);
+            border-radius: 10px;
+            background: #37373784;
+            backdrop-filter: blur(10px);
         }
 
         h1 {
@@ -61,7 +61,7 @@
             position: fixed;
             bottom: 0;
             width: 100%;
-            background-color:#ff7f00;
+            background-color: #ff7f00;
             text-align: center;
             padding: 20px 0;
         }
@@ -101,12 +101,18 @@
                             <a class="nav-link" href="#">Contact</a>
                         </li>
                     </ul>
-                    <a class="btn btn-light" href="#">Se connecter</a>
+                    @if (Route::has('login'))
+                    <a class="btn btn-light m-1" href="{{ route('login') }}">{{ __('Se connecter') }}</a>
+                    @endif
+                    ou
+                    @if (Route::has('register'))
+                    <a class="btn btn-light m-1" href="{{ route('register') }}">{{ __('Créer un compte') }}</a>
+                    @endif
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container card mt-4 p-3" >
+    <div class="container card mt-4 p-3">
         <h1>Système de gestion de l'élevage des lapins </h1>
         <p>Notre système web vous permet de gérer efficacement votre élevage de lapins.</p>
         <div class="row">
@@ -116,22 +122,30 @@
                     vaccinations, etc.</p>
             </div>
             <div class="col-md-4">
-                <h3>Planification des tâches <img src="{{ asset('assets/img/calendar.svg') }}" alt="" style="max-height: 35px;max-width: 35px;"></h3>
+                <h3>Planification des tâches <img src="{{ asset('assets/img/calendar.svg') }}" alt=""
+                        style="max-height: 35px;max-width: 35px;"></h3>
                 <p>Organisez et planifiez les différentes tâches liées à l'élevage des lapins, telles que
                     l'alimentation, le nettoyage des cages, etc.</p>
             </div>
             <div class="col-md-4">
-                <h3>Analyse des performances <img src="{{ asset('assets/img/chart-pie-solid.svg') }}" alt="" style="max-height: 35px;max-width: 35px;"></h3>
+                <h3>Analyse des performances <img src="{{ asset('assets/img/chart-pie-solid.svg') }}" alt=""
+                        style="max-height: 35px;max-width: 35px;"></h3>
                 <p>Obtenez des analyses détaillées sur les performances de votre élevage, y compris la croissance, la
                     reproduction, et plus encore.</p>
             </div>
         </div>
         <div class="d-grid gap-2 d-md-block">
-            <a class="btn btn-lg" href="#">Se connecter</a>
+            @if (Route::has('login'))
+                <a class="btn btn-light m-1" href="{{ route('login') }}">{{ __('Se connecter') }}</a>
+            @endif
+             ou
+            @if (Route::has('register'))
+                <a class="btn btn-light m-1" href="{{ route('register') }}">{{ __('Créer un compte') }}</a>
+            @endif
         </div>
     </div>
 
-    <footer >
+    <footer>
         <a href="#">Nous contacter</a>
         <a href="#">En savoir plus</a>
     </footer>

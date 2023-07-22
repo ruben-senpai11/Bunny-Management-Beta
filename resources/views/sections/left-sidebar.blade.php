@@ -5,11 +5,11 @@
             class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
             <div class="d-flex align-items-center">
                 <div class="avatar-lg me-4">
-                    <img src="../../assets/img/team/profile-picture-3.jpg"
-                        class="card-img-top rounded-circle border-white" alt="Bonnie Green">
+                    <img src="{{ asset('assets/img/profile.svg') }}" style="max-height: 50px;max-width: 50px;"
+                        class="card-img-top rounded-circle border-white" >
                 </div>
                 <div class="d-block">
-                    <h2 class="h5 mb-3">Hi, Jane</h2>
+                    <h2 class="h5 mb-3">Hi, {{\Auth::user()->first_name}} {{\Auth::user()->last_name}}</h2>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                                          document.getElementById('logout-form').submit();"
                         class="btn btn-secondary btn-sm d-inline-flex align-items-center">

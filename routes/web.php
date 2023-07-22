@@ -33,6 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/list-bunny', function () {
         return view('pages.bunny-list');
     })->name("list-bunny");
+    Route::get('/get-list-bunny', [App\Http\Controllers\BunnyController::class, 'getBunnyData'])->name("get-list-bunny");
 
     Route::get('/create-bunny', function () {
         return view('pages.bunny-create');
