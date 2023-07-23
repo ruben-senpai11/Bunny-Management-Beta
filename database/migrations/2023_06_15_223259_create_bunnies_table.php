@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('bunnies', function (Blueprint $table) {
             $table->id();
-            $table->string('Uid')->nullable();
+            $table->string('uid')->nullable();
             $table->enum('gender', ['male', 'female']);
             $table->enum('destination', ['fattening', 'mating']);
             $table->enum('age', ['baby_bunny','growing','weaning','young_adult_bunny','adult','old']);

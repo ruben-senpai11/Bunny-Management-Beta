@@ -1,3 +1,8 @@
+<style>
+    .navbar-brand img {
+        height: 35px;
+    }
+</style>
 <nav id="sidebarMenu" class="sidebar d-lg-block bg-gray-800 text-white collapse" data-simplebar>
     <div class="sidebar-inner px-4 pt-3">
         <!--User content-->
@@ -12,7 +17,7 @@
                     <h2 class="h5 mb-3">Hi, Jane</h2>
                     <a href="../../pages/examples/sign-in.html"
                         class="btn btn-secondary btn-sm d-inline-flex align-items-center">
-                        <svg class="icon icon-xxs me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        <svg class="icon icon-xxs me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" 
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
@@ -39,12 +44,12 @@
             <li class="nav-item">
                 <a href="#" class="nav-link d-flex align-items-center">
                     <span class="sidebar-icon">
-                        <img src="{{ asset('assets/img/favicon/rabbit.svg') }}" height="20" width="20" alt="Volt Logo">
+                        <img src="{{ asset('assets/img/favicon/rabbit.svg') }}" height="20" width="20" alt="Logo"  style="margin-right: 8px;">
                     </span>
-                    <span class="mt-1 ms-1 sidebar-text">Joy farm</span>
+                    <span class="mt-1 ms-1 sidebar-text"  style="font-weight: 500; font-size: 18px;">Joy farm</span>
                 </a>
             </li>
-            <li class="nav-item  {{\Route::currentRouteName() == "home" ? "active" : ""}}">
+            <li class="nav-item  {{\Route::currentRouteName() == 'home' ? 'active' : ''}}">
                 <a href="{{ route('home', []) }}" class="nav-link">
                     <span class="sidebar-icon">
                         <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
@@ -53,10 +58,10 @@
                             <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                         </svg>
                     </span>
-                    <span class="sidebar-text">Acceuil (statistiques)</span>
+                    <span class="sidebar-text">Acceuil</span>
                 </a>
             </li>
-          <li class="nav-item {{\Route::currentRouteName() == "list-bunny" ? "active" : "" }} {{\Route::currentRouteName() == "create-bunny" ? "active" : "" }}"><a
+          <li class="nav-item {{\Route::currentRouteName() == 'list-bunny' ? 'active' : '' }} {{\Route::currentRouteName() == 'create-bunny' ? 'active' : '' }}"><a
                 href="{{ route('list-bunny', []) }}" class="nav-link"><span class="sidebar-icon"><svg
                         class="icon icon-xs me-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
@@ -66,7 +71,7 @@
                     </svg> </span><span class="sidebar-text">Catalogue de lapins</span></a></li>
         
         <li class="nav-item"><a href="#" class="nav-link"><span class="sidebar-icon"><img
-                        src="{{ asset('assets/img/calendar.svg') }}" alt="" style="max-height: 25px;max-width: 25px;">
+                        src="{{ asset('assets/img/calendar.svg') }}" alt="" style="max-height: 20px;max-width: 20px; margin-right: 8px;">
                 </span><span class="sidebar-text">Calendrier</span></a></li>
         
         <li class="nav-item"><span class="nav-link collapsed d-flex justify-content-between align-items-center"
@@ -101,7 +106,7 @@
         <li class="nav-item"><span class="nav-link collapsed d-flex justify-content-between align-items-center"
                 data-bs-toggle="collapse" data-bs-target="#submenu-pages"><span><span class="sidebar-icon"><img
                             src="{{ asset('assets/img/stats.svg') }}" alt=""
-                            style="max-height: 25px;max-width: 25px;"></span><span class="sidebar-text">Statistiques</span>
+                            style="max-height: 20px;max-width: 20px; margin-right: 10px;"></span><span class="sidebar-text">Statistiques</span>
                 </span><span class="link-arrow"><svg class="icon icon-sm" fill="currentColor" viewbox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
@@ -135,7 +140,7 @@
         </li>
         <li class="nav-item"><span class="nav-link collapsed d-flex justify-content-between align-items-center"
                 data-bs-toggle="collapse" data-bs-target="#submenu-components"><span><span class="sidebar-icon"><svg
-                            class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
+                            class="icon icon-xs me-2" width="20" height="20" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
@@ -206,7 +211,7 @@
             </a></li>
         
         <li class="nav-item"><a href="../widgets.html" class="nav-link"><span class="sidebar-icon">
-                    <img src="{{ asset('assets/img/setting.svg') }}" height="20" width="28" alt="setting"> </span><span
+                    <img src="{{ asset('assets/img/setting.svg') }}" height="20" width="20" style="margin-right: 2px;" alt="setting"> </span><span
                     class="sidebar-text">Paramètres</span></a></li>
         <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
         

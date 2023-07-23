@@ -8,13 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="title" content="Projet laravel bunny management">
     <meta name="author" content="Rodias Gohoue">
-    <meta name="description"
-        content="Projet laravel bunny management">
-    <meta name="keywords"
-        content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, themesberg, themesberg dashboard, themesberg admin dashboard" />
-    <link rel="canonical" href="https://themesberg.com/product/admin-dashboard/volt-premium-bootstrap-5-dashboard">
+    <meta name="description" content="Projet laravel bunny management">
 
-      
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('assets/img/favicon/rabbit.svg') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/img/favicon/rabbit.svg') }}">
@@ -33,11 +28,13 @@
     <!-- Volt CSS -->
     <link type="text/css" href="   {{ asset('css/volt.css') }}" rel="stylesheet">
 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>            
     <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
     @yield("style")
-    
+
     @yield("top-script")
-    
+
     <style>
         .loading-area {
             width: 100vw;
@@ -58,36 +55,37 @@
 
     <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
     @include('sections.header')
-    
+
     @include('sections.left-sidebar')
-    
+
 
     <main class="content">
         @include('sections.secondary-header')
-        
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-0">
             <div class="d-block mb-4 mb-md-0">
                 <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                     <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
                         <li class="breadcrumb-item"><a href="#"><span class="fas fa-home"></span></a></li>
                         <li class="breadcrumb-item"><a href="#">Volt</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Widgets</li>
+                        <li class="breadcrumb-item active" aria-current="page">{ Current Page }</li>
                     </ol>
                 </nav>
-                <h2 class="h4">Widgets</h2>
-                <p class="mb-0">You can easily show your stats content by using these cards.</p>
+                <!-- <h2 class="h4">Widgets</h2>
+                <p class="mb-0">You can easily show your stats content by using these cards.</p> -->
             </div>
         </div>
 
         @yield('content')
-        
+
         @include('sections.footer')
 
-     
+
     </main>
-    <div class="loading-area">
+    
+    <!-- <div class="loading-area">
         <img src="{{ asset('loading.gif') }}" alt="">
-    </div>
+    </div> -->
     <!-- Core -->
     <script src="{{ asset('vendor/@popperjs/core/dist/umd/popper.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
@@ -129,35 +127,36 @@
     <!-- Volt JS -->
     <script src="../../assets/js/volt.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+        
     
     <script>
-        @if (Session::get('error'))
-                          Swal.fire({
-                              position: 'top-end',
-                              background: 'var(--bs-danger)',
-                              color: '#fff',
-                              text: "{{Session::get('error')}}",
-                              showConfirmButton: false,
-                              timer: 1500
-                          })
-                      @endif
-          
-          
-                      @if (Session::get('success'))
-                          Swal.fire({
-                              position: 'top-end',
-                              background: 'var(--bs-success)',
-                              color: '#fff',
-                              text: "{{Session::get('success')}}",
-                              showConfirmButton: false,
-                              timer: 1500
-                          })
-                      @endif
-          
-                      $('.loading-area').hide()
+        @if(Session::get('error'))
+        Swal.fire({
+            position: 'top-end',
+            background: 'var(--bs-danger)',
+            color: '#fff',
+            text: "{{Session::get('error')}}",
+            showConfirmButton: false,
+            timer: 1500
+        })
+        @endif
+
+
+        @if(Session::get('success'))
+        Swal.fire({
+            position: 'top-end',
+            background: 'var(--bs-success)',
+            color: '#fff',
+            text: "{{Session::get('success')}}",
+            showConfirmButton: false,
+            timer: 1500
+        })
+        @endif
+
+        $('.loading-area').hide()
     </script>
-    
+
     @yield("script")
 </body>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BunnyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,12 +23,14 @@ Route::get('/list-bunny', function () {
     return view('pages.bunny-list');
 })->name("list-bunny");
 
-Route::get('/create-bunny', function () {
-    return view('pages.bunny-create');
-})->name("create-bunny");
+// Route::get('/create-bunnys
 
+//Route::any('/create-bunny', BunnyController::class);
+
+
+Route::get('/create-bunny', [BunnyController::class, 'render']);
+Route::post('/create-bunny', [BunnyController::class, 'saveBabyBunny']);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-

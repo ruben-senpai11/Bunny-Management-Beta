@@ -9,11 +9,9 @@ class Bunny extends Model
 {
     use HasFactory;
     protected $table = 'bunnies';
+    
     protected $fillable = [
-        'uid',
-        'sex',
-        'destination',
-        'date_birth',
+        'uid', 'gender', 'destination', 'date_birth', 'state', 'race', 'color', 'weight', 'age', 'gestation_id'
     ];
 
     public function race()
