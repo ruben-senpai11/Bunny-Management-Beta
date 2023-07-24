@@ -25,6 +25,11 @@ class BunnyController extends Controller
 
     public function saveBabyBunny(Request $request){
         //($request->all());
+
+        if($request->recuperer_donnees){
+            return"Okay okay okya";
+        }
+
         if($request->babyBunnyForm){
             
             try {

@@ -64,7 +64,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="weight">Poids</label>
-                                <input class="form-control" type="text" name="weight" id="weight" placeholder="300g - 800g">
+                                <input class="form-control" type="text" name="weight" id="weight" placeholder="100g - 300g">
                             </div> 
                             <!-- Radio -->
                             <fieldset class="mb-2">
@@ -182,7 +182,7 @@
                             <!-- End of Form --> 
                             <div class="mb-3">
                                 <label for="weight">Poids</label>
-                                <input class="form-control" type="text" name="g_weight" id="g_weight" placeholder="300g - 800g">
+                                <input class="form-control" type="text" name="g_weight" id="g_weight" placeholder="300g - 1800g">
                             </div>         
                             <!-- Radio -->
                             <fieldset>
@@ -335,6 +335,8 @@
 
         </div>
     </div>
+    <!-- <button type="submit" name="recuperer_donnees" id="recuperer-donnees" class="btn btn-primary">Enregistrer</button> -->
+
 </div>
 
 <script type="text/javascript">
@@ -365,7 +367,7 @@
             '<div class=" col-lg-3 col-sm-4">' +
                 '<div class="mb-3">'+
                     '<label for="weight' + i + '">Poids</label>'+
-                    '<input class="form-control" type="text" name="weight.' + i + '" id="weight.' + i + '" placeholder="300g - 800g">'+
+                    '<input class="form-control" type="text" name="weight.' + i + '" id="weight.' + i + '" placeholder="100g - 300g">'+
                 '</div>'+ 
                 
             '<fieldset class="mb-2">'+
@@ -446,7 +448,7 @@
                 '</div>'+
                 '<div class="mb-3">'+
                     '<label for="weight">Poids</label>'+
-                    '<input class="form-control" type="text" name="g_weight.'+ j +'" id="g_weight.'+ j +'" placeholder="300g - 800g">'+
+                    '<input class="form-control" type="text" name="g_weight.'+ j +'" id="g_weight.'+ j +'" placeholder="300g - 1800g">'+
                 '</div>'+
                 '<fieldset>'+
                     '<legend class="h6">Destination</legend>'+
@@ -488,6 +490,25 @@
         $(this).parents("#addedBunnyField").remove();
     })
     let numberOfBunnyFields = $('div#' + 'addedBabyField').length;
+
+    
+  $(document).ready(function() {
+    $('#recuperer-donnees').click(function() {
+      $.ajax({
+        url: "http://127.0.0.1:8000/create-bunny",
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+          console.log(data);
+          $('#resultat').text(JSON.stringify(data));
+        },
+        error: function(xhr, status, error) {
+          console.error(status + ': ' + error);
+        }
+      });
+    });
+  });
+
     
 </script>
 
