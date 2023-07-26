@@ -34,3 +34,35 @@ Route::post('/create-bunny', [BunnyController::class, 'saveBabyBunny']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/auth/google', [App\Http\Controllers\SocialiteController::class, 'redirect']);
+
+Route::get('/auth/google/callback', [App\Http\Controllers\SocialiteController::class, 'callback']);
+
+Auth::routes();
+
+Route::middleware(['guest'])->group(function () {
+    Route::get('/', function () {
+        return view('landing');
+    });
+ });
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', function () {
+        return view('pages.dashboard');
+    })->name("home");
+
+    Route::get('/list-bunny', function () {
+        return view('pages.bunny-list');
+    })->name("list-bunny");
+    Route::get('/get-list-bunny', [App\Http\Controllers\BunnyController::class, 'getBunnyData'])->name("get-list-bunny");
+
+    Route::get('/create-bunny', function () {
+        return view('pages.bunny-create');
+    })->name("create-bunny");
+ });
+
+
+Route::get('/test', function () {
+    return view('auth.register1');
+});
+

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark"> 
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -9,7 +9,6 @@
     <meta name="title" content="Projet laravel bunny management">
     <meta name="author" content="Rodias Gohoue">
     <meta name="description" content="Projet laravel bunny management">
-
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('assets/img/favicon/rabbit.svg') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/img/favicon/rabbit.svg') }}">
@@ -30,6 +29,10 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>            
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/1.3.0/css/searchPanes.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css" />
     <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
     @yield("style")
 
@@ -48,6 +51,11 @@
             z-index: 9999999999;
         }
     </style>
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
 
 </head>
 
@@ -62,7 +70,7 @@
     <main class="content">
         @include('sections.secondary-header')
 
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-0">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
             <div class="d-block mb-4 mb-md-0">
                 <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                     <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
@@ -75,7 +83,6 @@
                 <p class="mb-0">You can easily show your stats content by using these cards.</p> -->
             </div>
         </div>
-
         @yield('content')
 
         @include('sections.footer')
@@ -127,33 +134,42 @@
     <!-- Volt JS -->
     <script src="../../assets/js/volt.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
-        
-    
+    <!--datatales cdn implementation-->
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/searchpanes/1.3.0/js/dataTables.searchPanes.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+
     <script>
-        @if(Session::get('error'))
-        Swal.fire({
-            position: 'top-end',
-            background: 'var(--bs-danger)',
-            color: '#fff',
-            text: "{{Session::get('error')}}",
-            showConfirmButton: false,
-            timer: 1500
-        })
+        @if (Session::get('error'))
+                          Swal.fire({
+                              position: 'top-end',
+                              background: 'var(--bs-danger)',
+                              color: '#fff',
+                              text: "{{Session::get('error')}}",
+                              showConfirmButton: false,
+                              timer: 1500
+                          })
+                      @endif
+          
+          
+                      @if (Session::get('success'))
+                          Swal.fire({
+                              position: 'top-end',
+                              background: 'var(--bs-success)',
+                              color: '#fff',
+                              text: "{{Session::get('success')}}",
+                              showConfirmButton: false,
+                              timer: 1500
+                          })
         @endif
-
-
-        @if(Session::get('success'))
-        Swal.fire({
-            position: 'top-end',
-            background: 'var(--bs-success)',
-            color: '#fff',
-            text: "{{Session::get('success')}}",
-            showConfirmButton: false,
-            timer: 1500
-        })
-        @endif
-
+      
         $('.loading-area').hide()
     </script>
 

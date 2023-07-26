@@ -10,12 +10,13 @@
             class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
             <div class="d-flex align-items-center">
                 <div class="avatar-lg me-4">
-                    <img src="../../assets/img/team/profile-picture-3.jpg"
-                        class="card-img-top rounded-circle border-white" alt="Bonnie Green">
+                    <img src="{{ asset('assets/img/profile.svg') }}" style="max-height: 50px;max-width: 50px;"
+                        class="card-img-top rounded-circle border-white" >
                 </div>
                 <div class="d-block">
-                    <h2 class="h5 mb-3">Hi, Jane</h2>
-                    <a href="../../pages/examples/sign-in.html"
+                    <h2 class="h5 mb-3">Hi, {{\Auth::user()->first_name}} {{\Auth::user()->last_name}}</h2>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                         document.getElementById('logout-form').submit();"
                         class="btn btn-secondary btn-sm d-inline-flex align-items-center">
                         <svg class="icon icon-xxs me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
@@ -25,6 +26,11 @@
                         </svg>
                         Sign Out
                     </a>
+                   
+                    
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </div>
             <div class="collapse-close d-md-none">
@@ -194,43 +200,45 @@
                             <path fill-rule="evenodd"
                                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                 clip-rule="evenodd"></path>
-                        </svg></span></span>
-                <div class="multi-level collapse" role="list" id="submenu-transactions" aria-expanded="false">
-                    <ul class="flex-column nav">
-                        <li class="nav-item"><a class="nav-link" target="_blank"
-                                href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/components/accordions/"><span
-                                    class="sidebar-text-contracted">A</span> <span class="sidebar-text">
-                                    Acheter</span></a></li>
-                        <li class="nav-item"><a class="nav-link" href="../components/buttons.html"><span
-                                    class="sidebar-text-contracted">V</span> <span
-                                    class="sidebar-text">Vendre</span></a></li>
-                        <li class="nav-item"><a class="nav-link" href="../components/buttons.html"><span
-                                    class="sidebar-text-contracted">L</span> <span class="sidebar-text">Liste des
-                                    transactions</span></a></li>
-                    </ul>
-                </div>
-            </li>
-
-            <li class="nav-item"><a href="#" class="nav-link"><span class="sidebar-icon"><svg class="icon icon-xs me-2"
-                            fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
-                        </svg></span><span class="sidebar-text">Notifications</span>
-                    <span>
-                        <span class="badge badge-sm bg-secondary ms-1">8</span>
-                    </span>
-                </a></li>
-
-            <li class="nav-item"><a href="../widgets.html" class="nav-link"><span class="sidebar-icon">
-                        <img src="{{ asset('assets/img/setting.svg') }}" height="20" width="20"
-                            style="margin-right: 2px;" alt="setting"> </span><span
-                        class="sidebar-text">Paramètres</span></a></li>
-            <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
-
-            <li class="nav-item"><a href="https://themesberg.com/" target="_blank"
-                    class="nav-link d-flex align-items-center"><span class="sidebar-icon"><img
-                            src="{{ asset('assets/img/logout.svg') }}" height="20" width="28" alt="Logout">
-                    </span><span class="sidebar-text">Se déconnecter</span></a></li>
+                        </svg></span><span class="sidebar-text">Transactions</span> </span><span class="link-arrow"><svg
+                        class="icon icon-sm" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clip-rule="evenodd"></path>
+                    </svg></span></span>
+            <div class="multi-level collapse" role="list" id="submenu-transactions" aria-expanded="false">
+                <ul class="flex-column nav">
+                    <li class="nav-item"><a class="nav-link" target="_blank"
+                            href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/components/accordions/"><span
+                                class="sidebar-text-contracted">A</span> <span class="sidebar-text">
+                                Acheter</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/buttons.html"><span
+                                class="sidebar-text-contracted">V</span> <span class="sidebar-text">Vendre</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="../components/buttons.html"><span
+                                class="sidebar-text-contracted">L</span> <span class="sidebar-text">Liste des
+                                transactions</span></a></li>
+                </ul>
+            </div>
+        </li>
+        
+        <li class="nav-item"><a href="#" class="nav-link"><span class="sidebar-icon"><svg class="icon icon-xs me-2"
+                        fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
+                    </svg></span><span class="sidebar-text">Notifications</span>
+                <span>
+                    <span class="badge badge-sm bg-secondary ms-1">8</span>
+                </span>
+            </a></li>
+        
+        <li class="nav-item"><a href="../widgets.html" class="nav-link"><span class="sidebar-icon">
+                    <img src="{{ asset('assets/img/setting.svg') }}" height="20" width="28" alt="setting"> </span><span
+                    class="sidebar-text">Paramètres</span></a></li>
+        <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
+        
+        <li class="nav-item"><a href="https://themesberg.com/" target="_blank" class="nav-link d-flex align-items-center"><span
+                    class="sidebar-icon"><img src="{{ asset('assets/img/logout.svg') }}" height="20" width="28" alt="Logout">
+                </span><span class="sidebar-text">Se déconnecter</span></a></li>
         </ul>
     </div>
 </nav>

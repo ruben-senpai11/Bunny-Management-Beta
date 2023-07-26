@@ -10,8 +10,11 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Str;
 
+
 class BunnyController extends Controller
 {
+    public $uid, $gender, $destination, $date_birth, $state, $race, $color, $weight, $age;
+
     public function rules(): array{
         return[
             'uid' => 'required',
@@ -21,7 +24,7 @@ class BunnyController extends Controller
         ];
     }
 
-    public $uid, $gender, $destination, $date_birth, $state, $race, $color, $weight, $age;
+    
 
     public function saveBabyBunny(Request $request){
         //($request->all());
@@ -151,9 +154,23 @@ class BunnyController extends Controller
     }
 
     public function render()
-    {   
-        return view('pages.bunny-create',[
-            
+    {
+        return view('pages.bunny-create', [
+
         ]);
+    }
+
+
+    public function index()
+    {
+        return view('pages.bunny-list');
+    }
+
+    
+   public function getBunnyData()
+    {
+        $user = Auth()->user();
+        $bunnies = Bunny::all();
+        return response()->json(['bunnies' => $bunnies]);
     }
 }
