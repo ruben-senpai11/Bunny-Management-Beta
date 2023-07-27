@@ -66,7 +66,7 @@
           processing: true,
           columns: [
             { data: 'id' },
-            { data: 'Uid' },
+            { data: 'uid' },
             { data:'gender' },
             { data: 'destination' },
             { 
