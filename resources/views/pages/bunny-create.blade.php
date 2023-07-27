@@ -5,12 +5,12 @@
 <div class="row">
     <div class="col-12 col-xl-9">
         @if (session()->has('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
-            </div>
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
         @endif
         <div class="baby-bunny-form">
-            <div class="card-header d-flex align-items-center bg-success" >
+            <div class="card-header d-flex align-items-center bg-success">
                 <h2 class="fs-5 fw-normal mb-0" style="color: white">Enregistrer un Lapereau</h2>
                 <div class="ms-auto"><a class="fw-normal d-inline-flex align-items-center" href="#" style="color: white"><svg class="icon icon-xxs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
@@ -27,11 +27,11 @@
                                 <label for="uid" class="">Saisir un identifiant</label>
                                 <input type="text" class="form-control" name="uid" id="uid" placeholder="M-0001">
                                 <div class="valid-feedback">Disponible</div>
-                                <div class="invalid-feedback">Attention, cet identifiant es dejà utilisé !</div>
+                                <div class="invalid-feedback">Attention, cet identifiant est dejà utilisé !</div>
 
                             </div>
                             <!-- End of Form -->
-                           <div class="mb-3">
+                            <div class="mb-3">
                                 <label for="color">Couleur</label>
                                 <input class="form-control" type="text" name="color" id="color" placeholder="Blanc, noir...">
                             </div>
@@ -60,12 +60,12 @@
                                 <select style="width: 100%" class="form-control">
                                     <option value="default" selected>Choose a UID</option>
                                 </select>
-                                <span class="text-danger" ></span>
+                                <span class="text-danger"></span>
                             </div>
                             <div class="mb-3">
                                 <label for="weight">Poids</label>
                                 <input class="form-control" type="text" name="weight" id="weight" placeholder="100g - 300g">
-                            </div> 
+                            </div>
                             <!-- Radio -->
                             <fieldset class="mb-2">
                                 <legend class="h6">Destination</legend>
@@ -113,40 +113,40 @@
                         </div>
                     </div>
                     <div id="newBabyField"></div>
-                    <div style="float:right">                                                   
+                    <div style="float:right">
                         <button type="button" id="addBabyField" class="btn btn-light" style="border-color: #0EA271;">Ajouter +</button>&nbsp;<!-- color: white; -->
-                        <button type="submit" name="babyBunnyForm" value="1" class="btn btn-success" style="color: whit; ">Enregistrer</button>
+                        <button type="button" id="submitBabyForm" name="babyBunnyForm" value="1" class="btn btn-success" style="color: whit; ">Enregistrer</button>
                     </div>
                 </form>
             </div>
         </div>
         <div class="bunny-form">
             @if (session()->has('g_message'))
-                <div class="alert alert-success">
-                    {{ session('g_message') }}
-                </div>
+            <div class="alert alert-success">
+                {{ session('g_message') }}
+            </div>
             @endif
             <div class="card-header d-flex align-items-center bg-secondary">
                 <h2 class="fs-5 fw-bold mb-0">Enregistrer un Lapin</h2>
                 <div class="ms-auto"><a class="fw-normal d-inline-flex align-items-center" href="#">
-                    <svg class="icon icon-xxs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="icon icon-xxs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
                             <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
-                    </svg> Voir tout</a>
+                        </svg> Voir tout</a>
                 </div>
             </div>
             <div class="card card-body border-0 shadow mb-4">
                 <form action="" method="post">
                     @csrf
-                    <div class="row mb-4">
+                    <div id="bunny-form" class="row mb-4">
                         <div class="col-lg-4 col-sm-6">
-                            <!-- Form -->                  
+                            <!-- Form -->
                             <div class="mb-3">
                                 <label for="g_uid">Saisir un identifiant</label>
                                 <input type="text" class="form-control" name="g_uid" id="g_uid" placeholder="F-0001">
                             </div>
                             <!-- End of Form -->
-                           <div class="mb-3">
+                            <div class="mb-3">
                                 <label for="color">Couleur</label>
                                 <input class="form-control" type="text" name="g_color" id="g_color" placeholder="Blanc, noir...">
                             </div>
@@ -166,41 +166,43 @@
                                     </label>
                                 </div>
                                 <!-- End of Radio -->
-                            </fieldset>                 
+                            </fieldset>
                         </div>
                         <div class="col-lg-4 col-sm-6">
-                            <!-- Form -->  
+                            <!-- Form -->
                             <div class="mb-3">
                                 <label for="g_date_birth">Date de Naissance</label>
                                 <div class="input-group">
                                     <span class="input-group-text">
-                                        <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+                                        <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                                        </svg>
                                     </span>
-                                    <input class="form-control" name="g_date_birth" id="g_date_birth" type="date" placeholder="dd/mm/yyyy">                                               
+                                    <input class="form-control" name="g_date_birth" id="g_date_birth" type="date" placeholder="dd/mm/yyyy">
                                 </div>
                             </div>
-                            <!-- End of Form --> 
+                            <!-- End of Form -->
                             <div class="mb-3">
                                 <label for="weight">Poids</label>
                                 <input class="form-control" type="text" name="g_weight" id="g_weight" placeholder="300g - 1800g">
-                            </div>         
+                            </div>
                             <!-- Radio -->
                             <fieldset>
                                 <legend class="h6">Destination</legend>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="g_destination" id="g_destinationa" value="fattening">
                                     <label class="form-check-label" for="g_destinationa">
-                                    Engraissement
+                                        Engraissement
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="g_destination" id="g_destinationb" value="mating">
                                     <label class="form-check-label" for="g_destinationb">
-                                    Reproduction
+                                        Reproduction
                                     </label>
                                 </div>
                                 <!-- End of Radio -->
-                            </fieldset>                                       
+                            </fieldset>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="mb-3">
@@ -213,13 +215,13 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="g_gender" id="g_gendera" value="male">
                                     <label class="form-check-label" for="g_gendera">
-                                    Male
+                                        Male
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="g_gender" id="g_genderb" value="female">
                                     <label class="form-check-label" for="g_genderb">
-                                    Femelle
+                                        Femelle
                                     </label>
                                 </div>
                                 <!-- End of Radio -->
@@ -229,7 +231,7 @@
                     <div id="newBunnyField"></div>
                     <div style="float:right">
                         <button type="button" id="addBunnyField" class="btn btn-light" style="border-color: #F0BC74">Ajouter +</button>&nbsp; <!-- -->
-                        <button type="submit" name="bunnyForm" value="1" class="btn btn-secondary">Enregistrer</button>
+                        <button type="button" id="submitBunnyForm" name="bunnyForm" value="1" class="btn btn-secondary">Enregistrer</button>
                     </div>
                 </form>
             </div>
@@ -340,59 +342,58 @@
 </div>
 
 <script type="text/javascript">
-
     let i = 2
     $("#addBabyField").click(function() {
         newBabyForm =
             '<div id="addedBabyField" class="row mb-4 pt-4" style="border: 1px solid lightgray; border-radius: 10px;" >' +
             '<p class="text-bold">' + i + 'ème lapereau</p>' +
             '<div class="col-lg-4 col-sm-6"> ' +
-                '<div class="mb-3">' +
-                    '<label for="uid_.' + i + '">Saisir un identifiant</label>' +
-                    '<input type="text" name="uid.' + i + '" class="form-control is-valid" id="uid.' + i + '" placeholder="M-0001">' +
-                '</div>' +
+            '<div class="mb-3">' +
+            '<label for="uid_.' + i + '">Saisir un identifiant</label>' +
+            '<input type="text" name="uid.' + i + '" class="form-control is-valid" id="uid.' + i + '" placeholder="M-0001">' +
+            '</div>' +
 
-                '<fieldset class="mb-2">' +
-                '<legend class="h6">Sexe</legend>' +
-                '<div class="form-check">' +
-                '<input class="form-check-input" type="radio" name="gender.' + i + '" id="gender.' + i + 1500 + '" value="male">' +
-                '<label class="form-check-label" for="gender.' + i + 1500 + '">Male</label>' +
-                '</div>' +
-                '<div class="form-check">' +
-                '<input class="form-check-input" type="radio" name="gender.' + i + '" id="gender.' + i + 2000 + '" value="female">' +
-                '<label class="form-check-label" for="gender.' + i + 2000 + '">Femelle</label>' +
-                '</div>' +
-                '</fieldset>' +
+            '<fieldset class="mb-2">' +
+            '<legend class="h6">Sexe</legend>' +
+            '<div class="form-check">' +
+            '<input class="form-check-input" type="radio" name="gender.' + i + '" id="gender.' + i + 1500 + '" value="male" required>' +
+            '<label class="form-check-label" for="gender.' + i + 1500 + '">Male</label>' +
+            '</div>' +
+            '<div class="form-check">' +
+            '<input class="form-check-input" type="radio" name="gender.' + i + '" id="gender.' + i + 2000 + '" value="female" required>' +
+            '<label class="form-check-label" for="gender.' + i + 2000 + '">Femelle</label>' +
+            '</div>' +
+            '</fieldset>' +
             '</div>' +
             '<div class=" col-lg-3 col-sm-4">' +
-                '<div class="mb-3">'+
-                    '<label for="weight' + i + '">Poids</label>'+
-                    '<input class="form-control" type="text" name="weight.' + i + '" id="weight.' + i + '" placeholder="100g - 300g">'+
-                '</div>'+ 
-                
-            '<fieldset class="mb-2">'+
-                '<legend class="h6">Santé</legend>'+
-                '<div class="form-check">'+
-                    '<input class="form-check-input" type="radio" name="state.' + i + '" id="statea.' + i + '" value="healthy">'+
-                    '<label class="form-check-label" for="statea.' + i + '">Bien portant</label></div>'+
-                '<div class="form-check">'+
-                    '<input class="form-check-input" type="radio" name="state.' + i + '" id="stateb.' + i + '" value="sick_bunny">'+
-                    '<label class="form-check-label" for="stateb.' + i + '">Malade</label></div>'+
-            '</fieldset>'+   
+            '<div class="mb-3">' +
+            '<label for="weight' + i + '">Poids</label>' +
+            '<input class="form-control" type="text" name="weight.' + i + '" id="weight.' + i + '" placeholder="100g - 300g">' +
+            '</div>' +
+
+            '<fieldset class="mb-2">' +
+            '<legend class="h6">Santé</legend>' +
+            '<div class="form-check">' +
+            '<input class="form-check-input" type="radio" name="state.' + i + '" id="statea.' + i + '" value="healthy" required>' +
+            '<label class="form-check-label" for="statea.' + i + '">Bien portant</label></div>' +
+            '<div class="form-check">' +
+            '<input class="form-check-input" type="radio" name="state.' + i + '" id="stateb.' + i + '" value="sick_bunny" required>' +
+            '<label class="form-check-label" for="stateb.' + i + '">Malade</label></div>' +
+            '</fieldset>' +
             '</div>' +
             '<div class="col-lg-3 col-sm-3">' +
-                '<div class="mb-3">'+
-                    '<label for="color' + i + '">Couleur</label>'+
-                    '<input class="form-control" type="text" name="color.' + i + '" id="color.' + i + '" placeholder="blanc, noir...">'+
-                '</div>'+         
+            '<div class="mb-3">' +
+            '<label for="color' + i + '">Couleur</label>' +
+            '<input class="form-control" type="text" name="color.' + i + '" id="color.' + i + '" placeholder="blanc, noir...">' +
+            '</div>' +
             '<fieldset class="mb-2">' +
             '<legend class="h6">Destination</legend>' +
             '<div class="form-check">' +
-            '<input class="form-check-input" type="radio" name="destination_' + i + '" id="g_destinationa.' + i + 1500 + '" value="fattening">' +
+            '<input class="form-check-input" type="radio" name="destination_' + i + '" id="g_destinationa.' + i + 1500 + '" value="fattening" required>' +
             '<label class="form-check-label" for="g_destinationa.' + i + 1500 + '">Engraissement</label>' +
             '</div>' +
             '<div class="form-check">' +
-            '<input class="form-check-input" type="radio" name="destination_' + i + '" id="g_destinationb.' + i + 2000 + '" value="mating">' +
+            '<input class="form-check-input" type="radio" name="destination_' + i + '" id="g_destinationb.' + i + 2000 + '" value="mating" required>' +
             '<label class="form-check-label" for="g_destinationb.' + i + 2000 + '">Reproduction</label>' +
             '</div>' +
             '</fieldset>' +
@@ -408,81 +409,81 @@
         $(this).parents("#addedBabyField").remove();
     })
     let numberOfBabyFields = $('div#' + 'addedBabyField').length;
-    
-    
+
+
     let j = 2
     $("#addBunnyField").click(function() {
         newBunnyForm =
             '<div id="addedBunnyField" class="row mb-4 pt-4" style="border: 1px solid lightgray; border-radius: 10px;" >' +
-            '<p class="text-bold">'+ j +'ème lapin</p>' +
+            '<p class="text-bold">' + j + 'ème lapin</p>' +
             '<div class="col-lg-4 col-sm-6"> ' +
-                '<div class="mb-3">'+
-                    '<label for="g_uid.'+ j +'">Saisir un identifiant</label>'+
-                    '<input type="text" class="form-control" name="g_uid.'+ j +'" id="g_uid.'+ j +'" placeholder="F-0001">'+
-                '</div>'+
-                '<div class="mb-3">'+
-                    '<label for="color">Couleur</label>'+
-                    '<input class="form-control" type="text" name="g_color.'+ j +'" id="g_color.'+ j +'" placeholder="Blanc, noir...">'+
-               '</div>'+
-                '<fieldset>'+
-                    '<legend class="h6">Santé</legend>'+
-                    '<div class="form-check">'+
-                        '<input class="form-check-input" type="radio" name="g_state.'+ j +'" id="g_statea.'+ j +'" value="healthy">'+
-                        '<label class="form-check-label" for="g_statea.'+ j +'">Bien portant</label>'+
-                    '</div>'+
-                    '<div class="form-check">'+
-                        '<input class="form-check-input" type="radio" name="g_state.'+ j +'" id="g_stateb.'+ j +'" value="sick_bunny">'+
-                        '<label class="form-check-label" for="g_stateb.'+ j +'">Malade</label>'+
-                    '</div>'+
-                '</fieldset>'+
-            '</div>'+
-            '<div class="col-lg-4 col-sm-6">'+
-                '<div class="mb-3">'+
-                    '<label for="g_date_birth.'+ j +'">Date de Naissance</label>'+
-                    '<div class="input-group">'+
-                        '<span class="input-group-text">'+
-                            '<svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>'+
-                        '</span>'+
-                        '<input class="form-control" name="g_date_birth.'+ j +'" id="g_date_birth.'+ j +'" type="date" placeholder="dd/mm/yyyy">'+
-                    '</div>'+
-                '</div>'+
-                '<div class="mb-3">'+
-                    '<label for="weight">Poids</label>'+
-                    '<input class="form-control" type="text" name="g_weight.'+ j +'" id="g_weight.'+ j +'" placeholder="300g - 1800g">'+
-                '</div>'+
-                '<fieldset>'+
-                    '<legend class="h6">Destination</legend>'+
-                    '<div class="form-check">'+
-                        '<input class="form-check-input" type="radio" name="g_destination.'+ j +'" id="g_destinationa.'+ j +'" value="fattening">'+
-                        '<label class="form-check-label" for="g_destinationa.'+ j +'">Engraissement</label>'+
-                    '</div>'+
-                    '<div class="form-check">'+
-                        '<input class="form-check-input" type="radio" name="g_destination.'+ j +'" id="g_destinationb.'+ j +'" value="mating">'+
-                        '<label class="form-check-label" for="g_destinationb.'+ j +'">Reproduction</label>'+
-                    '</div>'+
-                '</fieldset>'+                
-            '</div>'+
-            '<div class="col-lg-4 col-sm-6">'+
-                '<div class="mb-3">'+
-                    '<label for="g_race.'+ j +'">Race</label>'+
-                    '<input type="text" class="form-control" name="g_race.'+ j +'"  id="g_race.'+ j +'" placeholder="Locale">'+
-                '</div>'+
-                '<fieldset>'+
-                    '<legend class="h6">Sexe</legend>'+
-                    '<div class="form-check">'+
-                        '<input class="form-check-input" type="radio" name="g_gender.'+ j +'" id="g_gendera.'+ j +'" value="male">'+
-                        '<label class="form-check-label" for="g_gendera.'+ j +'">Male</label>'+
-                    '</div>'+
-                    '<div class="form-check">'+
-                        '<input class="form-check-input" type="radio" name="g_gender.'+ j +'" id="g_genderb.'+ j +'" value="female">'+
-                        '<label class="form-check-label" for="g_genderb.'+ j +'">Femelle</label>'+
-                    '</div>'+
-                '</fieldset>'+
-            '<div class="" style="float:rightf">'+
+            '<div class="mb-3">' +
+            '<label for="g_uid.' + j + '">Saisir un identifiant</label>' +
+            '<input type="text" class="form-control" name="g_uid.' + j + '" id="g_uid.' + j + '" placeholder="F-0001">' +
+            '</div>' +
+            '<div class="mb-3">' +
+            '<label for="color">Couleur</label>' +
+            '<input class="form-control" type="text" name="g_color.' + j + '" id="g_color.' + j + '" placeholder="Blanc, noir...">' +
+            '</div>' +
+            '<fieldset>' +
+            '<legend class="h6">Santé</legend>' +
+            '<div class="form-check">' +
+            '<input class="form-check-input" type="radio" name="g_state.' + j + '" id="g_statea.' + j + '" value="healthy" required>' +
+            '<label class="form-check-label" for="g_statea.' + j + '">Bien portant</label>' +
+            '</div>' +
+            '<div class="form-check">' +
+            '<input class="form-check-input" type="radio" name="g_state.' + j + '" id="g_stateb.' + j + '" value="sick_bunny" required>' +
+            '<label class="form-check-label" for="g_stateb.' + j + '">Malade</label>' +
+            '</div>' +
+            '</fieldset>' +
+            '</div>' +
+            '<div class="col-lg-4 col-sm-6">' +
+            '<div class="mb-3">' +
+            '<label for="g_date_birth.' + j + '">Date de Naissance</label>' +
+            '<div class="input-group">' +
+            '<span class="input-group-text">' +
+            '<svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>' +
+            '</span>' +
+            '<input class="form-control" name="g_date_birth.' + j + '" id="g_date_birth.' + j + '" type="date" placeholder="dd/mm/yyyy">' +
+            '</div>' +
+            '</div>' +
+            '<div class="mb-3">' +
+            '<label for="weight">Poids</label>' +
+            '<input class="form-control" type="text" name="g_weight.' + j + '" id="g_weight.' + j + '" placeholder="300g - 1800g">' +
+            '</div>' +
+            '<fieldset>' +
+            '<legend class="h6">Destination</legend>' +
+            '<div class="form-check">' +
+            '<input class="form-check-input" type="radio" name="g_destination.' + j + '" id="g_destinationa.' + j + '" value="fattening" required>' +
+            '<label class="form-check-label" for="g_destinationa.' + j + '">Engraissement</label>' +
+            '</div>' +
+            '<div class="form-check">' +
+            '<input class="form-check-input" type="radio" name="g_destination.' + j + '" id="g_destinationb.' + j + '" value="mating" required>' +
+            '<label class="form-check-label" for="g_destinationb.' + j + '">Reproduction</label>' +
+            '</div>' +
+            '</fieldset>' +
+            '</div>' +
+            '<div class="col-lg-4 col-sm-6">' +
+            '<div class="mb-3">' +
+            '<label for="g_race.' + j + '">Race</label>' +
+            '<input type="text" class="form-control" name="g_race.' + j + '"  id="g_race.' + j + '" placeholder="Locale">' +
+            '</div>' +
+            '<fieldset>' +
+            '<legend class="h6">Sexe</legend>' +
+            '<div class="form-check">' +
+            '<input class="form-check-input" type="radio" name="g_gender.' + j + '" id="g_gendera.' + j + '" value="male" required>' +
+            '<label class="form-check-label" for="g_gendera.' + j + '">Male</label>' +
+            '</div>' +
+            '<div class="form-check">' +
+            '<input class="form-check-input" type="radio" name="g_gender.' + j + '" id="g_genderb.' + j + '" value="female" required>' +
+            '<label class="form-check-label" for="g_genderb.' + j + '">Femelle</label>' +
+            '</div>' +
+            '</fieldset>' +
+            '<div class="" style="float:rightf">' +
             '<button type="button" id="deleteBunnyField" class="btn btn-warning" style="float:right;">Retirer -</button>&nbsp;' +
-            '</div>'+
-            '</div>'+
-        '</div>';
+            '</div>' +
+            '</div>' +
+            '</div>';
         $('#newBunnyField').append(newBunnyForm);
         j += 1;
     })
@@ -491,23 +492,126 @@
     })
     let numberOfBunnyFields = $('div#' + 'addedBabyField').length;
 
-    
-  $(document).ready(function() {
-    $('#recuperer-donnees').click(function() {
-      $.ajax({
-        url: "http://127.0.0.1:8000/create-bunny",
-        type: 'GET',
-        dataType: 'json',
-        success: function(data) {
-          console.log(data);
-          $('#resultat').text(JSON.stringify(data));
-        },
-        error: function(xhr, status, error) {
-          console.error(status + ': ' + error);
+    $(document).ready(function() {
+    let allFieldsValid = false; // Assume at least one field is invalid on page load
+    let radioFieldsValid = false; // Assume at least one field is invalid on page load
+
+    //$("#babyForm").on('click', "#submitBabyForm", function () {
+    $("#submitBabyForm").click(function () {
+        $("#babyForm input[name='uid'], #newBabyField input[name='uid']").each(function () {
+
+        });
+
+        $("#babyForm input, #babyForm select, #newBabyField input, #newBabyField select").each(function () {
+            if ($(this).val() !== "") {
+                $(this).removeClass("is-invalid");
+                $(this).addClass("is-valid");
+                allFieldsValid = true; // At least one field is valid
+            } else {
+                $(this).addClass("is-invalid");
+                $(this).removeClass("is-valid");
+                allFieldsValid = false; // A field is invalid, so overall form is invalid
+                return false; // Exit the each() loop early since we found an invalid field
+            }
+        });
+
+        const genderRadio = $("#babyForm input[name='gender']:checked");
+        if (genderRadio.length === 0) {
+            // No radio option is selected
+            $("#babyForm input[name='gender']").addClass("is-invalid");
+            radioFieldsValid = false;
+        } else {
+            $("#babyForm input[name='gender']").removeClass("is-invalid");
+            $("#babyForm input[name='gender']").addClass("is-valid");
+            radioFieldsValid = true; // At least one field is valid
         }
-      });
+        
+        const stateRadio = $("#babyForm input[name='state']:checked");
+        if (stateRadio.length === 0) {
+            // No radio option is selected
+            $("#babyForm input[name='state']").addClass("is-invalid");
+            radioFieldsValid = false;
+        } else {
+            $("#babyForm input[name='state']").removeClass("is-invalid");
+            $("#babyForm input[name='state']").addClass("is-valid");
+            radioFieldsValid = true; // At least one field is valid
+        }
+        
+        const destinationRadio = $("#babyForm input[name='destination']:checked");
+        if (destinationRadio.length === 0) {
+            // No radio option is selected
+            $("#babyForm input[name='destination']").addClass("is-invalid");
+            radioFieldsValid = false;
+        } else {
+            $("#babyForm input[name='destination']").removeClass("is-invalid");
+            $("#babyForm input[name='destination']").addClass("is-valid");
+            radioFieldsValid = true; // At least one field is valid
+        }
+
+        if (allFieldsValid && radioFieldsValid) {
+            // All fields are valid, submit the form
+            console.log('All is Right')
+            $("#submitBabyForm").prop('type', 'submit');
+        }
     });
-  });
+
+
+    $("#submitBunnyForm").click(function () {
+        $("#bunny-form input, #bunny-form select, #newBunnyField input, #newBunnyField select").each(function () {
+            if ($(this).val() !== "") {
+                $(this).removeClass("is-invalid");
+                $(this).addClass("is-valid");
+                allFieldsValid = true; // At least one field is valid
+            } else {
+                $(this).addClass("is-invalid");
+                $(this).removeClass("is-valid");
+                allFieldsValid = false; // A field is invalid, so overall form is invalid
+                return false; // Exit the each() loop early since we found an invalid field
+            }
+        });
+
+        const genderRadio = $("#bunny-form input[name='g_gender']:checked");
+        if (genderRadio.length === 0) {
+            // No radio option is selected
+            $("#bunny-form input[name='g_gender']").addClass("is-invalid");
+            radioFieldsValid = false;
+        } else {
+            $("#bunny-form input[name='g_gender']").removeClass("is-invalid");
+            $("#bunny-form input[name='g_gender']").addClass("is-valid");
+            radioFieldsValid = true; // At least one field is valid
+        }
+        
+        const stateRadio = $("#bunny-form input[name='g_state']:checked");
+        if (stateRadio.length === 0) {
+            // No radio option is selected
+            $("#bunny-form input[name='g_state']").addClass("is-invalid");
+            radioFieldsValid = false;
+        } else {
+            $("#bunny-form input[name='g_state']").removeClass("is-invalid");
+            $("#bunny-form input[name='g_state']").addClass("is-valid");
+            radioFieldsValid = true; // At least one field is valid
+        }
+        
+        const destinationRadio = $("#bunny-form input[name='g_destination']:checked");
+        if (destinationRadio.length === 0) {
+            // No radio option is selected
+            $("#bunny-form input[name='g_destination']").addClass("is-invalid");
+            radioFieldsValid = false;
+        } else {
+            $("#bunny-form input[name='g-destination']").removeClass("is-invalid");
+            $("#bunny-form input[name='g_destination']").addClass("is-valid");
+            radioFieldsValid = true; // At least one field is valid
+        }
+
+        if (allFieldsValid && radioFieldsValid) {
+            // All fields are valid, submit the form
+            console.log('All is Right')
+            $("#submitBunnyForm").prop('type', 'submit');
+        }
+    });
+
+
+});
 
     
 </script>
