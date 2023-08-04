@@ -39,6 +39,23 @@
 </div>
 <!--End code list product-->
 
+<!-- Modal information bunny-->
+<div class="modal fade" id="bunnyModal" tabindex="-1" aria-labelledby="bunnyModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bunnyModalLabel">Information du lapin</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Contenu du Modal
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 @endsection
@@ -75,9 +92,9 @@
             },
             {
               data: null,
-              defaultContent: '<button class="btn btn-primary " >Click!</button>',
+              defaultContent: '<div class="btn-group"><button class="btn btn-primary " >Click!</button><a href="#" id="edit" class="btn btn-primary">Edit</a><a href="#" id="delete" class="btn btn-danger">delete</button></a>',
               targets: -1
-            }
+            },
           
           ],columnDefs: [
             {
@@ -91,6 +108,14 @@
         let data = table.row(e.target.closest('tr')).data();
         console.log(data);
         alert(data[0] + "'s salary is: " + data["Uid"]);
+      });
+
+      table.on('click', '#edit', function (e) {
+        let data = table.row(e.target.closest('tr')).data();
+        console.log(data);
+        let url='{{ route("get-bunny-data", ["%s"]) }}';
+        url=url.replace('%s',data['id']);
+        window.location.href =url ;
       });
 </script>
 @endsection

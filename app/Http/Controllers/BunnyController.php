@@ -173,4 +173,10 @@ class BunnyController extends Controller
         $bunnies = Bunny::all();
         return response()->json(['bunnies' => $bunnies]);
     }
+
+    public function getBunnyDataById(int $id)
+    {
+        $bunny = Bunny::findOrFail($id);
+        return view('pages.bunny-profile',['bunny'=>$bunny]);
+    }
 }

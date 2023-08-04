@@ -23,7 +23,7 @@ Route::get('/list-bunny', function () {
     return view('pages.bunny-list');
 })->name("list-bunny");
 
-// Route::get('/create-bunnys
+//Route::get('/create-bunnys
 
 //Route::any('/create-bunny', BunnyController::class);
 
@@ -59,10 +59,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/create-bunny', function () {
         return view('pages.bunny-create');
     })->name("create-bunny");
+
+    //get a bunny informations by id
+    Route::get('/bunny-data/{id}', [App\Http\Controllers\BunnyController::class, 'getBunnyDataById'])->name("get-bunny-data");
+
+   
  });
 
 
 Route::get('/test', function () {
-    return view('auth.register1');
+    return view('pages.bunny-profile');
 });
 
