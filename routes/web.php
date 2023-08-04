@@ -16,24 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-<<<<<<< HEAD
-Route::get('/list-bunny', function () {
-    return view('pages.bunny-list');
-})->name("list-bunny");
 
-//Route::get('/create-bunnys
-
-//Route::any('/create-bunny', BunnyController::class);
-
-
-Route::get('/create-bunny', [BunnyController::class, 'render']);
-Route::post('/create-bunny', [BunnyController::class, 'saveBabyBunny']);
-
-=======
->>>>>>> senpai
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/auth/google', [App\Http\Controllers\SocialiteController::class, 'redirect']);
 
 Route::get('/auth/google/callback', [App\Http\Controllers\SocialiteController::class, 'callback']);
@@ -51,25 +34,15 @@ Route::middleware(['auth'])->group(function () {
         return view('pages.dashboard');
     })->name("home");
 
-    Route::get('/list-bunny', function () {
-        return view('pages.bunny-list');
-    })->name("list-bunny");
-
-<<<<<<< HEAD
-    Route::get('/create-bunny', function () {
-        return view('pages.bunny-create');
-    })->name("create-bunny");
-
-    //get a bunny informations by id
+    Route::get('/list-bunny', [App\Http\Controllers\BunnyController::class, 'index'])->name("list-bunny");
+    
+    //get a bunny informations by his id
     Route::get('/bunny-data/{id}', [App\Http\Controllers\BunnyController::class, 'getBunnyDataById'])->name("get-bunny-data");
 
-   
-=======
     Route::get('/create-bunny', [BunnyController::class, 'render'])->name("create-bunny");
     Route::post('/create-bunny', [BunnyController::class, 'saveBabyBunny'])->name("create-bunny");
     Route::get('/get-list-bunny', [BunnyController::class, 'getBunnyData'])->name("get-list-bunny");
     Route::get('/get-bunnies-id', [BunnyController::class, 'getBunnyId'])->name("get-bunnies-id");
->>>>>>> senpai
  });
 
 
