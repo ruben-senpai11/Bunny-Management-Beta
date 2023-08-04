@@ -46,10 +46,8 @@
 <script>
   let url = "{{route('get-list-bunny')}}"
 
-  
-
       var table = new DataTable('#bunnyTable', {
-          responsive: true,
+          responsive: true, 
           dom: 'Bfrtip',
           buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print',{

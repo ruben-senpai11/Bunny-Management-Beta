@@ -86,7 +86,8 @@ class BunnyController extends Controller
         }
 
         if($request->bunnyForm){            
-        //dd($request->all());
+            // dd($request->all());
+            // dd(var_dump($request->g_date_birth, $request->g_date_birth_));
             try {
                 $bunny = new Bunny();
                 $bunny->uid = $request->g_uid; 
@@ -167,10 +168,23 @@ class BunnyController extends Controller
     }
 
     
-   public function getBunnyData()
+    public function getBunnyData()
     {
         $user = Auth()->user();
         $bunnies = Bunny::all();
         return response()->json(['bunnies' => $bunnies]);
     }
+    
+    public function getBunnyId(Request $request)
+     {
+        $user = Auth()->user();
+        $bunnies = Bunny::where('uid', $request->search)->get();
+        return response()->json(['content' => $bunnies]);
+
+        if($bunnies){
+            return response()->json(['response' => true]);
+        }else{
+            return response()->json(['response' => false]);
+        }
+     }
 }
