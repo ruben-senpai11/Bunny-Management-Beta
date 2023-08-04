@@ -32,24 +32,33 @@
             text-align: center;
             border-radius: 10px;
             background: #37373784;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(5px);
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 2.2rem;
         }
 
+        h3
+        {
+            color: white;
+            font-size: 1.7rem;
+        }
         p {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
         }
 
         .btn {
+            /* background-color: #1FD0FF; */
             background-color: var(--orange-clair);
             color: white;
-            font-weight: bold;
-            padding: 10px 20px;
+            /* color: var(--orange-clair); */
+            font-weight: normal;
+            padding: 7px 10px;
             border-radius: 5px;
             text-decoration: none;
+            border  : #1FD0FF;
+            /* font-weight: bold; */
         }
 
         .btn:hover {
@@ -113,25 +122,25 @@
         </nav>
     </header>
     <div class="container card mt-4 p-3">
-        <h1>Système de gestion de l'élevage des lapins </h1>
-        <p>Notre système web vous permet de gérer efficacement votre élevage de lapins.</p>
-        <div class="row">
+        <h1 class="">Bunny Management</h1>
+        <p>Gérez efficacement votre élevage de lapins.</p>
+        <div class="row mt-4">
             <div class="col-md-4">
-                <h3>Gestion des données <i class="fas fa-database"></i></h3>
-                <p>Collectez et gérez facilement les informations relatives à vos lapins : poids, alimentation,
-                    vaccinations, etc.</p>
+                <h3>Gérez vos données <i class="fas fa-database"></i></h3>
+                <!-- <p>Collectez et gérez facilement les informations relatives à vos lapins : poids, alimentation,
+                    vaccinations, etc.</p> -->
             </div>
             <div class="col-md-4">
-                <h3>Planification des tâches <img src="{{ asset('assets/img/calendar.svg') }}" alt=""
+                <h3>Planifiez vos tâches <img src="{{ asset('assets/img/calendar.svg') }}" alt=""
                         style="max-height: 35px;max-width: 35px;"></h3>
-                <p>Organisez et planifiez les différentes tâches liées à l'élevage des lapins, telles que
-                    l'alimentation, le nettoyage des cages, etc.</p>
+                <!-- <p>Organisez et planifiez les différentes tâches liées à l'élevage des lapins, telles que
+                    l'alimentation, le nettoyage des cages, etc.</p> -->
             </div>
             <div class="col-md-4">
-                <h3>Analyse des performances <img src="{{ asset('assets/img/chart-pie-solid.svg') }}" alt=""
+                <h3>Analysez vos performances <img src="{{ asset('assets/img/chart-pie-solid.svg') }}" alt=""
                         style="max-height: 35px;max-width: 35px;"></h3>
-                <p>Obtenez des analyses détaillées sur les performances de votre élevage, y compris la croissance, la
-                    reproduction, et plus encore.</p>
+                <!-- <p>Obtenez des analyses détaillées sur les performances de votre élevage, y compris la croissance, la
+                    reproduction, et plus encore.</p> -->
             </div>
         </div>
         <div class="d-grid gap-2 d-md-block">

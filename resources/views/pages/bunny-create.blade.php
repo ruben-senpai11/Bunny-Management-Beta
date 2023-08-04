@@ -2,6 +2,34 @@
 
 @section('content')
 
+<style>
+
+.datepicker-input{
+    border-top-right-radius: 7px!important;
+    border-bottom-right-radius: 7px!important;
+}
+@keyframes change_box-shadow{
+    0%{
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,.07), 0 0 0 0.18rem rgba(31,41,55,.25);
+    }
+    50%{
+        box-shadow: 0 0px 0px;
+    }
+    100%{
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,.07), 0 0 0 0.18rem rgba(31,41,55,.25);
+    }
+}
+.default-red{
+    /* border-color: red; */
+    color: #6b7280;
+    background-color: #fff;
+    border-color: #4d6689;
+    outline: 0;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.07), 0 0 0 0.18rem rgba(31,41,55,.25);
+    animation: change_box-shadow 2s infinite;
+}
+</style>
+
 <div class="row">
     <div class="col-12 col-xl-9">
         @if (session()->has('message'))
@@ -25,27 +53,25 @@
                             <!--Form -->
                             <div class="mb-3">
                                 <label for="uid" class="">Saisir un identifiant</label>
-                                <input type="text" class="form-control" name="uid" id="uid" placeholder="M-0001">
-                                <div class="valid-feedback">Disponible</div>
+                                <input type="text" class="form-control default-red uid" name="uid" id="uid" placeholder="M-001" required>
                                 <div class="invalid-feedback">Attention, cet identifiant est dejà utilisé !</div>
-
                             </div>
                             <!-- End of Form -->
                             <div class="mb-3">
                                 <label for="color">Couleur</label>
-                                <input class="form-control" type="text" name="color" id="color" placeholder="Blanc, noir...">
+                                <input class="form-control no_nullable_baby_field" type="text" name="color" id="color" placeholder="Blanc, noir...">
                             </div>
                             <!-- Radio -->
                             <fieldset>
                                 <legend class="h6">Santé</legend>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="state" id="statea" value="healthy">
+                                    <input class="form-check-input no_nullable_baby_field" type="radio" name="state" id="statea" value="healthy">
                                     <label class="form-check-label" for="statea">
                                         Bien portant
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="state" id="stateb" value="sick_bunny">
+                                    <input class="form-check-input no_nullable_baby_field" type="radio" name="state" id="stateb" value="sick_bunny">
                                     <label class="form-check-label" for="stateb">
                                         Malade
                                     </label>
@@ -57,26 +83,26 @@
                         <div class=" col-lg-4 col-sm-6">
                             <div class="mb-3">
                                 <label for="">Identifier de la génitrice</label>
-                                <select style="width: 100%" class="form-control">
+                                <select style="width: 100%" class="form-control no_nullable_baby_field">
                                     <option value="default" selected>Choose a UID</option>
                                 </select>
                                 <span class="text-danger"></span>
                             </div>
                             <div class="mb-3">
                                 <label for="weight">Poids</label>
-                                <input class="form-control" type="text" name="weight" id="weight" placeholder="100g - 300g">
+                                <input class="form-control no_nullable_baby_field" type="text" name="weight" id="weight" placeholder="100g - 300g">
                             </div>
                             <!-- Radio -->
                             <fieldset class="mb-2">
                                 <legend class="h6">Destination</legend>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="destination" id="destinationa" value="fattening">
+                                    <input class="form-check-input no_nullable_baby_field" type="radio" name="destination" id="destinationa" value="fattening">
                                     <label class="form-check-label" for="destinationa">
                                         Engraissement
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="destination" id="destinationb" value="mating">
+                                    <input class="form-check-input no_nullable_baby_field" type="radio" name="destination" id="destinationb" value="mating">
                                     <label class="form-check-label" for="destinationb">
                                         Reproduction
                                     </label>
@@ -87,7 +113,7 @@
                         <div class="col-lg-4 col-sm-6">
                             <div class="mb-3">
                                 <label for="">Identifier la gestation</label>
-                                <select style="width: 100%" name="gestation_id" class="form-control">
+                                <select style="width: 100%" name="gestation_id" class="form-control no_nullable_baby_field">
                                     <option value="12014" selected>Choose one</option>
                                     <option value="120214">Choose two</option>
                                 </select>
@@ -97,13 +123,13 @@
                             <fieldset class="mb-2">
                                 <legend class="h6">Sexe</legend>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" id="gendera" value="male">
+                                    <input class="form-check-input no_nullable_baby_field" type="radio" name="gender" id="gendera" value="male">
                                     <label class="form-check-label" for="gendera">
                                         Male
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" id="genderb" value="female">
+                                    <input class="form-check-input no_nullable_baby_field" type="radio" name="gender" id="genderb" value="female">
                                     <label class="form-check-label" for="genderb">
                                         Femelle
                                     </label>
@@ -143,12 +169,13 @@
                             <!-- Form -->
                             <div class="mb-3">
                                 <label for="g_uid">Saisir un identifiant</label>
-                                <input type="text" class="form-control" name="g_uid" id="g_uid" placeholder="F-0001">
+                                <input type="text" class="form-control default-red g_uid" name="g_uid" id="g_uid" placeholder="F-001" required>
+                                <div class="invalid-feedback">Attention, cet identifiant est dejà utilisé !</div>
                             </div>
                             <!-- End of Form -->
                             <div class="mb-3">
                                 <label for="color">Couleur</label>
-                                <input class="form-control" type="text" name="g_color" id="g_color" placeholder="Blanc, noir...">
+                                <input class="form-control no_nullable_bunny_field" type="text" name="g_color" id="g_color" placeholder="Blanc, noir...">
                             </div>
                             <!-- Radio -->
                             <fieldset>
@@ -178,13 +205,13 @@
                                             <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
                                         </svg>
                                     </span>
-                                    <input class="form-control" name="g_date_birth" id="g_date_birth" type="date" placeholder="dd/mm/yyyy">
+                                    <input class="form-control no_nullable_bunny_field" name="g_date_birth_" id="g_date_birth" type="date" placeholder="dd/mm/yyyy">
                                 </div>
-                            </div>
+                            </div>  
                             <!-- End of Form -->
                             <div class="mb-3">
                                 <label for="weight">Poids</label>
-                                <input class="form-control" type="text" name="g_weight" id="g_weight" placeholder="300g - 1800g">
+                                <input class="form-control no_nullable_bunny_field" type="text" name="g_weight" id="g_weight" placeholder="300g - 1800g">
                             </div>
                             <!-- Radio -->
                             <fieldset>
@@ -207,7 +234,7 @@
                         <div class="col-lg-4 col-sm-6">
                             <div class="mb-3">
                                 <label for="g_race">Race</label>
-                                <input type="text" class="form-control " id="g_race" placeholder="Locale">
+                                <input type="text" class="form-control no_nullable_bunny_field" id="g_race" placeholder="Locale">
                             </div>
                             <!-- Radio -->
                             <fieldset>
@@ -350,7 +377,8 @@
             '<div class="col-lg-4 col-sm-6"> ' +
             '<div class="mb-3">' +
             '<label for="uid_.' + i + '">Saisir un identifiant</label>' +
-            '<input type="text" name="uid.' + i + '" class="form-control is-valid" id="uid.' + i + '" placeholder="M-0001">' +
+            '<input type="text" name="uid.' + i + '" class="form-control default-red uid" placeholder="M-001" required>' +
+            '<div class="invalid-feedback">Attention, cet identifiant est dejà utilisé !</div>'+
             '</div>' +
 
             '<fieldset class="mb-2">' +
@@ -368,7 +396,7 @@
             '<div class=" col-lg-3 col-sm-4">' +
             '<div class="mb-3">' +
             '<label for="weight' + i + '">Poids</label>' +
-            '<input class="form-control" type="text" name="weight.' + i + '" id="weight.' + i + '" placeholder="100g - 300g">' +
+            '<input class="form-control no_nullable_baby_field" type="text" name="weight.' + i + '" id="weight.' + i + '" placeholder="100g - 300g">' +
             '</div>' +
 
             '<fieldset class="mb-2">' +
@@ -384,7 +412,7 @@
             '<div class="col-lg-3 col-sm-3">' +
             '<div class="mb-3">' +
             '<label for="color' + i + '">Couleur</label>' +
-            '<input class="form-control" type="text" name="color.' + i + '" id="color.' + i + '" placeholder="blanc, noir...">' +
+            '<input class="form-control no_nullable_baby_field" type="text" name="color.' + i + '" id="color.' + i + '" placeholder="blanc, noir...">' +
             '</div>' +
             '<fieldset class="mb-2">' +
             '<legend class="h6">Destination</legend>' +
@@ -398,7 +426,7 @@
             '</div>' +
             '</fieldset>' +
             '</div>' +
-            '<div class="col-lg-2 col-sm-3 my-5 ">' +
+            '<div class="col-lg-2 col-sm-3 mt-5 mb-2">' +
             '<button type="button" id="deleteBabyField" class="btn btn-danger" style="float:right;">Retirer -</button>&nbsp;' +
             '</div>';
         '</div>';
@@ -419,11 +447,12 @@
             '<div class="col-lg-4 col-sm-6"> ' +
             '<div class="mb-3">' +
             '<label for="g_uid.' + j + '">Saisir un identifiant</label>' +
-            '<input type="text" class="form-control" name="g_uid.' + j + '" id="g_uid.' + j + '" placeholder="F-0001">' +
+            '<input type="text" class="form-control default-red g_uid" name="g_uid.' + j + '" placeholder="F-001" required>' +
+            '<div class="invalid-feedback">Attention, cet identifiant est dejà utilisé !</div>'+
             '</div>' +
             '<div class="mb-3">' +
             '<label for="color">Couleur</label>' +
-            '<input class="form-control" type="text" name="g_color.' + j + '" id="g_color.' + j + '" placeholder="Blanc, noir...">' +
+            '<input class="form-control no_nullable_bunny_field" type="text" name="g_color.' + j + '" id="g_color.' + j + '" placeholder="Blanc, noir...">' +
             '</div>' +
             '<fieldset>' +
             '<legend class="h6">Santé</legend>' +
@@ -444,12 +473,12 @@
             '<span class="input-group-text">' +
             '<svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>' +
             '</span>' +
-            '<input class="form-control" name="g_date_birth.' + j + '" id="g_date_birth.' + j + '" type="date" placeholder="dd/mm/yyyy">' +
+            '<input class="form-control no_nullable_bunny_field" name="g_date_birth.' + j + '" id="g_date_birth.' + j + '" type="date" placeholder="dd/mm/yyyy">' +
             '</div>' +
             '</div>' +
             '<div class="mb-3">' +
             '<label for="weight">Poids</label>' +
-            '<input class="form-control" type="text" name="g_weight.' + j + '" id="g_weight.' + j + '" placeholder="300g - 1800g">' +
+            '<input class="form-control no_nullable_bunny_field" type="text" name="g_weight.' + j + '" id="g_weight.' + j + '" placeholder="300g - 1800g">' +
             '</div>' +
             '<fieldset>' +
             '<legend class="h6">Destination</legend>' +
@@ -466,7 +495,7 @@
             '<div class="col-lg-4 col-sm-6">' +
             '<div class="mb-3">' +
             '<label for="g_race.' + j + '">Race</label>' +
-            '<input type="text" class="form-control" name="g_race.' + j + '"  id="g_race.' + j + '" placeholder="Locale">' +
+            '<input type="text" class="form-control no_nullable_bunny_field" name="g_race.' + j + '"  id="g_race.' + j + '" placeholder="Locale">' +
             '</div>' +
             '<fieldset>' +
             '<legend class="h6">Sexe</legend>' +
@@ -479,7 +508,7 @@
             '<label class="form-check-label" for="g_genderb.' + j + '">Femelle</label>' +
             '</div>' +
             '</fieldset>' +
-            '<div class="" style="float:rightf">' +
+            '<div class="mb-2" style="float:right">' +
             '<button type="button" id="deleteBunnyField" class="btn btn-warning" style="float:right;">Retirer -</button>&nbsp;' +
             '</div>' +
             '</div>' +
@@ -492,17 +521,14 @@
     })
     let numberOfBunnyFields = $('div#' + 'addedBabyField').length;
 
-    $(document).ready(function() {
+$(document).ready(function() {
     let allFieldsValid = false; // Assume at least one field is invalid on page load
-    let radioFieldsValid = false; // Assume at least one field is invalid on page load
+    let radioFieldsValid = false; 
 
     //$("#babyForm").on('click', "#submitBabyForm", function () {
     $("#submitBabyForm").click(function () {
-        $("#babyForm input[name='uid'], #newBabyField input[name='uid']").each(function () {
 
-        });
-
-        $("#babyForm input, #babyForm select, #newBabyField input, #newBabyField select").each(function () {
+        $(".no_nullable_baby_field").each(function () {
             if ($(this).val() !== "") {
                 $(this).removeClass("is-invalid");
                 $(this).addClass("is-valid");
@@ -548,16 +574,27 @@
             radioFieldsValid = true; // At least one field is valid
         }
 
-        if (allFieldsValid && radioFieldsValid) {
-            // All fields are valid, submit the form
-            console.log('All is Right')
-            $("#submitBabyForm").prop('type', 'submit');
-        }
+        // let baby_form_children = $('#babyForm').children();
+
+        // for (let field of baby_form_children){
+        //     if(field.classList.contains('is-invalid')){
+        //         console.log('checked');
+        //         return allFieldsValid == false;
+        //     }else{
+        //         console.log('checkedd');
+        //         return allFieldsValid == true;
+        //     }
+        // }
+            if (allFieldsValid && radioFieldsValid && available_uid) {
+                // All fields are valid, submit the form
+                console.log('All is Right')
+                $("#submitBabyForm").prop('type', 'submit');
+            }
     });
 
 
     $("#submitBunnyForm").click(function () {
-        $("#bunny-form input, #bunny-form select, #newBunnyField input, #newBunnyField select").each(function () {
+        $(".no_nullable_bunny_field").each(function () {
             if ($(this).val() !== "") {
                 $(this).removeClass("is-invalid");
                 $(this).addClass("is-valid");
@@ -602,18 +639,65 @@
             $("#bunny-form input[name='g_destination']").addClass("is-valid");
             radioFieldsValid = true; // At least one field is valid
         }
-
-        if (allFieldsValid && radioFieldsValid) {
+        
+        if (allFieldsValid && radioFieldsValid && available_uid) {
             // All fields are valid, submit the form
             console.log('All is Right')
             $("#submitBunnyForm").prop('type', 'submit');
         }
     });
 
-
-});
+    // Validation inputs uid avec Ajax
+    let url = "{{route('get-bunnies-id')}}"
+    let available_uid
+    function performSearch(search_uid, current_input) {
+        const apiUrl = url; 
+        $.get(apiUrl, { search: search_uid })
+            .done(function (data) {   
+                    console.log(data.content)
+                if (data.content.length ===0) {
+                    current_input.removeClass("is-invalid");
+                    return available_uid = true
+                } else {
+                    current_input.removeClass("is-valid").addClass("is-invalid");
+                    return available_uid = false
+                }
+            })
+            .fail(function () {
+                console.log('Failed to fetch search results.');
+            });
+    }
 
     
+    let uid_inputs = $('#uid, #g_uid'); 
+
+    uid_inputs.each(function(){
+        $(this).on('input', function(){
+            let current_input = $(this);
+            let search_uid = $(this).val();
+            $(this).removeClass('default-red');
+            performSearch(search_uid, current_input);
+        })
+    })
+    
+    $('#newBabyField, #newBunnyField').click(function(){
+        let uid_inputs = $('.uid, .g_uid'); 
+
+        uid_inputs.each(function(){
+            $(this).on('input', function(){
+                // console.log("loki");
+                let current_input = $(this);
+                let search_uid = $(this).val();
+            $(this).removeClass('default-red');
+                performSearch(search_uid, current_input);
+            })
+        })
+    })
+    
+});
+
+
+
 </script>
 
 @endsection

@@ -14,11 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.dashboard');
-})->name("home");
 
 
+<<<<<<< HEAD
 Route::get('/list-bunny', function () {
     return view('pages.bunny-list');
 })->name("list-bunny");
@@ -31,6 +29,8 @@ Route::get('/list-bunny', function () {
 Route::get('/create-bunny', [BunnyController::class, 'render']);
 Route::post('/create-bunny', [BunnyController::class, 'saveBabyBunny']);
 
+=======
+>>>>>>> senpai
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -54,8 +54,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/list-bunny', function () {
         return view('pages.bunny-list');
     })->name("list-bunny");
-    Route::get('/get-list-bunny', [App\Http\Controllers\BunnyController::class, 'getBunnyData'])->name("get-list-bunny");
 
+<<<<<<< HEAD
     Route::get('/create-bunny', function () {
         return view('pages.bunny-create');
     })->name("create-bunny");
@@ -64,6 +64,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/bunny-data/{id}', [App\Http\Controllers\BunnyController::class, 'getBunnyDataById'])->name("get-bunny-data");
 
    
+=======
+    Route::get('/create-bunny', [BunnyController::class, 'render'])->name("create-bunny");
+    Route::post('/create-bunny', [BunnyController::class, 'saveBabyBunny'])->name("create-bunny");
+    Route::get('/get-list-bunny', [BunnyController::class, 'getBunnyData'])->name("get-list-bunny");
+    Route::get('/get-bunnies-id', [BunnyController::class, 'getBunnyId'])->name("get-bunnies-id");
+>>>>>>> senpai
  });
 
 
