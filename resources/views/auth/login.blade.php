@@ -4,11 +4,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- Primary Meta Tags -->
-    <title>Projet laravel bunny management</title>
+    <title>Bunny management</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="title" content="Projet laravel bunny management">
-    <meta name="author" content="Rodias Gohoue">
-    <meta name="description" content="Projet laravel bunny management">
+    <meta name="title" content="Bunny management">
+    <meta name="author" content="Rodias & Senpai">
+    <meta name="description" content="Bunny management">
     <meta name="keywords"
         content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, themesberg, themesberg dashboard, themesberg admin dashboard" />
     <link rel="canonical" href="https://themesberg.com/product/admin-dashboard/volt-premium-bootstrap-5-dashboard">
@@ -68,13 +68,13 @@
                     <div class="col-12 d-flex align-items-center justify-content-center">
                         <div class="bg-white shadow border-0 rounded border-light p-4 p-lg-5 w-100 fmxw-500">
                             <div class="text-center text-md-center mb-4 mt-md-0">
-                                <h1 class="mb-0 h3">Sign in to our platform</h1>
+                                <h1 class="mb-0 h3">Se connecter</h1>
                             </div>
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <!-- Form -->
                                 <div class="form-group mb-4">
-                                    <label for="email">Your Email</label>
+                                    <label for="email">Adresse Mail</label>
                                     <div class="input-group">
                                         <span class="input-group-text" id="basic-addon1">
                                             <svg class="icon icon-xs text-gray-600" fill="currentColor"
@@ -101,7 +101,7 @@
                                 <div class="form-group">
                                     <!-- Form -->
                                     <div class="form-group mb-4">
-                                        <label for="password">Your Password</label>
+                                        <label for="password">Mot de passe</label>
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon2">
                                                 <svg class="icon icon-xs text-gray-600" fill="currentColor"
@@ -129,24 +129,24 @@
                                                 id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                             <label class="form-check-label" for="remember">
-                                                {{ __('Remember Me') }}
+                                                {{ __('Se souvenir de moi') }}
                                             </label>
                                         </div>
                                         <div>
                                             @if (Route::has('password.request'))
                                             <a class="small text-right" href="{{ route('password.request') }}">
-                                                {{ __('Lost password?') }}
+                                                {{ __('Mot de passe oublié?') }}
                                             </a>
                                             @endif
                                             </div>
                                     </div>
                                 </div>
                                 <div class="d-grid">
-                                    <button type="submit" class="btn btn-gray-800">Sign in</button>
+                                    <button type="submit" class="btn btn-gray-800">Se connecter</button>
                                 </div>
                             </form>
                             <div class="mt-3 mb-4 text-center">
-                                <span class="fw-normal">or login with</span>
+                                <span class="fw-normal">ou continuer avec</span>
                             </div>
                             
                             <div class="d-flex justify-content-center my-4">
@@ -171,9 +171,9 @@
                             </div>
                             <div class="d-flex justify-content-center align-items-center mt-4">
                                 <span class="fw-normal">
-                                    Not registered?
+                                    Pas encore inscrit ?
                                     @if (Route::has('register'))
-                                    <a class="fw-bold" href="{{ route('register') }}">{{ __('Create account') }}</a>
+                                    <a class="fw-bold" href="{{ route('register') }}">{{ __('Créer un compte') }}</a>
                                     @endif
                                 </span>
                             </div>

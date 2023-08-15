@@ -1,5 +1,9 @@
 @extends('layouts.base')
-
+@section('style')
+<link href="
+https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.min.css
+" rel="stylesheet">
+@endsection
 @section('content')
 
 <style>
@@ -58,8 +62,16 @@
                             </div>
                             <!-- End of Form -->
                             <div class="mb-3">
-                                <label for="color">Couleur</label>
-                                <input class="form-control no_nullable_baby_field" type="text" name="color" id="color" placeholder="Blanc, noir...">
+                                <label for="color">Couleurs</label>
+                                <select class="no_nullable_bunny_field color" type="text" name="color" placeholder="Blanc, noir..." multiple required>
+                                    <option value="Blanc">Blanc</option>
+                                    <option value="Noir">Noir</option> 
+                                    <option value="Marron">Marron</option>
+                                    <option value="Roux">Roux</option>
+                                    <option value="Gris">Gris</option>
+                                    <option value="Cendre">Cendre</option>
+                                    ...
+                                </select>
                             </div>
                             <!-- Radio -->
                             <fieldset>
@@ -174,8 +186,16 @@
                             </div>
                             <!-- End of Form -->
                             <div class="mb-3">
-                                <label for="color">Couleur</label>
-                                <input class="form-control no_nullable_bunny_field" type="text" name="g_color" id="g_color" placeholder="Blanc, noir...">
+                                <label for="g_color">Couleurs</label>
+                                <select class="no_nullable_bunny_field g_color" type="text" name="g_color" id="g_color" placeholder="Blanc, noir..." multiple required>
+                                    <option value="Blanc">Blanc</option>
+                                    <option value="Noir">Noir</option> 
+                                    <option value="Marron">Marron</option>
+                                    <option value="Roux">Roux</option>
+                                    <option value="Gris">Gris</option>
+                                    <option value="Cendre">Cendre</option>
+                                    ...
+                                </select>
                             </div>
                             <!-- Radio -->
                             <fieldset>
@@ -205,13 +225,13 @@
                                             <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
                                         </svg>
                                     </span>
-                                    <input class="form-control no_nullable_bunny_field" name="g_date_birth_" id="g_date_birth" type="date" placeholder="dd/mm/yyyy">
+                                    <input class="form-control no_nullable_bunny_field" name="g_date_birth" id="g_date_birth" type="date" placeholder="dd/mm/yyyy">
                                 </div>
                             </div>  
                             <!-- End of Form -->
                             <div class="mb-3">
                                 <label for="weight">Poids</label>
-                                <input class="form-control no_nullable_bunny_field" type="text" name="g_weight" id="g_weight" placeholder="300g - 1800g">
+                                <input class="form-control no_nullable_bunny_field" type="number" name="g_weight" id="g_weight" placeholder="300g - 1800g">
                             </div>
                             <!-- Radio -->
                             <fieldset>
@@ -234,7 +254,12 @@
                         <div class="col-lg-4 col-sm-6">
                             <div class="mb-3">
                                 <label for="g_race">Race</label>
-                                <input type="text" class="form-control no_nullable_bunny_field" id="g_race" placeholder="Locale">
+                                <select class="no_nullable_bunny_field g_race" name="g_race" id="g_race" placeholder="Locale" multiple required>
+                                    <option value="Locale">Locale</option>
+                                    <option value="Ghanéen">Ghanéen</option> 
+                                    <option value="Géant">Géant</option>
+                                    ...
+                                </select>
                             </div>
                             <!-- Radio -->
                             <fieldset>
@@ -368,9 +393,47 @@
 
 </div>
 
+    
+<script src="{{ asset('vendor/virtual-select-master/dist/virtual-select.min.js') }}"></script> 
+<script> 
+    function initVirtualSelect (){
+        VirtualSelect.init({ 
+            ele: '.color, .g_color, .g_race' ,
+            // Text to show when no options to show
+            noOptionsText: 'Aucun résultat',
+            // Text to show when no results on search
+            noSearchResultsText: 'Aucun résultat',
+            // Text to show near select all checkbox when search is disabled
+            selectAllText: 'Tout sélectionner',
+            // Text to show as placeholder for search input
+            searchPlaceholderText: 'Rechercher...', 
+            // Text to use when displaying no.of values selected text (i.e. 3 options selected)
+            optionsSelectedText: 'Sélectionnés',
+            // Text to use when displaying no.of values selected text and only one value is selected (i.e. 1 option selected)
+            optionSelectedText: 'Sélectionnés',
+            // Text to use when displaying all values selected text (i.e. All (10))
+            allOptionsSelectedText: 'Tout'
+        });
+    }
+    initVirtualSelect ()
+</script> 
+
 <script type="text/javascript">
     let i = 2
     $("#addBabyField").click(function() {
+        newBabyBunnyColor = 
+            '<div class="mb-3">'+
+                '<label for="color.' + i + '">Couleurs</label>'+
+                '<select class="no_nullable_bunny_field color" type="text" name="color.' + i + '" id="color.' + i + '" placeholder="Blanc, noir..." multiple required>'+
+                    '<option value="Blanc">Blanc</option>'+
+                    '<option value="Noir">Noir</option> '+
+                    '<option value="Marron">Marron</option>'+
+                    '<option value="Roux">Roux</option>'+
+                    '<option value="Gris">Gris</option>'+
+                    '<option value="Cendre">Cendre</option>'+
+                    '...'+
+                '</select>'+
+            '</div>'
         newBabyForm =
             '<div id="addedBabyField" class="row mb-4 pt-4" style="border: 1px solid lightgray; border-radius: 10px;" >' +
             '<p class="text-bold">' + i + 'ème lapereau</p>' +
@@ -380,7 +443,6 @@
             '<input type="text" name="uid.' + i + '" class="form-control default-red uid" placeholder="M-001" required>' +
             '<div class="invalid-feedback">Attention, cet identifiant est dejà utilisé !</div>'+
             '</div>' +
-
             '<fieldset class="mb-2">' +
             '<legend class="h6">Sexe</legend>' +
             '<div class="form-check">' +
@@ -393,7 +455,7 @@
             '</div>' +
             '</fieldset>' +
             '</div>' +
-            '<div class=" col-lg-3 col-sm-4">' +
+            '<div class=" col-lg-4 col-sm-6">' +
             '<div class="mb-3">' +
             '<label for="weight' + i + '">Poids</label>' +
             '<input class="form-control no_nullable_baby_field" type="text" name="weight.' + i + '" id="weight.' + i + '" placeholder="100g - 300g">' +
@@ -409,11 +471,8 @@
             '<label class="form-check-label" for="stateb.' + i + '">Malade</label></div>' +
             '</fieldset>' +
             '</div>' +
-            '<div class="col-lg-3 col-sm-3">' +
-            '<div class="mb-3">' +
-            '<label for="color' + i + '">Couleur</label>' +
-            '<input class="form-control no_nullable_baby_field" type="text" name="color.' + i + '" id="color.' + i + '" placeholder="blanc, noir...">' +
-            '</div>' +
+            '<div class="col-lg-4 col-sm-6">' +
+            newBabyBunnyColor +
             '<fieldset class="mb-2">' +
             '<legend class="h6">Destination</legend>' +
             '<div class="form-check">' +
@@ -426,11 +485,12 @@
             '</div>' +
             '</fieldset>' +
             '</div>' +
-            '<div class="col-lg-2 col-sm-3 mt-5 mb-2">' +
+            '<div class="mb-2">' +
             '<button type="button" id="deleteBabyField" class="btn btn-danger" style="float:right;">Retirer -</button>&nbsp;' +
             '</div>';
         '</div>';
         $('#newBabyField').append(newBabyForm);
+        initVirtualSelect ()
         i += 1;
     })
     $("body").on("click", "#deleteBabyField", function() {
@@ -438,9 +498,31 @@
     })
     let numberOfBabyFields = $('div#' + 'addedBabyField').length;
 
-
     let j = 2
     $("#addBunnyField").click(function() {
+        newBunnyColor = 
+            '<div class="mb-3">'+
+                '<label for="g_color' + i + '">Couleurs</label>'+
+                '<select class="no_nullable_bunny_field g_color" type="text" name="g_color' + i + '" id="g_color' + i + '" placeholder="Blanc, noir..." multiple required>'+
+                    '<option value="Blanc">Blanc</option>'+
+                    '<option value="Noir">Noir</option> '+
+                    '<option value="Marron">Marron</option>'+
+                    '<option value="Roux">Roux</option>'+
+                    '<option value="Gris">Gris</option>'+
+                    '<option value="Cendre">Cendre</option>'+
+                    '...'+
+                '</select>'+
+            '</div>'
+        newBunnyRace = 
+            '<div class="mb-3">'+
+                '<label for="g_race' + j + '">Race</label>'+
+                '<select class="no_nullable_bunny_field g_race" name="g_race' + j + '" id="g_race' + j + '" placeholder="Locale" multiple required>'+
+                    '<option value="Locale">Locale</option>'+
+                    '<option value="Ghanéen">Ghanéen</option>'+ 
+                    '<option value="Géant">Géant</option>'+
+                    '...'+
+                '</select>'+
+            '</div>'
         newBunnyForm =
             '<div id="addedBunnyField" class="row mb-4 pt-4" style="border: 1px solid lightgray; border-radius: 10px;" >' +
             '<p class="text-bold">' + j + 'ème lapin</p>' +
@@ -450,10 +532,7 @@
             '<input type="text" class="form-control default-red g_uid" name="g_uid.' + j + '" placeholder="F-001" required>' +
             '<div class="invalid-feedback">Attention, cet identifiant est dejà utilisé !</div>'+
             '</div>' +
-            '<div class="mb-3">' +
-            '<label for="color">Couleur</label>' +
-            '<input class="form-control no_nullable_bunny_field" type="text" name="g_color.' + j + '" id="g_color.' + j + '" placeholder="Blanc, noir...">' +
-            '</div>' +
+            newBunnyColor+
             '<fieldset>' +
             '<legend class="h6">Santé</legend>' +
             '<div class="form-check">' +
@@ -478,7 +557,7 @@
             '</div>' +
             '<div class="mb-3">' +
             '<label for="weight">Poids</label>' +
-            '<input class="form-control no_nullable_bunny_field" type="text" name="g_weight.' + j + '" id="g_weight.' + j + '" placeholder="300g - 1800g">' +
+            '<input class="form-control no_nullable_bunny_field" type="number" name="g_weight.' + j + '" id="g_weight.' + j + '" placeholder="300g - 1800g">' +
             '</div>' +
             '<fieldset>' +
             '<legend class="h6">Destination</legend>' +
@@ -493,10 +572,7 @@
             '</fieldset>' +
             '</div>' +
             '<div class="col-lg-4 col-sm-6">' +
-            '<div class="mb-3">' +
-            '<label for="g_race.' + j + '">Race</label>' +
-            '<input type="text" class="form-control no_nullable_bunny_field" name="g_race.' + j + '"  id="g_race.' + j + '" placeholder="Locale">' +
-            '</div>' +
+            newBunnyRace+
             '<fieldset>' +
             '<legend class="h6">Sexe</legend>' +
             '<div class="form-check">' +
@@ -508,195 +584,184 @@
             '<label class="form-check-label" for="g_genderb.' + j + '">Femelle</label>' +
             '</div>' +
             '</fieldset>' +
+            '</div>' +
             '<div class="mb-2" style="float:right">' +
             '<button type="button" id="deleteBunnyField" class="btn btn-warning" style="float:right;">Retirer -</button>&nbsp;' +
             '</div>' +
-            '</div>' +
-            '</div>';
+            '</div>'
+        ;
+       
         $('#newBunnyField').append(newBunnyForm);
+        initVirtualSelect ();
         j += 1;
     })
     $("body").on("click", "#deleteBunnyField", function() {
         $(this).parents("#addedBunnyField").remove();
     })
     let numberOfBunnyFields = $('div#' + 'addedBabyField').length;
+    
+    $(document).ready(function() {
+        let allFieldsValid = false; // Assume at least one field is invalid on page load
+        let radioFieldsValid = false; 
 
-$(document).ready(function() {
-    let allFieldsValid = false; // Assume at least one field is invalid on page load
-    let radioFieldsValid = false; 
+        $("#submitBabyForm").click(function () {
 
-    //$("#babyForm").on('click', "#submitBabyForm", function () {
-    $("#submitBabyForm").click(function () {
+            $(".no_nullable_baby_field").each(function () {
+                if ($(this).val() !== "") {
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    allFieldsValid = true; // At least one field is valid
+                } else {
+                    $(this).addClass("is-invalid");
+                    $(this).removeClass("is-valid");
+                    allFieldsValid = false; // A field is invalid, so overall form is invalid
+                    return false; // Exit the each() loop early since we found an invalid field
+                }
+            });
 
-        $(".no_nullable_baby_field").each(function () {
-            if ($(this).val() !== "") {
-                $(this).removeClass("is-invalid");
-                $(this).addClass("is-valid");
-                allFieldsValid = true; // At least one field is valid
+            const genderRadio = $("#babyForm input[name='gender']:checked");
+            if (genderRadio.length === 0) {
+                // No radio option is selected
+                $("#babyForm input[name='gender']").addClass("is-invalid");
+                radioFieldsValid = false;
             } else {
-                $(this).addClass("is-invalid");
-                $(this).removeClass("is-valid");
-                allFieldsValid = false; // A field is invalid, so overall form is invalid
-                return false; // Exit the each() loop early since we found an invalid field
+                $("#babyForm input[name='gender']").removeClass("is-invalid");
+                $("#babyForm input[name='gender']").addClass("is-valid");
+                radioFieldsValid = true; // At least one field is valid
             }
+            
+            const stateRadio = $("#babyForm input[name='state']:checked");
+            if (stateRadio.length === 0) {
+                // No radio option is selected
+                $("#babyForm input[name='state']").addClass("is-invalid");
+                radioFieldsValid = false;
+            } else {
+                $("#babyForm input[name='state']").removeClass("is-invalid");
+                $("#babyForm input[name='state']").addClass("is-valid");
+                radioFieldsValid = true; // At least one field is valid
+            }
+            
+            const destinationRadio = $("#babyForm input[name='destination']:checked");
+            if (destinationRadio.length === 0) {
+                // No radio option is selected
+                $("#babyForm input[name='destination']").addClass("is-invalid");
+                radioFieldsValid = false;
+            } else {
+                $("#babyForm input[name='destination']").removeClass("is-invalid");
+                $("#babyForm input[name='destination']").addClass("is-valid");
+                radioFieldsValid = true; // At least one field is valid
+            }
+
+                if (allFieldsValid && radioFieldsValid && available_uid) {
+                    // All fields are valid, submit the form
+                    console.log('All is Right')
+                    $("#submitBabyForm").prop('type', 'submit');
+                }
         });
 
-        const genderRadio = $("#babyForm input[name='gender']:checked");
-        if (genderRadio.length === 0) {
-            // No radio option is selected
-            $("#babyForm input[name='gender']").addClass("is-invalid");
-            radioFieldsValid = false;
-        } else {
-            $("#babyForm input[name='gender']").removeClass("is-invalid");
-            $("#babyForm input[name='gender']").addClass("is-valid");
-            radioFieldsValid = true; // At least one field is valid
-        }
-        
-        const stateRadio = $("#babyForm input[name='state']:checked");
-        if (stateRadio.length === 0) {
-            // No radio option is selected
-            $("#babyForm input[name='state']").addClass("is-invalid");
-            radioFieldsValid = false;
-        } else {
-            $("#babyForm input[name='state']").removeClass("is-invalid");
-            $("#babyForm input[name='state']").addClass("is-valid");
-            radioFieldsValid = true; // At least one field is valid
-        }
-        
-        const destinationRadio = $("#babyForm input[name='destination']:checked");
-        if (destinationRadio.length === 0) {
-            // No radio option is selected
-            $("#babyForm input[name='destination']").addClass("is-invalid");
-            radioFieldsValid = false;
-        } else {
-            $("#babyForm input[name='destination']").removeClass("is-invalid");
-            $("#babyForm input[name='destination']").addClass("is-valid");
-            radioFieldsValid = true; // At least one field is valid
-        }
 
-        // let baby_form_children = $('#babyForm').children();
+        $("#submitBunnyForm").click(function () {
+            $(".no_nullable_bunny_field").each(function () {
+                if ($(this).val() !== "") {
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    allFieldsValid = true; // At least one field is valid
+                } else {
+                    $(this).addClass("is-invalid");
+                    $(this).removeClass("is-valid");
+                    allFieldsValid = false; // A field is invalid, so overall form is invalid
+                    return false; // Exit the each() loop early since we found an invalid field
+                }
+            });
 
-        // for (let field of baby_form_children){
-        //     if(field.classList.contains('is-invalid')){
-        //         console.log('checked');
-        //         return allFieldsValid == false;
-        //     }else{
-        //         console.log('checkedd');
-        //         return allFieldsValid == true;
-        //     }
-        // }
+            const genderRadio = $("#bunny-form input[name='g_gender']:checked");
+            if (genderRadio.length === 0) {
+                // No radio option is selected
+                $("#bunny-form input[name='g_gender']").addClass("is-invalid");
+                radioFieldsValid = false;
+            } else {
+                $("#bunny-form input[name='g_gender']").removeClass("is-invalid");
+                $("#bunny-form input[name='g_gender']").addClass("is-valid");
+                radioFieldsValid = true; // At least one field is valid
+            }
+            
+            const stateRadio = $("#bunny-form input[name='g_state']:checked");
+            if (stateRadio.length === 0) {
+                // No radio option is selected
+                $("#bunny-form input[name='g_state']").addClass("is-invalid");
+                radioFieldsValid = false;
+            } else {
+                $("#bunny-form input[name='g_state']").removeClass("is-invalid");
+                $("#bunny-form input[name='g_state']").addClass("is-valid");
+                radioFieldsValid = true; // At least one field is valid
+            }
+            
+            const destinationRadio = $("#bunny-form input[name='g_destination']:checked");
+            if (destinationRadio.length === 0) {
+                // No radio option is selected
+                $("#bunny-form input[name='g_destination']").addClass("is-invalid");
+                radioFieldsValid = false;
+            } else {
+                $("#bunny-form input[name='g-destination']").removeClass("is-invalid");
+                $("#bunny-form input[name='g_destination']").addClass("is-valid");
+                radioFieldsValid = true; // At least one field is valid
+            }
+            
             if (allFieldsValid && radioFieldsValid && available_uid) {
                 // All fields are valid, submit the form
                 console.log('All is Right')
-                $("#submitBabyForm").prop('type', 'submit');
-            }
-    });
-
-
-    $("#submitBunnyForm").click(function () {
-        $(".no_nullable_bunny_field").each(function () {
-            if ($(this).val() !== "") {
-                $(this).removeClass("is-invalid");
-                $(this).addClass("is-valid");
-                allFieldsValid = true; // At least one field is valid
-            } else {
-                $(this).addClass("is-invalid");
-                $(this).removeClass("is-valid");
-                allFieldsValid = false; // A field is invalid, so overall form is invalid
-                return false; // Exit the each() loop early since we found an invalid field
+                $("#submitBunnyForm").prop('type', 'submit');
             }
         });
 
-        const genderRadio = $("#bunny-form input[name='g_gender']:checked");
-        if (genderRadio.length === 0) {
-            // No radio option is selected
-            $("#bunny-form input[name='g_gender']").addClass("is-invalid");
-            radioFieldsValid = false;
-        } else {
-            $("#bunny-form input[name='g_gender']").removeClass("is-invalid");
-            $("#bunny-form input[name='g_gender']").addClass("is-valid");
-            radioFieldsValid = true; // At least one field is valid
+        // Validation inputs uid avec Ajax
+        let url = "{{route('get-bunnies-id')}}"
+        let available_uid
+        function performSearch(search_uid, current_input) {
+            const apiUrl = url; 
+            $.get(apiUrl, { search: search_uid })
+                .done(function (data) {   
+                        console.log(data.content)
+                    if (data.content.length ===0) {
+                        current_input.removeClass("is-invalid");
+                        return available_uid = true
+                    } else {
+                        current_input.removeClass("is-valid").addClass("is-invalid");
+                        return available_uid = false
+                    }
+                })
+                .fail(function () {
+                    console.log('Failed to fetch search results.');
+                });
         }
-        
-        const stateRadio = $("#bunny-form input[name='g_state']:checked");
-        if (stateRadio.length === 0) {
-            // No radio option is selected
-            $("#bunny-form input[name='g_state']").addClass("is-invalid");
-            radioFieldsValid = false;
-        } else {
-            $("#bunny-form input[name='g_state']").removeClass("is-invalid");
-            $("#bunny-form input[name='g_state']").addClass("is-valid");
-            radioFieldsValid = true; // At least one field is valid
-        }
-        
-        const destinationRadio = $("#bunny-form input[name='g_destination']:checked");
-        if (destinationRadio.length === 0) {
-            // No radio option is selected
-            $("#bunny-form input[name='g_destination']").addClass("is-invalid");
-            radioFieldsValid = false;
-        } else {
-            $("#bunny-form input[name='g-destination']").removeClass("is-invalid");
-            $("#bunny-form input[name='g_destination']").addClass("is-valid");
-            radioFieldsValid = true; // At least one field is valid
-        }
-        
-        if (allFieldsValid && radioFieldsValid && available_uid) {
-            // All fields are valid, submit the form
-            console.log('All is Right')
-            $("#submitBunnyForm").prop('type', 'submit');
-        }
-    });
 
-    // Validation inputs uid avec Ajax
-    let url = "{{route('get-bunnies-id')}}"
-    let available_uid
-    function performSearch(search_uid, current_input) {
-        const apiUrl = url; 
-        $.get(apiUrl, { search: search_uid })
-            .done(function (data) {   
-                    console.log(data.content)
-                if (data.content.length ===0) {
-                    current_input.removeClass("is-invalid");
-                    return available_uid = true
-                } else {
-                    current_input.removeClass("is-valid").addClass("is-invalid");
-                    return available_uid = false
-                }
-            })
-            .fail(function () {
-                console.log('Failed to fetch search results.');
-            });
-    }
-
-    
-    let uid_inputs = $('#uid, #g_uid'); 
-
-    uid_inputs.each(function(){
-        $(this).on('input', function(){
-            let current_input = $(this);
-            let search_uid = $(this).val();
-            $(this).removeClass('default-red');
-            performSearch(search_uid, current_input);
-        })
-    })
-    
-    $('#newBabyField, #newBunnyField').click(function(){
-        let uid_inputs = $('.uid, .g_uid'); 
+        
+        let uid_inputs = $('#uid, #g_uid'); 
 
         uid_inputs.each(function(){
             $(this).on('input', function(){
-                // console.log("loki");
                 let current_input = $(this);
                 let search_uid = $(this).val();
-            $(this).removeClass('default-red');
+                $(this).removeClass('default-red');
                 performSearch(search_uid, current_input);
             })
         })
-    })
-    
-});
+        
+        $('#newBabyField, #newBunnyField').click(function(){
+            let uid_inputs = $('.uid, .g_uid'); 
 
-
+            uid_inputs.each(function(){
+                $(this).on('input', function(){
+                    // console.log("loki");
+                    let current_input = $(this);
+                    let search_uid = $(this).val();
+                $(this).removeClass('default-red');
+                    performSearch(search_uid, current_input);
+                })
+            })
+        })
+        
+    });
 
 </script>
 
