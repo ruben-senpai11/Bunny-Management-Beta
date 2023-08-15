@@ -34,11 +34,18 @@ Route::middleware(['auth'])->group(function () {
         return view('pages.dashboard');
     })->name("home");
 
+    //show the page where all bunnies a displayed
     Route::get('/list-bunny', [App\Http\Controllers\BunnyController::class, 'index'])->name("list-bunny");
     
-    //get a bunny informations by his id
-    Route::get('/bunny-data/{id}', [App\Http\Controllers\BunnyController::class, 'getBunnyDataById'])->name("get-bunny-data");
+    //show a bunny informations by his id
+    Route::get('/bunny-data/{id}', [App\Http\Controllers\BunnyController::class, 'showBunnyDataById'])->name("get-bunny-data");
+    
+    //edit bunny information
 
+    //delete a bunny by his id
+    Route::post('/delete-bunny-ajax', [BunnyController::class, 'deleteBunnyByIdWithAjax'])->name("delete-bunny-ajax");
+    Route::post('/delete-bunny-data', [BunnyController::class, 'deleteBunnyById'])->name("delete-bunny");
+    
     Route::get('/create-bunny', [BunnyController::class, 'render'])->name("create-bunny");
     Route::post('/create-bunny', [BunnyController::class, 'saveBabyBunny'])->name("create-bunny");
     Route::get('/get-list-bunny', [BunnyController::class, 'getBunnyData'])->name("get-list-bunny");

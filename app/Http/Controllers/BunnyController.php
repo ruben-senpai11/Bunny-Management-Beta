@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Bunny;
 use App\Models\Gestation;
 use App\Models\Mating;
+use App\Models\Race;
 use Illuminate\Http\Client\Request as ClientRequest;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Str;
+use Redirect;
 
 
 class BunnyController extends Controller
@@ -175,7 +177,7 @@ class BunnyController extends Controller
         return response()->json(['bunnies' => $bunnies]);
     }
 
-    public function getBunnyDataById(int $id)
+    public function showBunnyDataById(int $id)
     {
         $bunny = Bunny::findOrFail($id);
         return view('pages.bunny-profile',['bunny'=>$bunny]);
@@ -193,4 +195,20 @@ class BunnyController extends Controller
             return response()->json(['response' => false]);
         }
      }
+
+     public function deleteBunnyById(Request $request)
+     {
+        $bunny = Bunny::findOrFail($request->id);
+        $bunny->delete();
+        return Redirect::route('list-bunny');
+     }
+
+    public function deleteBunnyByIdWithAjax(Request $request)
+    {
+        $bunny = Bunny::findOrFail($request->id);
+        $bunny->delete();
+        return response()->json(['response' => true]);
+    }
+
+
 }

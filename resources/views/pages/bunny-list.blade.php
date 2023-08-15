@@ -48,7 +48,17 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Contenu du Modal
+        <ul>
+          <li><strong>Identifiant :</strong> <span id="modalId"></span></li>
+          <li><strong>UID :</strong> <span id="modalUid"></span></li>
+          <li><strong>Genre :</strong> <span id="modalGender"></span></li>
+          <li><strong>Destination :</strong> <span id="modalDestination"></span></li>
+          <li><strong>Date de naissance :</strong> <span id="modalBirth"></span></li>
+          <li><strong>Age :</strong> <span id="modalAge"></span></li>
+          <li><strong>Etat de santé :</strong> <span id="modalState"></span></li>
+          <li><strong>Poids :</strong> <span id="modalWeight"></span></li>
+          <!-- Ajoutez d'autres propriétés ici selon vos besoins -->
+        </ul>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
@@ -62,58 +72,141 @@
 @section('script')
 <script>
   let url = "{{route('get-list-bunny')}}"
+  
+    var table = new DataTable('#bunnyTable', {
+      scrollX: true,
+      responsive: true, 
+      dom: 'Bfrtip',
+      buttons: [
+      {
+      extend: 'copy',
+      className: 'dataTable_button copy_button',
+      text: 'Copier'
+      },
+      {
+      extend: 'csv',
+      className: 'dataTable_button export_button'
+      },
+      {
+      extend: 'excel',
+      className: 'dataTable_button export_button'
+      },
+      {
+      extend: 'pdf',
+      className: 'dataTable_button export_button'
+      },
+      {
+      extend: 'print',
+      className: 'dataTable_button export_button',
+      text: 'Imprimer'
+      },
+      {
+      extend: 'searchPanes',
+      config: {
+      cascadePanes: true
+      },
+      className: 'dataTable_button searchPanes_button',
+      text: 'Filtrer'
+      }
+      ],
+      ajax: {
+        url: url,
+        dataSrc: 'bunnies'
+      },
+      processing: true,
+      columns: [
+        { data: 'id' },
+        { data: 'uid' },
+        { data:'gender' },
+        { data: 'destination' },
+        { 
+          data: 'date_birth',
+          visible: false
+        },
+        {
+          data: null,
+          defaultContent: '<div class="btn-group"><button class="btn btn-primary " >Preview</button><a href="#" id="edit" class="btn btn-primary">Edit</a><a href="#" id="delete" class="btn btn-danger">delete</button></a>',
+          targets: -1
+        },
+      
+      ],columnDefs: [
+        {
+          targets: 4,
+          render: DataTable.render.date('D MMM YYYY')
+        },
+      ]
+    });
 
-      var table = new DataTable('#bunnyTable', {
-          responsive: true, 
-          dom: 'Bfrtip',
-          buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print',{
-              extend: 'searchPanes',
-              config: {
-                cascadePanes: true
-              }
-            }
-          ],
-          ajax: {
-            url: url,
-            dataSrc: 'bunnies'
-          },
-          processing: true,
-          columns: [
-            { data: 'id' },
-            { data: 'uid' },
-            { data:'gender' },
-            { data: 'destination' },
-            { 
-              data: 'date_birth',
-              visible: false
-            },
-            {
-              data: null,
-              defaultContent: '<div class="btn-group"><button class="btn btn-primary " >Click!</button><a href="#" id="edit" class="btn btn-primary">Edit</a><a href="#" id="delete" class="btn btn-danger">delete</button></a>',
-              targets: -1
-            },
+    //lorsqu'on clique sur le bouton show more wire:
+    table.on('click', 'button', function (e) {
+      let data = table.row(e.target.closest('tr')).data();
+      console.log(data);
+      // Modifier le contenu du <h5> dans le modal-header
+      $('#bunnyModalLabel').text('Information du lapin '+data['uid']);
+      
+      //Modifier le contenu du modal-body 
+      $('#modalId').text(data.id);
+      $('#modalUid').text(data.uid);
+      $('#modalGender').text(data.gender);
+      $('#modalDestination').text(data.destination);
+      $('#modalBirth').text(data.date_birth);
+      $('#modalAge').text(data.age);
+      $('#modalState').text(data.state);
+      $('#modalWeight').text(data.weight);
+
+      // Afficher le modal
+      $('#bunnyModal').modal('show'); 
+    });
+
+    table.on('click', '#edit', function (e) {
+      let data = table.row(e.target.closest('tr')).data();
+      console.log(data);
+      let url='{{ route("get-bunny-data", ["%s"]) }}';
+      url=url.replace('%s',data['id']);
+      window.location.href =url ;
+    });
+
+    // Capturer l'événement de clic sur le bouton de suppression
+    table.on('click', '#delete', function (e) {
+      let data = table.row(e.target.closest('tr')).data();
+      console.log(table.row(e.target.closest('tr')));
+     
+      // Afficher une boîte de dialogue de confirmation
+      if (confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')) {
+        // L'utilisateur a confirmé, effectuer la suppression
+        supprimerElement(table,$(this).parents('tr'),data.id);
+       
+      }
+    });
+
+    // Fonction pour effectuer la suppression avec AJAX
+    function supprimerElement(table,row,id) {
+     
+      $.ajax({
+        url: '{{ route("delete-bunny-ajax") }}',
+        type: 'POST',
+        data: {
+          _token: '{{ csrf_token() }}', 
+          id:id
+          // Ajouter le jeton CSRF pour la sécurité
+          // Ajouter d'autres données de la suppression si nécessaire (par exemple, l'ID de l'élément à supprimer)
+        },
+        success: function(response) {
+          // Traitement en cas de succès de la suppression
+          alert('Élément supprimé avec succès !');
+          //delete the concerned row
+          table.row( row ).remove().draw();
           
-          ],columnDefs: [
-            {
-              targets: 4,
-              render: DataTable.render.date('D MMM YYYY')
-            },
-          ]
+          //location.reload()
+          // Vous pouvez ajouter d'autres actions après la suppression si nécessaire
+        },
+        error: function(xhr, status, error) {
+          // Traitement en cas d'erreur lors de la suppression
+          alert('Erreur lors de la suppression : ' + error);
+        }
       });
+    }
 
-      table.on('click', 'button', function (e) {
-        let data = table.row(e.target.closest('tr')).data();
-        console.log(data);
-        alert(data[0] + "'s salary is: " + data["Uid"]);
-      });
-
-      table.on('click', '#edit', function (e) {
-        let data = table.row(e.target.closest('tr')).data();
-        console.log(data);
-        let url='{{ route("get-bunny-data", ["%s"]) }}';
-        url=url.replace('%s',data['id']);
-        window.location.href =url ;
-      });
+    
 </script>
 @endsection
