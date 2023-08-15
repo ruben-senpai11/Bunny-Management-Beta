@@ -156,7 +156,7 @@ class BunnyController extends Controller
 
     public function render()
     {
-        return view('pages.bunny-create', [
+        return view ('pages.bunny-create', [
 
         ]);
     }

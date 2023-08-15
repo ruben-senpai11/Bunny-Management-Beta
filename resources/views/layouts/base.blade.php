@@ -4,11 +4,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- Primary Meta Tags -->
-    <title>Projet laravel bunny management</title>
+    <title>Bunny management</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="title" content="Projet laravel bunny management">
-    <meta name="author" content="Rodias Gohoue">
-    <meta name="description" content="Projet laravel bunny management">
+    <meta name="title" content="Bunny management">
+    <meta name="author" content="Rodias & Senpai">
+    <meta name="description" content="Bunny management">
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('assets/img/favicon/rabbit.svg') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/img/favicon/rabbit.svg') }}">
@@ -70,7 +70,7 @@
     <main class="content">
         @include('sections.secondary-header')
 
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4 d-none">
             <div class="d-block mb-4 mb-md-0">
                 <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
                     <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
@@ -148,26 +148,26 @@
 
     <script>
         @if (Session::get('error'))
-                          Swal.fire({
-                              position: 'top-end',
-                              background: 'var(--bs-danger)',
-                              color: '#fff',
-                              text: "{{Session::get('error')}}",
-                              showConfirmButton: false,
-                              timer: 1500
-                          })
-                      @endif
-          
-          
-                      @if (Session::get('success'))
-                          Swal.fire({
-                              position: 'top-end',
-                              background: 'var(--bs-success)',
-                              color: '#fff',
-                              text: "{{Session::get('success')}}",
-                              showConfirmButton: false,
-                              timer: 1500
-                          })
+            Swal.fire({
+                position: 'top-end',
+                background: 'var(--bs-danger)',
+                color: '#fff',
+                text: "{{Session::get('error')}}",
+                showConfirmButton: false,
+                timer: 1500
+            })
+        @endif
+
+
+        @if (Session::get('success'))
+            Swal.fire({
+                position: 'top-end',
+                background: 'var(--bs-success)',
+                color: '#fff',
+                text: "{{Session::get('success')}}",
+                showConfirmButton: false,
+                timer: 1500
+            })
         @endif
       
         $('.loading-area').hide()

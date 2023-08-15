@@ -2,12 +2,13 @@
 
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
-  <a href="{{ route('create-bunny', []) }}" class="btn btn-outline-gray-500  dashed-outline new-card"><svg
+  <h3>Catalogue de Lapins</h3>
+  <a href="{{ route('create-bunny', []) }}" class="btn btn-gray-700  dashed-outline new-card"><svg
       class="icon icon-xs me-2" fill="none" stroke="currentColor" viewbox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
       </path>
-    </svg>Record new Rabbit</a>
+    </svg>Nouvel Enregistrement</a>
 
 
 </div>
@@ -50,13 +51,37 @@
           responsive: true, 
           dom: 'Bfrtip',
           buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print',{
-              extend: 'searchPanes',
-              config: {
-                cascadePanes: true
-              }
+            {
+                extend: 'copy',
+                className: 'dataTable_button copy_button',
+                text: 'Copier'
+            },
+            {
+                extend: 'csv',
+                className: 'dataTable_button export_button'
+            },
+            {
+                extend: 'excel',
+                className: 'dataTable_button export_button'
+            },
+            {
+                extend: 'pdf',
+                className: 'dataTable_button export_button'
+            },
+            {
+                extend: 'print',
+                className: 'dataTable_button export_button',
+                text: 'Imprimer'
+            },
+            {
+                extend: 'searchPanes',
+                config: {
+                    cascadePanes: true
+                },
+                className: 'dataTable_button searchPanes_button',
+                text: 'Filtrer'
             }
-          ],
+        ],
           ajax: {
             url: url,
             dataSrc: 'bunnies'
@@ -73,7 +98,7 @@
             },
             {
               data: null,
-              defaultContent: '<button class="btn btn-primary " >Click!</button>',
+              defaultContent: '<button class="dataTable_button dataTable_more_button">Developper</button>',
               targets: -1
             }
           
