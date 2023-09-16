@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditBunnyByidRequest;
 use App\Models\Bunny;
 use App\Models\Gestation;
 use App\Models\Mating;
@@ -10,6 +11,7 @@ use Illuminate\Http\Client\Request as ClientRequest;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Str;
+use Psy\Command\EditCommand;
 use Redirect;
 
 
@@ -180,7 +182,14 @@ class BunnyController extends Controller
     public function showBunnyDataById(int $id)
     {
         $bunny = Bunny::findOrFail($id);
-        return view('pages.bunny-profile',['bunny'=>$bunny]);
+        $maleParentUid=null;
+        $femaleParentUid = null;
+        if ($bunny->gestation_id) {
+            $gestation = Gestation::find($bunny->gestation_id);
+            $maleParentUid = Bunny::find(Mating::find($gestation->mating_id)->bunny_male_id)->uid;
+            $femaleParentUid = Bunny::find(Mating::find($gestation->mating_id)->bunny_female_id)->uid;
+        }
+        return view('pages.bunny-profile',['bunny'=>$bunny,'maleUid'=>$maleParentUid,'femaleUid'=>$femaleParentUid]);
     }
     
     public function getBunnyId(Request $request)
@@ -210,5 +219,16 @@ class BunnyController extends Controller
         return response()->json(['response' => true]);
     }
 
+    public function editBunnyData(EditBunnyByidRequest $request)
+    {
+        if ($request->idBunny) {
+            $bunny = Bunny::find($request->idBunny);
+            $bunny->uid = $request->uid;
+            $bunny->gender = $request->genre;
+            $bunny->gender = $request->genre;
+
+        }
+        return back();
+    }
 
 }

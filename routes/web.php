@@ -40,6 +40,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/bunny-data/{id}', [App\Http\Controllers\BunnyController::class, 'showBunnyDataById'])->name("get-bunny-data");
     
     //edit bunny information
+    Route::post('/edit-bunny', [BunnyController::class, 'editBunnyData'])->name("edit-bunny");
 
     //delete a bunny by his id
     Route::post('/delete-bunny-ajax', [BunnyController::class, 'deleteBunnyByIdWithAjax'])->name("delete-bunny-ajax");
