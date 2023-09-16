@@ -43,37 +43,35 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
         @endif
         <div class="baby-bunny-form">
             <div class="card-header d-flex align-items-center bg-success">
-                <h2 class="fs-5 fw-normal mb-0" style="color: white">Enregistrer un Lapereau</h2>
-                <div class="ms-auto"><a class="fw-normal d-inline-flex align-items-center" href="#" style="color: white"><svg class="icon icon-xxs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <h2 class="fs-5 fw-normal mb-0" style="color: #cfcfcf">Enregistrer un Lapereau</h2>
+                <div class="ms-auto"><a class="fw-normal d-inline-flex align-items-center" href="#" style="color: #cfcfcf"><svg class="icon icon-xxs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
                             <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
                         </svg> Voir tout</a></div>
             </div>
-            <div class="card card-body border-0 shadow mb-4">
+            <!-- <div class="card card-body border-0 shadow mb-4">
                 <form action="" method="post">
                     @csrf
                     <div id="babyForm" class="row mb-3">
                         <div class="col-lg-4 col-sm-6">
-                            <!--Form -->
+                            
                             <div class="mb-3">
                                 <label for="uid" class="">Saisir un identifiant</label>
                                 <input type="text" class="form-control default-red uid" name="uid" id="uid" placeholder="M-001" required>
                                 <div class="invalid-feedback">Attention, cet identifiant est dejà utilisé !</div>
                             </div>
-                            <!-- End of Form -->
+                            
                             <div class="mb-3">
                                 <label for="color">Couleurs</label>
                                 <select class="no_nullable_bunny_field color" type="text" name="color" placeholder="Blanc, noir..." multiple required>
-                                    <option value="Blanc">Blanc</option>
-                                    <option value="Noir">Noir</option> 
-                                    <option value="Marron">Marron</option>
-                                    <option value="Roux">Roux</option>
-                                    <option value="Gris">Gris</option>
-                                    <option value="Cendre">Cendre</option>
+                                    @foreach( App\Models\Color::all('color_name') as $color){
+                                        <option value="{{$color->color_name}}">{{$color->color_name}}</option>
+                                        }
+                                    @endforeach
                                     ...
                                 </select>
                             </div>
-                            <!-- Radio -->
+                            
                             <fieldset>
                                 <legend class="h6">Santé</legend>
                                 <div class="form-check">
@@ -88,9 +86,9 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                                         Malade
                                     </label>
                                 </div>
-                                <!-- End of Radio -->
+                                
                             </fieldset>
-                            <!-- End of Form -->
+                            
                         </div>
                         <div class=" col-lg-4 col-sm-6">
                             <div class="mb-3">
@@ -104,7 +102,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                                 <label for="weight">Poids</label>
                                 <input class="form-control no_nullable_baby_field" type="text" name="weight" id="weight" placeholder="100g - 300g">
                             </div>
-                            <!-- Radio -->
+                            
                             <fieldset class="mb-2">
                                 <legend class="h6">Destination</legend>
                                 <div class="form-check">
@@ -119,7 +117,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                                         Reproduction
                                     </label>
                                 </div>
-                                <!-- End of Radio -->
+                                
                             </fieldset>
                         </div>
                         <div class="col-lg-4 col-sm-6">
@@ -131,7 +129,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                                 </select>
                                 <span class="text-danger" id="error2"></span>
                             </div>
-                            <!-- Radio -->
+                            
                             <fieldset class="mb-2">
                                 <legend class="h6">Sexe</legend>
                                 <div class="form-check">
@@ -146,19 +144,19 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                                         Femelle
                                     </label>
                                 </div>
-                                <!-- End of Radio -->
+                                
                             </fieldset>
                         </div>
                     </div>
                     <div id="newBabyField"></div>
                     <div style="float:right">
-                        <button type="button" id="addBabyField" class="btn btn-light" style="border-color: #0EA271;">Ajouter +</button>&nbsp;<!-- color: white; -->
-                        <button type="button" id="submitBabyForm" name="babyBunnyForm" value="1" class="btn btn-success" style="color: whit; ">Enregistrer</button>
+                        <button type="button" id="addBabyField" class="btn btn-light" style="border-color: #0EA271;">Ajouter +</button>&nbsp;
+                        <button type="button" id="submitBabyForm" name="babyBunnyForm" value="1" class="btn btn-success" style="color: white; ">Enregistrer</button>
                     </div>
                 </form>
-            </div>
+            </div> -->
         </div>
-        <div class="bunny-form">
+        <div class="bunny-form mt-4">
             @if (session()->has('g_message'))
             <div class="alert alert-success">
                 {{ session('g_message') }}
@@ -184,20 +182,18 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                                 <input type="text" class="form-control default-red g_uid" name="g_uid" id="g_uid" placeholder="F-001" required>
                                 <div class="invalid-feedback">Attention, cet identifiant est dejà utilisé !</div>
                             </div>
-                            <!-- End of Form -->
+                            
                             <div class="mb-3">
                                 <label for="g_color">Couleurs</label>
                                 <select class="no_nullable_bunny_field g_color" type="text" name="g_color" id="g_color" placeholder="Blanc, noir..." multiple required>
-                                    <option value="Blanc">Blanc</option>
-                                    <option value="Noir">Noir</option> 
-                                    <option value="Marron">Marron</option>
-                                    <option value="Roux">Roux</option>
-                                    <option value="Gris">Gris</option>
-                                    <option value="Cendre">Cendre</option>
+                                    @foreach( App\Models\Color::all('color_name') as $color){
+                                        <option value="{{$color->color_name}}">{{$color->color_name}}</option>
+                                    }
+                                    @endforeach
                                     ...
                                 </select>
                             </div>
-                            <!-- Radio -->
+                            
                             <fieldset>
                                 <legend class="h6">Santé</legend>
                                 <div class="form-check">
@@ -212,7 +208,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                                         Malade
                                     </label>
                                 </div>
-                                <!-- End of Radio -->
+                                
                             </fieldset>
                         </div>
                         <div class="col-lg-4 col-sm-6">
@@ -228,12 +224,12 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                                     <input class="form-control no_nullable_bunny_field" name="g_date_birth" id="g_date_birth" type="date" placeholder="dd/mm/yyyy">
                                 </div>
                             </div>  
-                            <!-- End of Form -->
+                            
                             <div class="mb-3">
                                 <label for="weight">Poids</label>
                                 <input class="form-control no_nullable_bunny_field" type="number" name="g_weight" id="g_weight" placeholder="300g - 1800g">
                             </div>
-                            <!-- Radio -->
+                            
                             <fieldset>
                                 <legend class="h6">Destination</legend>
                                 <div class="form-check">
@@ -248,20 +244,21 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                                         Reproduction
                                     </label>
                                 </div>
-                                <!-- End of Radio -->
+                                
                             </fieldset>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="mb-3">
                                 <label for="g_race">Race</label>
                                 <select class="no_nullable_bunny_field g_race" name="g_race" id="g_race" placeholder="Locale" multiple required>
-                                    <option value="Locale">Locale</option>
-                                    <option value="Ghanéen">Ghanéen</option> 
-                                    <option value="Géant">Géant</option>
+                                    @foreach( App\Models\Race::all('race_name') as $race){
+                                        <option value="{{$race->race_name}}">{{$race->race_name}}</option>
+                                        }
+                                    @endforeach
                                     ...
                                 </select>
                             </div>
-                            <!-- Radio -->
+                            
                             <fieldset>
                                 <legend class="h6">Sexe</legend>
                                 <div class="form-check">
@@ -276,7 +273,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                                         Femelle
                                     </label>
                                 </div>
-                                <!-- End of Radio -->
+                                
                             </fieldset>
                         </div>
                     </div>
@@ -298,7 +295,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                         <h2 class="fs-5 fw-bold mb-0">Aide </h2>
                         <div class="ms-auto"><a class="fw-bold d-inline-flex align-items-center" href="#">?</a></div>
                     </div>
-                    <div class="card-body">
+                    <!-- <div class="card-body">
                         <div class="list-group list-group-flush list-group-timeline">
                             <div class="list-group-item border-0">
                                 <div class="row ps-lg-0">
@@ -382,7 +379,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -400,7 +397,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
         VirtualSelect.init({ 
             ele: '.color, .g_color, .g_race' ,
             // Text to show when no options to show
-            noOptionsText: 'Aucun résultat',
+            noOptionsText: 'Aucune donnée',
             // Text to show when no results on search
             noSearchResultsText: 'Aucun résultat',
             // Text to show near select all checkbox when search is disabled
@@ -425,12 +422,9 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
             '<div class="mb-3">'+
                 '<label for="color.' + i + '">Couleurs</label>'+
                 '<select class="no_nullable_bunny_field color" type="text" name="color.' + i + '" id="color.' + i + '" placeholder="Blanc, noir..." multiple required>'+
-                    '<option value="Blanc">Blanc</option>'+
-                    '<option value="Noir">Noir</option> '+
-                    '<option value="Marron">Marron</option>'+
-                    '<option value="Roux">Roux</option>'+
-                    '<option value="Gris">Gris</option>'+
-                    '<option value="Cendre">Cendre</option>'+
+                    '@foreach( App\Models\Color::all("color_name") as $color){'+
+                        '<option value="{{$color->color_name}}">{{$color->color_name}}</option>'+
+                    '}@endforeach'+
                     '...'+
                 '</select>'+
             '</div>'
@@ -504,22 +498,19 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
             '<div class="mb-3">'+
                 '<label for="g_color' + i + '">Couleurs</label>'+
                 '<select class="no_nullable_bunny_field g_color" type="text" name="g_color' + i + '" id="g_color' + i + '" placeholder="Blanc, noir..." multiple required>'+
-                    '<option value="Blanc">Blanc</option>'+
-                    '<option value="Noir">Noir</option> '+
-                    '<option value="Marron">Marron</option>'+
-                    '<option value="Roux">Roux</option>'+
-                    '<option value="Gris">Gris</option>'+
-                    '<option value="Cendre">Cendre</option>'+
+                    '@foreach( App\Models\Color::all("color_name") as $color){'+
+                        '<option value="{{$color->color_name}}">{{$color->color_name}}</option>'+
+                    '}@endforeach'+
                     '...'+
                 '</select>'+
             '</div>'
         newBunnyRace = 
             '<div class="mb-3">'+
                 '<label for="g_race' + j + '">Race</label>'+
-                '<select class="no_nullable_bunny_field g_race" name="g_race' + j + '" id="g_race' + j + '" placeholder="Locale" multiple required>'+
-                    '<option value="Locale">Locale</option>'+
-                    '<option value="Ghanéen">Ghanéen</option>'+ 
-                    '<option value="Géant">Géant</option>'+
+                '<select class="no_nullable_bunny_field g_race" name="g_race' + j + '" id="g_race' + j + '" placeholder="Locale" multiple required>'+  
+                '@foreach( App\Models\Race::all("race_name") as $race){ '+
+                    '<option value="{{$race->race_name}}">{{$race->race_name}}</option> }'+
+                '@endforeach'+
                     '...'+
                 '</select>'+
             '</div>'

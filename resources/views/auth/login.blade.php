@@ -184,7 +184,7 @@
         </section>
     </main>
     <div class="loading-area">
-        <img src="{{ asset('loading.gif') }}" alt="">
+        <!-- <img src="{{ asset('loading.gif') }}" alt=""> -->
     </div>
     <!-- Core -->
     <script src="{{ asset('vendor/@popperjs/core/dist/umd/popper.min.js') }}"></script>

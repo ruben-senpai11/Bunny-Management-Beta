@@ -132,7 +132,7 @@
                                     <div class="col ps-0 ms-2">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div>
-                                                <h4 class="h6 mb-0 text-small">{{\Auth::user()->first_name}} {{\Auth::user()->last_name}}</h4>
+                                                <h4 class="h6 mb-0 text-small">{{\Auth::user()->last_name}} {{\Auth::user()->first_name}}</h4>
                                             </div>
                                             <div class="text-end">
                                                 <small>2 hrs ago</small>
@@ -164,7 +164,7 @@
                                src="{{ asset('assets/img/profile.svg') }}">
                               
                             <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                                <span class="mb-0 font-small fw-bold text-gray-900">{{\Auth::user()->first_name}} {{\Auth::user()->last_name}}</span>
+                                <span class="mb-0 font-small fw-bold text-gray-900">{{\Auth::user()->last_name}} {{\Auth::user()->first_name}}</span>
                             </div>
                         </div>
                     </a>

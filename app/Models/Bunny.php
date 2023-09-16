@@ -14,6 +14,12 @@ class Bunny extends Model
         'uid', 'gender', 'destination', 'date_birth', 'state', 'race', 'color', 'weight', 'age', 'gestation_id'
     ];
 
+    public function color()
+    {
+        return $this->belongsTo(Color::class);
+    }
+
+
     public function race()
     {
         return $this->belongsTo(Race::class);

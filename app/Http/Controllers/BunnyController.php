@@ -45,6 +45,7 @@ class BunnyController extends Controller
                 $babyBunny->gestation_id = $request->gestation_id; 
                 $babyBunny->state = $request->state; 
                 $babyBunny->color = $request->color; 
+                $babyBunny->race = $request->race; 
                 $babyBunny->weight = $request->weight; 
 
                 $babyBunny->save();
@@ -65,6 +66,7 @@ class BunnyController extends Controller
                     $gestation_id = $request->input('gestation_id');
                     $state = $request->input('state_'.$index);
                     $color = $request->input('color_'.$index);
+                    $race = $request->input('race_'.$index);
                     $weight = $request->input('weight_'.$index);
                     
                     try {
@@ -75,6 +77,7 @@ class BunnyController extends Controller
                         $babyBunny->gestation_id = $gestation_id; 
                         $babyBunny->state = $state; 
                         $babyBunny->color = $color; 
+                        $babyBunny->race = $race; 
                         $babyBunny->weight = $weight; 
 
                         $babyBunny->save();
@@ -99,6 +102,7 @@ class BunnyController extends Controller
                 $bunny->age = 'young_adult_bunny'; 
                 $bunny->state = $request->g_state; 
                 $bunny->color = $request->g_color;              
+                $bunny->race = $request->g_race;   
                 $bunny->weight = $request->g_weight; 
 
                 $bunny->save();
@@ -119,6 +123,7 @@ class BunnyController extends Controller
                     $g_date_birth = $request->input('g_date_birth_'.$index);
                     $g_state = $request->input('g_state_'.$index);
                     $g_color = $request->input('g_color_'.$index);
+                    $g_race = $request->input('g_race_'.$index);
                     $g_weight = $request->input('g_weight_'.$index);
                     
                     try {
@@ -131,6 +136,7 @@ class BunnyController extends Controller
                         $bunny->date_birth = $g_date_birth;      
                         $bunny->state = $g_state; 
                         $bunny->color = $g_color;       
+                        $bunny->race = $g_race;       
                         $bunny->weight = $g_weight; 
 
                         $bunny->save();
@@ -153,7 +159,7 @@ class BunnyController extends Controller
             session()->flash('g_message', 'Enregistrement effectué.');
         }
 
-        return view ('pages.bunny-create');
+        return Redirect::route('create-bunny');
     }
 
     public function render()

@@ -50,6 +50,3 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/get-list-bunny', [BunnyController::class, 'getBunnyData'])->name("get-list-bunny");
     Route::get('/get-bunnies-id', [BunnyController::class, 'getBunnyId'])->name("get-bunnies-id");
  });
-
-
-

@@ -22,7 +22,8 @@
         }
 
         body {
-            background: radial-gradient(rgb(255, 255, 255) 13%, rgb(205, 205, 205) 95%);
+            background-color: #FFFFDB;  
+            /* background: radial-gradient(rgb(255, 255, 255) 13%, rgb(205, 205, 205) 95%); */
         }
 
         .form-step {
@@ -49,14 +50,21 @@
         }
 
         .btn-primary {
-            background-color: #ffa500;
-            border-color: #ffa500;
+            background-color: rgba(60,70,255);
+            float: right;
+            /* background-color: #FE7600; */
+            border-color: rgba(60,70,255);
         }
 
         .btn-primary:hover,
         .btn-primary:focus {
-            background-color: #ff9600;
-            border-color: #ff9600;
+            background-color: #FE7600;
+            border-color: #FE7600;
+        }
+
+        .btn-secondary{
+            background-color: #FE7600;
+            border-color: #FE7600;
         }
 
         #rabbitRaces {
@@ -67,15 +75,64 @@
             max-width: 100%;
         }
 
+        /* Multi-Select Fields CSS  */
+        .vscomp-wrapper {
+            display: block!important;
+            width: 100%!important;
+            padding: .5rem 1rem!important;
+            font-size: .875rem!important;
+            font-weight: 400!important;
+            line-height: 1.5!important;
+            color: #6b7280!important;
+            background-color: #fff!important;
+            background-clip: padding-box!important;
+            border: .0625rem solid #d1d5db!important;
+            -webkit-appearance: none!important;
+            appearance: none!important;
+            border-radius: .5rem!important;
+            box-shadow: 0 1px 2px 0 rgba(0,0,0,.07)!important;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out!important;
+        }
+        .vscomp-wrapper:not(.has-value) .vscomp-value {
+            opacity: 1!important;
+        }
+        .vscomp-ele {
+            max-width: none!important;
+        }
         .vscomp-toggle-button {
-            padding: 10px 30px 10px 10px;
-            border-radius: 5px;
+            align-items: center;
+            background-color: #fff;
+            border: none!important;
+            cursor: pointer;
+            padding: 0!important;
+            position: relative;
+            width: 100%;
+        }
+
+        .vscomp-wrapper.focused .vscomp-toggle-button, .vscomp-wrapper:focus .vscomp-toggle-button {
+            box-shadow: none!important;
+        }
+        .vscomp-dropbox{
+            background-color: #fff!important;
+            background-clip: padding-box!important;
+            border: .0625rem solid #d1d5db!important;
+            border-radius: .5rem!important;
+            box-shadow: 0 1px 2px 0 rgba(0,0,0,.07)!important;
+            color: #6b7280!important; 
+        }
+
+        .vscomp-arrow::after{
+            border-bottom-color: #6b7280!important;
+            border-right-color: #6b7280!important;
+        }
+        .vscomp-wrapper .checkbox-icon::after{
+            border-radius: .2rem;
         }
     </style>
 </head>
 
 <body @if (session('authGoogle')) data-google="{{ session('authGoogle') }}" data-user="{{session('User')}}" @endif>
-    <div class="container mt-5">
+    <div class="container my-2">
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 @if ($errors->any())
@@ -192,13 +249,12 @@
 
                         </div>
                         <div class="mb-3">
-                            <label for="rabbitRaces">Races de lapins élevés</label>
+                            <label for="rabbitRaces">Catégories de races élevées</label>
                             <select id="rabbitRaces" name="rabbitRaces" required multiple>
-                                <option value="0" selected>Open this select menu</option>
-                                <option value="1">azaz</option>
-                                <option value="2">azaz</option>
-                                <option value="3">azaz</option>
-                                <option value="4">azaz</option>
+                                <option value="locales">Locales</option>
+                                <option value="imported">Importées</option>
+                                <option value="crossed">Croisées</option>
+                                <option value="modified">Modifiées</option>
                             </select>
 
                             <div><span class="text-danger" id="rabbitRacesError"></span></div>
@@ -206,10 +262,11 @@
                         <div class="mb-3">
                             <label for="rabbitCount">Effectif de lapins à élever</label>
                             <select id="rabbitCount" name="rabbitCount" required>
-                                <option value="0" selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="tiny_farm">0 à 50</option>
+                                <option value="small_farm">51 à 200</option>
+                                <option value="middle_farm">200 à 500</option>
+                                <option value="big_farm">501 à 1000</option>
+                                <option value="very_big_farm">Plus de 1000</option>
                             </select>
 
                             <div><span class="text-danger" id="rabbitCountError"></span></div>
