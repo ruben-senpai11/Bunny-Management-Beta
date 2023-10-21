@@ -219,5 +219,15 @@ class BunnyController extends Controller
         return response()->json(['response' => true]);
     }
 
+    public function editBunnyData(EditBunnyByidRequest $request)
+    {
+        if ($request->idBunny) {
+            $bunny = Bunny::find($request->idBunny);
+            $bunny->uid = $request->uid;
+            $bunny->gender = $request->genre;
+            $bunny->gender = $request->genre;
 
+        }
+        return back();
+    }
 }
