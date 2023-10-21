@@ -7,31 +7,37 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
 @section('content')
 
 <style>
+    .datepicker-input {
+        border-top-right-radius: 7px !important;
+        border-bottom-right-radius: 7px !important;
+    }
 
-.datepicker-input{
-    border-top-right-radius: 7px!important;
-    border-bottom-right-radius: 7px!important;
-}
-@keyframes change_box-shadow{
-    0%{
-        box-shadow: 0 2px 4px 0 rgba(0,0,0,.07), 0 0 0 0.18rem rgba(31,41,55,.25);
+    @keyframes change_box-shadow {
+        0% {
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .07), 0 0 0 0.18rem rgba(31, 41, 55, .25);
+        }
+
+        50% {
+            box-shadow: 0 0px 0px;
+        }
+
+        100% {
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .07), 0 0 0 0.18rem rgba(31, 41, 55, .25);
+        }
     }
-    50%{
-        box-shadow: 0 0px 0px;
+
+    .default-red {
+        /* border-color: red; */
+        color: #6b7280;
+        background-color: #fff;
+        border-color: #4d6689;
+        outline: 0;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .07), 0 0 0 0.18rem rgba(31, 41, 55, .25);
+        animation: change_box-shadow 2s infinite;
     }
-    100%{
-        box-shadow: 0 2px 4px 0 rgba(0,0,0,.07), 0 0 0 0.18rem rgba(31,41,55,.25);
+    .fw-400{
+        font-weight: 400;
     }
-}
-.default-red{
-    /* border-color: red; */
-    color: #6b7280;
-    background-color: #fff;
-    border-color: #4d6689;
-    outline: 0;
-    box-shadow: 0 1px 2px 0 rgba(0,0,0,.07), 0 0 0 0.18rem rgba(31,41,55,.25);
-    animation: change_box-shadow 2s infinite;
-}
 </style>
 
 <div class="row">
@@ -43,7 +49,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
         @endif
         <div class="baby-bunny-form">
             <div class="card-header d-flex align-items-center bg-success">
-                <h2 class="fs-5 fw-normal mb-0" style="color: #cfcfcf">Enregistrer un Lapereau</h2>
+                <h2 class="fs-5 fw-400 mb-0" style="color: #cfcfcf">Enregistrer un Lapereau</h2>
                 <div class="ms-auto"><a class="fw-normal d-inline-flex align-items-center" href="#" style="color: #cfcfcf"><svg class="icon icon-xxs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
                             <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
@@ -182,18 +188,18 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                                 <input type="text" class="form-control default-red g_uid" name="g_uid" id="g_uid" placeholder="F-001" required>
                                 <div class="invalid-feedback">Attention, cet identifiant est dejà utilisé !</div>
                             </div>
-                            
+
                             <div class="mb-3">
                                 <label for="g_color">Couleurs</label>
                                 <select class="no_nullable_bunny_field g_color" type="text" name="g_color" id="g_color" placeholder="Blanc, noir..." multiple required>
                                     @foreach( App\Models\Color::all('color_name') as $color){
-                                        <option value="{{$color->color_name}}">{{$color->color_name}}</option>
+                                    <option value="{{$color->color_name}}">{{$color->color_name}}</option>
                                     }
                                     @endforeach
                                     ...
                                 </select>
                             </div>
-                            
+
                             <fieldset>
                                 <legend class="h6">Santé</legend>
                                 <div class="form-check">
@@ -208,7 +214,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                                         Malade
                                     </label>
                                 </div>
-                                
+
                             </fieldset>
                         </div>
                         <div class="col-lg-4 col-sm-6">
@@ -223,13 +229,13 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                                     </span>
                                     <input class="form-control no_nullable_bunny_field" name="g_date_birth" id="g_date_birth" type="date" placeholder="dd/mm/yyyy">
                                 </div>
-                            </div>  
-                            
+                            </div>
+
                             <div class="mb-3">
                                 <label for="weight">Poids</label>
                                 <input class="form-control no_nullable_bunny_field" type="number" name="g_weight" id="g_weight" placeholder="300g - 1800g">
                             </div>
-                            
+
                             <fieldset>
                                 <legend class="h6">Destination</legend>
                                 <div class="form-check">
@@ -244,7 +250,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                                         Reproduction
                                     </label>
                                 </div>
-                                
+
                             </fieldset>
                         </div>
                         <div class="col-lg-4 col-sm-6">
@@ -252,13 +258,13 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                                 <label for="g_race">Race</label>
                                 <select class="no_nullable_bunny_field g_race" name="g_race" id="g_race" placeholder="Locale" multiple required>
                                     @foreach( App\Models\Race::all('race_name') as $race){
-                                        <option value="{{$race->race_name}}">{{$race->race_name}}</option>
-                                        }
+                                    <option value="{{$race->race_name}}">{{$race->race_name}}</option>
+                                    }
                                     @endforeach
                                     ...
                                 </select>
                             </div>
-                            
+
                             <fieldset>
                                 <legend class="h6">Sexe</legend>
                                 <div class="form-check">
@@ -273,7 +279,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                                         Femelle
                                     </label>
                                 </div>
-                                
+
                             </fieldset>
                         </div>
                     </div>
@@ -390,12 +396,12 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
 
 </div>
 
-    
-<script src="{{ asset('vendor/virtual-select-master/dist/virtual-select.min.js') }}"></script> 
-<script> 
-    function initVirtualSelect (){
-        VirtualSelect.init({ 
-            ele: '.color, .g_color, .g_race' ,
+
+<script src="{{ asset('vendor/virtual-select-master/dist/virtual-select.min.js') }}"></script>
+<script>
+    function initVirtualSelect() {
+        VirtualSelect.init({
+            ele: '.color, .g_color, .g_race',
             // Text to show when no options to show
             noOptionsText: 'Aucune donnée',
             // Text to show when no results on search
@@ -403,7 +409,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
             // Text to show near select all checkbox when search is disabled
             selectAllText: 'Tout sélectionner',
             // Text to show as placeholder for search input
-            searchPlaceholderText: 'Rechercher...', 
+            searchPlaceholderText: 'Rechercher...',
             // Text to use when displaying no.of values selected text (i.e. 3 options selected)
             optionsSelectedText: 'Sélectionnés',
             // Text to use when displaying no.of values selected text and only one value is selected (i.e. 1 option selected)
@@ -412,21 +418,21 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
             allOptionsSelectedText: 'Tout'
         });
     }
-    initVirtualSelect ()
-</script> 
+    initVirtualSelect()
+</script>
 
 <script type="text/javascript">
     let i = 2
     $("#addBabyField").click(function() {
-        newBabyBunnyColor = 
-            '<div class="mb-3">'+
-                '<label for="color.' + i + '">Couleurs</label>'+
-                '<select class="no_nullable_bunny_field color" type="text" name="color.' + i + '" id="color.' + i + '" placeholder="Blanc, noir..." multiple required>'+
-                    '@foreach( App\Models\Color::all("color_name") as $color){'+
-                        '<option value="{{$color->color_name}}">{{$color->color_name}}</option>'+
-                    '}@endforeach'+
-                    '...'+
-                '</select>'+
+        newBabyBunnyColor =
+            '<div class="mb-3">' +
+            '<label for="color.' + i + '">Couleurs</label>' +
+            '<select class="no_nullable_bunny_field color" type="text" name="color.' + i + '" id="color.' + i + '" placeholder="Blanc, noir..." multiple required>' +
+            '@foreach( App\Models\Color::all("color_name") as $color){' +
+            '<option value="{{$color->color_name}}">{{$color->color_name}}</option>' +
+            '}@endforeach' +
+            '...' +
+            '</select>' +
             '</div>'
         newBabyForm =
             '<div id="addedBabyField" class="row mb-4 pt-4" style="border: 1px solid lightgray; border-radius: 10px;" >' +
@@ -435,7 +441,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
             '<div class="mb-3">' +
             '<label for="uid_.' + i + '">Saisir un identifiant</label>' +
             '<input type="text" name="uid.' + i + '" class="form-control default-red uid" placeholder="M-001" required>' +
-            '<div class="invalid-feedback">Attention, cet identifiant est dejà utilisé !</div>'+
+            '<div class="invalid-feedback">Attention, cet identifiant est dejà utilisé !</div>' +
             '</div>' +
             '<fieldset class="mb-2">' +
             '<legend class="h6">Sexe</legend>' +
@@ -484,7 +490,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
             '</div>';
         '</div>';
         $('#newBabyField').append(newBabyForm);
-        initVirtualSelect ()
+        initVirtualSelect()
         i += 1;
     })
     $("body").on("click", "#deleteBabyField", function() {
@@ -494,25 +500,25 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
 
     let j = 2
     $("#addBunnyField").click(function() {
-        newBunnyColor = 
-            '<div class="mb-3">'+
-                '<label for="g_color' + i + '">Couleurs</label>'+
-                '<select class="no_nullable_bunny_field g_color" type="text" name="g_color' + i + '" id="g_color' + i + '" placeholder="Blanc, noir..." multiple required>'+
-                    '@foreach( App\Models\Color::all("color_name") as $color){'+
-                        '<option value="{{$color->color_name}}">{{$color->color_name}}</option>'+
-                    '}@endforeach'+
-                    '...'+
-                '</select>'+
+        newBunnyColor =
+            '<div class="mb-3">' +
+            '<label for="g_color' + i + '">Couleurs</label>' +
+            '<select class="no_nullable_bunny_field g_color" type="text" name="g_color' + i + '" id="g_color' + i + '" placeholder="Blanc, noir..." multiple required>' +
+            '@foreach( App\Models\Color::all("color_name") as $color){' +
+            '<option value="{{$color->color_name}}">{{$color->color_name}}</option>' +
+            '}@endforeach' +
+            '...' +
+            '</select>' +
             '</div>'
-        newBunnyRace = 
-            '<div class="mb-3">'+
-                '<label for="g_race' + j + '">Race</label>'+
-                '<select class="no_nullable_bunny_field g_race" name="g_race' + j + '" id="g_race' + j + '" placeholder="Locale" multiple required>'+  
-                '@foreach( App\Models\Race::all("race_name") as $race){ '+
-                    '<option value="{{$race->race_name}}">{{$race->race_name}}</option> }'+
-                '@endforeach'+
-                    '...'+
-                '</select>'+
+        newBunnyRace =
+            '<div class="mb-3">' +
+            '<label for="g_race' + j + '">Race</label>' +
+            '<select class="no_nullable_bunny_field g_race" name="g_race' + j + '" id="g_race' + j + '" placeholder="Locale" multiple required>' +
+            '@foreach( App\Models\Race::all("race_name") as $race){ ' +
+            '<option value="{{$race->race_name}}">{{$race->race_name}}</option> }' +
+            '@endforeach' +
+            '...' +
+            '</select>' +
             '</div>'
         newBunnyForm =
             '<div id="addedBunnyField" class="row mb-4 pt-4" style="border: 1px solid lightgray; border-radius: 10px;" >' +
@@ -521,9 +527,9 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
             '<div class="mb-3">' +
             '<label for="g_uid.' + j + '">Saisir un identifiant</label>' +
             '<input type="text" class="form-control default-red g_uid" name="g_uid.' + j + '" placeholder="F-001" required>' +
-            '<div class="invalid-feedback">Attention, cet identifiant est dejà utilisé !</div>'+
+            '<div class="invalid-feedback">Attention, cet identifiant est dejà utilisé !</div>' +
             '</div>' +
-            newBunnyColor+
+            newBunnyColor +
             '<fieldset>' +
             '<legend class="h6">Santé</legend>' +
             '<div class="form-check">' +
@@ -563,7 +569,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
             '</fieldset>' +
             '</div>' +
             '<div class="col-lg-4 col-sm-6">' +
-            newBunnyRace+
+            newBunnyRace +
             '<fieldset>' +
             '<legend class="h6">Sexe</legend>' +
             '<div class="form-check">' +
@@ -579,25 +585,24 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
             '<div class="mb-2" style="float:right">' +
             '<button type="button" id="deleteBunnyField" class="btn btn-warning" style="float:right;">Retirer -</button>&nbsp;' +
             '</div>' +
-            '</div>'
-        ;
-       
+            '</div>';
+
         $('#newBunnyField').append(newBunnyForm);
-        initVirtualSelect ();
+        initVirtualSelect();
         j += 1;
     })
     $("body").on("click", "#deleteBunnyField", function() {
         $(this).parents("#addedBunnyField").remove();
     })
     let numberOfBunnyFields = $('div#' + 'addedBabyField').length;
-    
+
     $(document).ready(function() {
         let allFieldsValid = false; // Assume at least one field is invalid on page load
-        let radioFieldsValid = false; 
+        let radioFieldsValid = false;
 
-        $("#submitBabyForm").click(function () {
+        $("#submitBabyForm").click(function() {
 
-            $(".no_nullable_baby_field").each(function () {
+            $(".no_nullable_baby_field").each(function() {
                 if ($(this).val() !== "") {
                     $(this).removeClass("is-invalid");
                     $(this).addClass("is-valid");
@@ -620,7 +625,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                 $("#babyForm input[name='gender']").addClass("is-valid");
                 radioFieldsValid = true; // At least one field is valid
             }
-            
+
             const stateRadio = $("#babyForm input[name='state']:checked");
             if (stateRadio.length === 0) {
                 // No radio option is selected
@@ -631,7 +636,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                 $("#babyForm input[name='state']").addClass("is-valid");
                 radioFieldsValid = true; // At least one field is valid
             }
-            
+
             const destinationRadio = $("#babyForm input[name='destination']:checked");
             if (destinationRadio.length === 0) {
                 // No radio option is selected
@@ -643,16 +648,16 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                 radioFieldsValid = true; // At least one field is valid
             }
 
-                if (allFieldsValid && radioFieldsValid && available_uid) {
-                    // All fields are valid, submit the form
-                    console.log('All is Right')
-                    $("#submitBabyForm").prop('type', 'submit');
-                }
+            if (allFieldsValid && radioFieldsValid && available_uid) {
+                // All fields are valid, submit the form
+                console.log('All is Right')
+                $("#submitBabyForm").prop('type', 'submit');
+            }
         });
 
 
-        $("#submitBunnyForm").click(function () {
-            $(".no_nullable_bunny_field").each(function () {
+        $("#submitBunnyForm").click(function() {
+            $(".no_nullable_bunny_field").each(function() {
                 if ($(this).val() !== "") {
                     $(this).removeClass("is-invalid");
                     $(this).addClass("is-valid");
@@ -675,7 +680,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                 $("#bunny-form input[name='g_gender']").addClass("is-valid");
                 radioFieldsValid = true; // At least one field is valid
             }
-            
+
             const stateRadio = $("#bunny-form input[name='g_state']:checked");
             if (stateRadio.length === 0) {
                 // No radio option is selected
@@ -686,7 +691,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                 $("#bunny-form input[name='g_state']").addClass("is-valid");
                 radioFieldsValid = true; // At least one field is valid
             }
-            
+
             const destinationRadio = $("#bunny-form input[name='g_destination']:checked");
             if (destinationRadio.length === 0) {
                 // No radio option is selected
@@ -697,7 +702,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                 $("#bunny-form input[name='g_destination']").addClass("is-valid");
                 radioFieldsValid = true; // At least one field is valid
             }
-            
+
             if (allFieldsValid && radioFieldsValid && available_uid) {
                 // All fields are valid, submit the form
                 console.log('All is Right')
@@ -708,12 +713,15 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
         // Validation inputs uid avec Ajax
         let url = "{{route('get-bunnies-id')}}"
         let available_uid
+
         function performSearch(search_uid, current_input) {
-            const apiUrl = url; 
-            $.get(apiUrl, { search: search_uid })
-                .done(function (data) {   
-                        console.log(data.content)
-                    if (data.content.length ===0) {
+            const apiUrl = url;
+            $.get(apiUrl, {
+                    search: search_uid
+                })
+                .done(function(data) {
+                    console.log(data.content)
+                    if (data.content.length === 0) {
                         current_input.removeClass("is-invalid");
                         return available_uid = true
                     } else {
@@ -721,39 +729,38 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                         return available_uid = false
                     }
                 })
-                .fail(function () {
+                .fail(function() {
                     console.log('Failed to fetch search results.');
                 });
         }
 
-        
-        let uid_inputs = $('#uid, #g_uid'); 
 
-        uid_inputs.each(function(){
-            $(this).on('input', function(){
+        let uid_inputs = $('#uid, #g_uid');
+
+        uid_inputs.each(function() {
+            $(this).on('input', function() {
                 let current_input = $(this);
                 let search_uid = $(this).val();
                 $(this).removeClass('default-red');
                 performSearch(search_uid, current_input);
             })
         })
-        
-        $('#newBabyField, #newBunnyField').click(function(){
-            let uid_inputs = $('.uid, .g_uid'); 
 
-            uid_inputs.each(function(){
-                $(this).on('input', function(){
+        $('#newBabyField, #newBunnyField').click(function() {
+            let uid_inputs = $('.uid, .g_uid');
+
+            uid_inputs.each(function() {
+                $(this).on('input', function() {
                     // console.log("loki");
                     let current_input = $(this);
                     let search_uid = $(this).val();
-                $(this).removeClass('default-red');
+                    $(this).removeClass('default-red');
                     performSearch(search_uid, current_input);
                 })
             })
         })
-        
-    });
 
+    });
 </script>
 
 @endsection

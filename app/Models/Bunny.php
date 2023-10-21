@@ -11,7 +11,7 @@ class Bunny extends Model
     protected $table = 'bunnies';
     
     protected $fillable = [
-        'uid', 'gender', 'destination', 'date_birth', 'state', 'race', 'color', 'weight', 'age', 'gestation_id'
+        'uid', 'gender', 'destination', 'date_birth', 'state', 'race', 'color', 'weight', 'age', 'gestation_id', 'farm_houses_id'
     ];
 
     public function color()

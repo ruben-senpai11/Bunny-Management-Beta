@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('farm_name')->nullable();
             $table->string('farm_ifu')->unique();
             $table->string('phone_number');
-            $table->timestamps();
+            $table->timestamps(); 
         });
     }
 
