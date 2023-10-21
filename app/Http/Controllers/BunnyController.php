@@ -188,8 +188,16 @@ class BunnyController extends Controller
     public function showBunnyDataById(int $id)
     {
         $bunny = Bunny::findOrFail($id);
-        return view('pages.bunny-profile',['bunny'=>$bunny]);
+        $maleParentUid = null;
+        $femaleParentUid = null;
+        if ($bunny->gestation_id) {
+            $gestation = Gestation::find($bunny->gestation_id);
+            $maleParentUid = Bunny::find(Mating::find($gestation->mating_id)->bunny_male_id)->uid;
+            $femaleParentUid = Bunny::find(Mating::find($gestation->mating_id)->bunny_female_id)->uid;
+        }
+        return view('pages.bunny-profile', ['bunny' => $bunny, 'maleUid' => $maleParentUid, 'femaleUid' => $femaleParentUid]);
     }
+
 
     public function getBunnyId(Request $request)
     {
