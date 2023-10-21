@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditBunnyByidRequest;
 use App\Models\Bunny;
 use App\Models\UserFarms;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Str;
+use Psy\Command\EditCommand;
 use Redirect;
 
 function getUserId(){        
@@ -186,7 +188,7 @@ class BunnyController extends Controller
     public function showBunnyDataById(int $id)
     {
         $bunny = Bunny::findOrFail($id);
-        return view('pages.bunny-profile', ['bunny' => $bunny]);
+        return view('pages.bunny-profile',['bunny'=>$bunny]);
     }
 
     public function getBunnyId(Request $request)
@@ -216,4 +218,6 @@ class BunnyController extends Controller
         $bunny->delete();
         return response()->json(['response' => true]);
     }
+
+
 }
