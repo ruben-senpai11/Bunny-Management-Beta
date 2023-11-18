@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BunnyController;
+use App\Http\Controllers\FarmerController;
 use App\Http\Controllers\ReproductionController;
 use Illuminate\Support\Facades\Route;
 
@@ -53,4 +54,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/palpations', [ReproductionController::class, 'getPalpations'])->name('palpations');
     Route::get('/gestations', [ReproductionController::class, 'getGestations'])->name('gestations');
     Route::get('/get-matings', [ReproductionController::class, 'getMatingsList'])->name('get-matings');
+
+    //Farmer Informations
+    Route::get('/FarmerProfile', [FarmerController::class,'index'])->name('Farmer.profile');
  });

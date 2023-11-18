@@ -39,4 +39,9 @@ class Bunny extends Model
     {
         return $this->hasOne(Death::class);
     }
+
+    public function bunniesRaces()
+    {
+        return $this->hasMany(BunnyRace::class);
+    }
 }
