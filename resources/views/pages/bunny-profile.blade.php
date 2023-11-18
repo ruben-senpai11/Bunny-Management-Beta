@@ -61,7 +61,7 @@
                 <div class="col mb-3">
                   <label for="genre" class="form-label">Genre</label>
                   <select class="form-select @error('genre') is-invalid @enderror" name="genre" id="genre"  aria-label="Default select example">
-                    <option>Open this select menu</option>
+                    <option value="">Open this select menu</option>
                     <option value="male" @if ($bunny->gender=='male')selected @endif >male</option>
                     <option value="female" @if ($bunny->gender=='female')selected @endif>female</option>
                   </select>
@@ -87,7 +87,11 @@
                   <label for="race" class="form-label">Race lapin</label>
                   <select class="form-select @error('race') is-invalid @enderror" data-placeholder="Choose anything" multiple  name="race[]" id="select-field" >
                     @foreach (\App\Models\Race::all() as $race)
-                      <option value="{{$race->id}}" >{{$race->race_name}}</option>
+                      <option value="{{$race->id}}" @foreach ($bunny->bunniesRaces as $bunnyRace)
+                        @if ($bunnyRace->race_id==$race->id)
+                            selected
+                        @endif
+                      @endforeach >{{$race->race_name}}</option>
                     @endforeach
                   </select>
                 </div>

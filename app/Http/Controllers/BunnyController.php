@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EditBunnyByidRequest;
 use App\Models\Bunny;
+use App\Models\BunnyRace;
+use App\Models\Gestation;
+use App\Models\Mating;
 use App\Models\UserFarms;
 use Illuminate\Http\Request;
 
@@ -36,7 +39,7 @@ class BunnyController extends Controller
 
     public function saveBabyBunny(Request $request)
     {
-        // dd($request->all());
+        // dd($request->g_race);
 
         $current_farm = getUserId();
 
@@ -144,8 +147,15 @@ class BunnyController extends Controller
                         $bunny->race = $g_race;
                         $bunny->weight = $g_weight;
                         $bunny->farm_houses_id = $current_farm;
-
+                        
                         $bunny->save();
+                        
+                        foreach (explode(',', $g_race) as $race) {
+                            $bunnyRace = new BunnyRace();
+                            $bunnyRace->race_id = $race;
+                            $bunnyRace->bunny_id = $bunny->id;
+                            $bunnyRace->save();
+                        }
                     } catch (\Exception $e) {
                         throw $e;
                     }
@@ -195,6 +205,7 @@ class BunnyController extends Controller
         $bunny = Bunny::findOrFail($id);
         $maleParentUid = null;
         $femaleParentUid = null;
+
         if ($bunny->gestation_id) {
             $gestation = Gestation::find($bunny->gestation_id);
             $maleParentUid = Bunny::find(Mating::find($gestation->mating_id)->bunny_male_id)->uid;
@@ -234,12 +245,27 @@ class BunnyController extends Controller
 
     public function editBunnyData(EditBunnyByidRequest $request)
     {
+
+       
+        
         if ($request->idBunny) {
             $bunny = Bunny::find($request->idBunny);
             $bunny->uid = $request->uid;
             $bunny->gender = $request->genre;
-            $bunny->gender = $request->genre;
+            $bunny->destination = $request->destination;
+            $bunny->weight= $request->weight;
+            $bunny->save();
+            
+            foreach ($bunny->bunniesRaces as $race) {
+                $race->delete();
+            }
 
+            foreach ($request->race as $race) {
+                $bunnyRace=new BunnyRace();
+                $bunnyRace->race_id = $race;
+                $bunnyRace->bunny_id = $bunny->id;
+                $bunnyRace->save();
+            }
         }
         return back();
     }

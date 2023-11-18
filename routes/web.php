@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BunnyController;
+use App\Http\Controllers\FarmerController;
 use App\Http\Controllers\MatingController;
 use App\Http\Controllers\PalpationController;
 use App\Http\Controllers\ReproductionController;
@@ -59,4 +60,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/palpations', [PalpationController::class, 'savePalpation'])->name('palpations');
     Route::get('/get-mated-id', [PalpationController::class, 'getMatingId'])->name('get-mated-id');
     Route::get('/gestations', [ReproductionController::class, 'getGestations'])->name('gestations');
+
+    //Farmer Informations
+    Route::get('/FarmerProfile', [FarmerController::class,'index'])->name('Farmer.profile');
  });
