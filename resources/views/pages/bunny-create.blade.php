@@ -1,8 +1,6 @@
 @extends('layouts.base')
 @section('style')
-<link href="
-https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.min.css
-" rel="stylesheet">
+<link href="{{ asset('vendor/virtual-select-master/dist/virtual-select.min.css') }}" rel="stylesheet">
 @endsection
 @section('content')
 
@@ -69,7 +67,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                             
                             <div class="mb-3">
                                 <label for="color">Couleurs</label>
-                                <select class="no_nullable_bunny_field color" type="text" name="color" placeholder="Blanc, noir..." multiple required>
+                                <select class="no_nullable_bunny_field color" type="text" name="color" placeholder="Blanc, noir..." multiple >
                                     @foreach( App\Models\Color::all('color_name') as $color){
                                         <option value="{{$color->color_name}}">{{$color->color_name}}</option>
                                         }
@@ -105,8 +103,8 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                                 <span class="text-danger"></span>
                             </div>
                             <div class="mb-3">
-                                <label for="weight">Poids</label>
-                                <input class="form-control no_nullable_baby_field" type="text" name="weight" id="weight" placeholder="100g - 300g">
+                                <label for="weight">Poids (g)</label>
+                                <input class="form-control no_nullable_baby_field" type="text" name="weight" id="weight" value="200">
                             </div>
                             
                             <fieldset class="mb-2">
@@ -191,7 +189,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
 
                             <div class="mb-3">
                                 <label for="g_color">Couleurs</label>
-                                <select class="no_nullable_bunny_field g_color" type="text" name="g_color" id="g_color" placeholder="Blanc, noir..." multiple required>
+                                <select class="no_nullable_bunny_field g_color" type="text" name="g_color" id="g_color" placeholder="Blanc, noir..." multiple>
                                     @foreach( App\Models\Color::all('color_name') as $color){
                                     <option value="{{$color->color_name}}">{{$color->color_name}}</option>
                                     }
@@ -232,8 +230,8 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
                             </div>
 
                             <div class="mb-3">
-                                <label for="weight">Poids</label>
-                                <input class="form-control no_nullable_bunny_field" type="number" name="g_weight" id="g_weight" placeholder="300g - 1800g">
+                                <label for="weight">Poids (g)</label>
+                                <input class="form-control no_nullable_bunny_field" type="number" name="g_weight" id="g_weight" value="400">
                             </div>
 
                             <fieldset>
@@ -427,7 +425,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
         newBabyBunnyColor =
             '<div class="mb-3">' +
             '<label for="color.' + i + '">Couleurs</label>' +
-            '<select class="no_nullable_bunny_field color" type="text" name="color.' + i + '" id="color.' + i + '" placeholder="Blanc, noir..." multiple required>' +
+            '<select class="no_nullable_bunny_field color" type="text" name="color.' + i + '" id="color.' + i + '" placeholder="Blanc, noir..." multiple >' +
             '@foreach( App\Models\Color::all("color_name") as $color){' +
             '<option value="{{$color->color_name}}">{{$color->color_name}}</option>' +
             '}@endforeach' +
@@ -457,8 +455,8 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
             '</div>' +
             '<div class=" col-lg-4 col-sm-6">' +
             '<div class="mb-3">' +
-            '<label for="weight' + i + '">Poids</label>' +
-            '<input class="form-control no_nullable_baby_field" type="text" name="weight.' + i + '" id="weight.' + i + '" placeholder="100g - 300g">' +
+            '<label for="weight' + i + '">Poids (g)</label>' +
+            '<input class="form-control no_nullable_baby_field" type="text" name="weight.' + i + '" id="weight.' + i + '" value="200">' +
             '</div>' +
 
             '<fieldset class="mb-2">' +
@@ -503,7 +501,7 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
         newBunnyColor =
             '<div class="mb-3">' +
             '<label for="g_color' + i + '">Couleurs</label>' +
-            '<select class="no_nullable_bunny_field g_color" type="text" name="g_color' + i + '" id="g_color' + i + '" placeholder="Blanc, noir..." multiple required>' +
+            '<select class="no_nullable_bunny_field g_color" type="text" name="g_color' + i + '" id="g_color' + i + '" placeholder="Blanc, noir..." multiple >' +
             '@foreach( App\Models\Color::all("color_name") as $color){' +
             '<option value="{{$color->color_name}}">{{$color->color_name}}</option>' +
             '}@endforeach' +
@@ -553,8 +551,8 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
             '</div>' +
             '</div>' +
             '<div class="mb-3">' +
-            '<label for="weight">Poids</label>' +
-            '<input class="form-control no_nullable_bunny_field" type="number" name="g_weight.' + j + '" id="g_weight.' + j + '" placeholder="300g - 1800g">' +
+            '<label for="weight">Poids (g)</label>' +
+            '<input class="form-control no_nullable_bunny_field" type="number" name="g_weight.' + j + '" id="g_weight.' + j + '" value="400">' +
             '</div>' +
             '<fieldset>' +
             '<legend class="h6">Destination</legend>' +
@@ -746,11 +744,12 @@ https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.mi
             })
         })
 
-        $('#newBabyField, #newBunnyField').click(function() {
-            let uid_inputs = $('.uid, .g_uid');
+        $('#newBabyField, #newBunnyField').click(function() {          
 
+            let uid_inputs = $('.uid, .g_uid');
             uid_inputs.each(function() {
-                $(this).on('input', function() {
+                $(this).on('input', function(event) {
+                    event.preventDefault();
                     // console.log("loki");
                     let current_input = $(this);
                     let search_uid = $(this).val();

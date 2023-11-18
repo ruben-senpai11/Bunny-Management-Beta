@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('mating_id')->nullable();
             $table->foreign('mating_id')->references('id')->on('matings');
-            $table->string('number_of_child');
+            $table->string('babies_number');
             $table->date('date_gestation');
             $table->text('observations')->nullable();
             $table->text('veterinary_follow_up')->nullable();

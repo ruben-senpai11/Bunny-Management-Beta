@@ -9,9 +9,10 @@ class Mating extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'lapin_male_id',
-        'lapin_female_id',
-        'date_mating',
+        'male_id',
+        'female_id',
+        'mating_date',
+        'remark',
     ];
 
     public function male()

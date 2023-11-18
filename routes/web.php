@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\BunnyController;
+use App\Http\Controllers\MatingController;
+use App\Http\Controllers\PalpationController;
 use App\Http\Controllers\ReproductionController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,8 +51,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/get-bunnies-id', [BunnyController::class, 'getBunnyId'])->name("get-bunnies-id");
 
     Route::get('/planifications', [ReproductionController::class, 'getPlanifications'])->name('planifications');
-    Route::get('/matings', [ReproductionController::class, 'getMatings'])->name('matings');
-    Route::get('/palpations', [ReproductionController::class, 'getPalpations'])->name('palpations');
+    Route::get('/matings', [MatingController::class, 'render'])->name('matings');
+    Route::post('/matings', [MatingController::class, 'saveMating'])->name('matings');
+    Route::get('/get-matings', [MatingController::class, 'getMatingData'])->name('get-matings');
+    Route::post('/delete-mating-ajax', [MatingController::class, 'deleteMatingByIdWithAjax'])->name("delete-mating-ajax");
+    Route::get('/palpations', [PalpationController::class, 'render'])->name('palpations');
+    Route::post('/palpations', [PalpationController::class, 'savePalpation'])->name('palpations');
+    Route::get('/get-mated-id', [PalpationController::class, 'getMatingId'])->name('get-mated-id');
     Route::get('/gestations', [ReproductionController::class, 'getGestations'])->name('gestations');
-    Route::get('/get-matings', [ReproductionController::class, 'getMatingsList'])->name('get-matings');
  });

@@ -261,11 +261,12 @@ d.addEventListener("DOMContentLoaded", function (event) {
         ]
     };
 
-    var chart = new ApexCharts(document.querySelector("#chart"), options);
-    if (document.getElementById('chart')) {
-        chart.render();
+    if($('#chart').length>0){
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        if (document.getElementById('chart')) {
+            chart.render();
+        }
     }
-
     // Weekly Sales Chart
     var optionsWeeklySalesChart = {
         series: [{
@@ -1254,17 +1255,19 @@ d.addEventListener("DOMContentLoaded", function (event) {
                 content.classList.remove('notransition');
             }, 500);
         }
-
-        var sidebarToggle = d.getElementById('sidebar-toggle');
-        sidebarToggle.addEventListener('click', function () {
-            if (sidebar.classList.contains('contracted')) {
-                sidebar.classList.remove('contracted');
-                localStorage.removeItem('sidebar', 'contracted');
-            } else {
-                sidebar.classList.add('contracted');
-                localStorage.setItem('sidebar', 'contracted');
-            }
-        });
+        
+        if($("#sidebarToggle").length>0){
+            var sidebarToggle = d.getElementById('sidebar-toggle');
+            sidebarToggle.addEventListener('click', function () {
+                if (sidebar.classList.contains('contracted')) {
+                    sidebar.classList.remove('contracted');
+                    localStorage.removeItem('sidebar', 'contracted');
+                } else {
+                    sidebar.classList.add('contracted');
+                    localStorage.setItem('sidebar', 'contracted');
+                }
+            });
+        }
 
         sidebar.addEventListener('mouseenter', function () {
             if (localStorage.getItem('sidebar') === 'contracted') {

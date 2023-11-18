@@ -1,6 +1,6 @@
 @extends('layouts.base')
 @section('style')
-<link href="https://cdn.jsdelivr.net/npm/virtual-select-plugin@1.0.39/dist/virtual-select.min.css" rel="stylesheet">
+<link href="{{ asset('vendor/virtual-select-master/dist/virtual-select.min.css') }}" rel="stylesheet">
 @endsection
 @section('content')
 

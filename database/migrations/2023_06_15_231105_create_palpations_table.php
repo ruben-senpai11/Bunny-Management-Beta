@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('palpations', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('farm_houses_id')->nullable();
+            $table->foreign('farm_houses_id')->references('id')->on('farm_houses');
             $table->unsignedBigInteger('mating_id')->nullable();
             $table->foreign('mating_id')->references('id')->on('matings');
-            $table->date('date_palpation');
+            $table->date('palpation_date');
             $table->enum('palpation_result', ['success', 'fail']);
             $table->string('comments')->nullable();
             $table->timestamps();

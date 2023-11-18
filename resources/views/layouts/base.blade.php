@@ -101,7 +101,7 @@
     <script src="../../vendor/onscreen/dist/on-screen.umd.min.js"></script>
 
     <!-- Slider -->
-    <script src="../../vendor/nouislider/distribute/nouislider.min.js"></script>
+    <script src="../../vendor/nouislider/dist/nouislider.min.js"></script>
 
     <!-- Smooth scroll -->
     <script src="../../vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
@@ -135,16 +135,16 @@
     <script src="../../assets/js/volt.js"></script>
 
     <!--datatales cdn implementation-->
-    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
-    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/searchpanes/1.3.0/js/dataTables.searchPanes.min.js"></script>
-    <script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+    <script src="{{ asset('vendor/jquery/jquery-3.6.3.js') }}"></script>
+    <script src="{{ asset('vendor/datatables/datatable.min.js') }}"></script>
+    <script src="{{ asset('vendor/datatables/datatables-searchpanes.min.js') }}"></script>
+    <script src="{{ asset('vendor/datatables/datatables-select.min.js') }}"></script>
+    <script src="{{ asset('vendor/datatables/datatables-buttons.min.js') }}"></script>
+    <script src="{{ asset('vendor/datatables/jszip.min.js') }}"></script>
+    <script src="{{ asset('vendor/datatables/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('vendor/datatables/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('vendor/datatables/datatables-buttons-html5.js') }}"></script>
+    <script src="{{ asset('vendor/datatables/datatables-buttons-print.js') }}"></script>
 
     <script>
         @if (Session::get('error'))

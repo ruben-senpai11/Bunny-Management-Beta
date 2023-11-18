@@ -135,11 +135,12 @@
             .left-side,
             .right-side {
                 width: 100%;
-                height: 50%;
+                height: 100%;
             }
 
             .left-side {
-                padding-bottom: 0;
+                padding: 20px;
+                /* padding-bottom: 40px; */
             }
 
             .header {
@@ -148,6 +149,8 @@
 
             .right-side {
                 overflow: hidden;
+                gap: 25px;  
+                padding: 35px 0;
             }
 
             .login-buttons {
@@ -155,7 +158,7 @@
             }
 
             #wave-text {
-                font-size: 20px;
+                font-size: 18px;
                 line-height: normal;
             }
 
@@ -165,6 +168,13 @@
 
             .info {
                 font-size: 11px;
+            }
+            
+            .background{
+                width: 100%;
+            }
+            .footer{                
+                margin-top: 5%;
             }
         }
     </style>
@@ -220,7 +230,7 @@
                 '<h1 class="fw-bold">Bienvenue</h1> sur votre ferme en ligne ',
                 '<h1 class="fw-bold">Gérez</h1> efficacement votre élevage de lapins ',
                 '<h1 class="fw-bold">Collectez</h1> facilement les informations relatives au poids, à l\'alimentation, la santé etc ',
-                '<h1 class="fw-bold">Organisez</h1> et planifiez vos différentes : nourir les lapins, nettoyer les cages, vacciner etc ',
+                '<h1 class="fw-bold">Organisez</h1> et planifiez vos tâches : nourir les lapins, nettoyer les cages, vacciner etc ',
                 '<h1 class="fw-bold">Obtenez</h1> des analyses détaillées sur les performances de votre élevage : le taux de mortalité, le rendement '
             ],
             typeSpeed: 20,

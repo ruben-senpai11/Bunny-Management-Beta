@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('matings', function (Blueprint $table) {
             $table->id();
-            $table->date('date_mating');
-            $table->unsignedBigInteger('bunny_male_id');
-            $table->unsignedBigInteger('bunny_female_id');
-            $table->foreign('bunny_male_id')->references('id')->on('bunnies')->onDelete('cascade');
-            $table->foreign('bunny_female_id')->references('id')->on('bunnies')->onDelete('cascade');
+            $table->unsignedBigInteger('farm_houses_id')->nullable();
+            $table->foreign('farm_houses_id')->references('id')->on('farm_houses');
+            $table->unsignedBigInteger('male_id');
+            $table->unsignedBigInteger('female_id');
+            $table->date('mating_date');
+            $table->foreign('male_id')->references('id')->on('bunnies')->onDelete('cascade');
+            $table->foreign('female_id')->references('id')->on('bunnies')->onDelete('cascade');
             $table->string('remark')->nullable();
             $table->enum('status', ['confirmed', 'canceled'])->nullable();
             $table->timestamps();

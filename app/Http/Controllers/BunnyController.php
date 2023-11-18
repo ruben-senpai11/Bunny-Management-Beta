@@ -23,6 +23,7 @@ class BunnyController extends Controller
 
     public function rules(): array
     {
+        
         return [
             'uid' => 'required',
             'gender' => 'required',
@@ -170,6 +171,10 @@ class BunnyController extends Controller
     {
         return view('pages.bunny-create', []);
     }
+
+
+
+// --------------------Bunnies List Page-----------------------------------
 
 
     public function index()

@@ -90,3 +90,16 @@
 .vscomp-wrapper .checkbox-icon::after{
     border-radius: .2rem;
 }
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media screen and (max-width: 770px) {
+    .footer{
+        flex-direction: column;
+        gap: 20px;
+    }
+}

@@ -1,14 +1,14 @@
 <footer class="bg-white rounded shadow py-4 px-5 mb-4 mt-4">
-    <div class="row">
-        <div class="col-12 col-md-4 col-xl-4 mb-4 mb-md-0 d-flex justify-content-start align-items-center">
-            <p class="mb-0 text-center fw-bold text-lg-start">Ma ferme en ligne</span> 
+    <div class="footer">
+        <div class="d-flex align-items-center">
+            <p class="fw-bold m-0">Ma ferme en ligne</span> 
             </p>
         </div>
-        <div class="col-12 col-md-4 col-xl-4 text-center text-lg-center d-flex justify-content-center align-items-center">
-            <span class="mb-0 fw-bold text-center text-lg-center">© <span class="current-year">2023</span> 
+        <div class="">
+            <span class="fw-bold">© <span class="current-year">2023</span> 
         </div>
-        <div class="col-12 col-md-4 col-xl-4 pt-2 text-lg-end">
-            <span class="mb-0 fw-bold d-flex justify-content-end align-items-center">
+        <div class="">
+            <span class="mb-0 fw-bold d-flex">
                 <!-- Button Modal -->
                 <button type="button" class="btn btn-block btn-light d-flex align-items-center gap-1" style="box-shadow: 0 0 10px #00000090" data-bs-toggle="modal" data-bs-target="#modalNotification">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
