@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css">
     <title>Ma ferme en ligne</title>
     <style>
+        :root {
+            --foreground-rgb: 0, 0, 0;
+            /* --background-start-rgb: 197, 250, 175; */
+            --background-start-rgb: 214, 219, 220;
+            /* --background-end-rgb: 255, 255, 255; */
+            --background-end-rgb: 221, 255, 207, 1;
+        }
+
         html,
         body {
             height: 100%;
@@ -27,9 +35,11 @@
             width: 60%;
             height: 100%;
             color: #FE7600;
-            /* background-color: #FFFFDB; */
+            /*#e46a00*/
             background-color: #DDFFCF;
             display: grid;
+
+            background: linear-gradient(to top, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
         }
 
         .header {
@@ -38,6 +48,7 @@
 
         .header img {
             margin: 0 10px;
+            margin-top: 2px;
         }
 
         #wave-text {
@@ -45,20 +56,18 @@
             line-height: normal;
         }
 
-        #wave-text h1 {
-            /* line-height: 40px; */
-        }
-
-        .background{
-            width: 40%;
+        .background {
+            width: 45%;
             display: grid;
-            background: url('{{ asset("assets/img/rabbit.webp") }}') no-repeat left;
+            /* background: linear-gradient(to top, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb)); */
+            background: url('{{ asset("assets/img/rabbit01.jpg") }}') no-repeat ;
             background-size: cover;
         }
+
         .right-side {
             /* background-color: #DDFFCF; */
             padding: 20px;
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(10px);
             background-attachment: #FFFFFF;
             display: grid;
             align-content: space-between;
@@ -89,13 +98,13 @@
         }
 
         .buttons .button {
-            padding: 7% 20%;
+            padding: 7% 25%;
             margin: 2% 7%;
             font-size: 15px;
             font-weight: bold;
             text-decoration: none;
             color: white;
-            background-color: rgba(60, 70, 255);
+            background-color: #0009fe;
             border: white;
             border-radius: 0.4rem;
         }
@@ -127,9 +136,14 @@
             color: inherit;
         }
 
-        @media screen and (max-width:800px) {
+        @media screen and (max-width:900px) {
             .page {
                 flex-direction: column;
+
+                color: rgb(var(--foreground-rgb));
+                background: linear-gradient(to top,
+                        transparent,
+                        rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
             }
 
             .left-side,
@@ -138,23 +152,58 @@
                 height: 100%;
             }
 
+            .landing-text {
+                margin-top: 15px;
+            }
+
             .left-side {
-                padding: 20px;
-                /* padding-bottom: 40px; */
+                padding: 5%;
+                background: none;
+                max-height: 50%;
+                overflow: hidden;
             }
 
             .header {
                 justify-content: space-between;
             }
 
+            .header img,
+            .login-text {
+                display: none;
+            }
+
             .right-side {
-                overflow: hidden;
-                gap: 25px;  
+                /* overflow: hidden; */
+                gap: 0;
                 padding: 35px 0;
+            }
+
+            .background {
+                background: none;
             }
 
             .login-buttons {
                 position: relative;
+                width: 100%;
+            }
+
+            .buttons {
+                flex-direction: column;
+                padding: 0;
+                margin: auto;
+                gap: 20px
+            }
+
+            .buttons .button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0;
+                margin: auto;
+                width: 80%;
+                height: 50px;
+                font-size: 17px;
+                /* font-weight: normal; */
             }
 
             #wave-text {
@@ -169,12 +218,15 @@
             .info {
                 font-size: 11px;
             }
-            
-            .background{
+
+            .background {
                 width: 100%;
             }
-            .footer{                
-                margin-top: 5%;
+
+            .footer {
+                position: absolute;
+                bottom: -30%;
+                color: #777;
             }
         }
     </style>
@@ -192,7 +244,7 @@
                 <span id="wave-text"></span>
             </div>
         </div>
-        <div class="background">    
+        <div class="background">
             <div class="right-side">
                 <div class="empty"></div>
                 <div class="login-buttons">
@@ -217,7 +269,7 @@
                         <span><a href="#">Politique de Confidentialité</a></span>
                     </div>
                 </div>
-            </div>        
+            </div>
         </div>
     </div>
 
