@@ -31,10 +31,11 @@
         }
 
         .left-side {
-            padding: 20px 0px 70px 25px;
+            padding: 2% 0px 70px 25px;
             width: 60%;
             height: 100%;
-            color: #FE7600;
+            /* color: #FE7600; */
+            color: #333;
             /*#e46a00*/
             background-color: #DDFFCF;
             display: grid;
@@ -44,6 +45,7 @@
 
         .header {
             display: flex;
+            color: #FE7600;
         }
 
         .header img {
@@ -104,7 +106,7 @@
             font-weight: bold;
             text-decoration: none;
             color: white;
-            background-color: #0009fe;
+            background-color: #0001ff;
             border: white;
             border-radius: 0.4rem;
         }
@@ -158,6 +160,7 @@
 
             .left-side {
                 padding: 5%;
+                padding-top: 34;
                 background: none;
                 max-height: 50%;
                 overflow: hidden;
@@ -272,7 +275,7 @@
             </div>
         </div>
     </div>
-
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 
@@ -289,7 +292,8 @@
             backSpeed: 10,
             backDelay: 2000,
             startDelay: 0,
-            cursorChar: '<img type="image/png" width="20px" height="16px" style="" src="{{ asset("assets/img/favicon/rabbit.svg") }}">',
+           // cursorChar: '<img type="image/png" width="20px" height="16px" style="" src="{{ asset("assets/img/favicon/rabbit.svg") }}">',
+            cursorChar: '<span style="font-size: 2rem; font-weight:bold"> _</span>',
             smartBackspace: true,
             loop: true
         });

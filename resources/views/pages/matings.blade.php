@@ -401,46 +401,46 @@
       $(this).parents("#addedMatingField").remove();
   })
 
-  // $(document).ready(function(){
+//$(document).ready(function(){
     // Validation inputs uid avec Ajax
     let url = "{{route('get-bunnies-id')}}"
     let available_uid
 
     function performSearch(search_uid, current_input, feed_back) {
-        const apiUrl = url;
-        $.get(apiUrl, {
-          search: search_uid
-        })
-      .done(function(data) {
-        console.log(data.content)
-        
-        if (data.content.length === 0) {
-          feed_back.text("Cet identifiant est introuvable");
-          current_input.removeClass("is-valid").addClass("is-invalid");
-          console.log("fgh");
-          return available_uid = false
-        }else{            
+          const apiUrl = url;
+          $.get(apiUrl, {
+            search: search_uid
+          })
+        .done(function(data) {
+          console.log(data.content)
+          
+          if (data.content.length === 0) {
+            feed_back.text("Cet identifiant est introuvable");
+            current_input.removeClass("is-valid").addClass("is-invalid");
+            console.log("fgh");
+            return available_uid = false
+          }else{            
 
-          if(data.content[0].state == "healthy" && data.content[0].destination == 'mating'){
-            current_input.removeClass("is-invalid").addClass("is-valid");
-            return available_uid = true
-          }else if(data.content[0].state != "healthy"){
-            console.log("This bunny is not healthy")
-            feed_back.text("Ce lapin est malade ! \n S'il s'agit d'une erreur, veuillez mettre à jour ses informations");
-            current_input.removeClass("is-valid").addClass("is-invalid");
-            return available_uid = false
-          }else if(data.content[0].destination != "mating"){
-            console.log("This bunny is not reproductible")
-            feed_back.text("Ce lapin n'est pas destiné à se reproduire ! \n S'il s'agit d'une erreur, veuillez mettre à jour ses informations");
-            current_input.removeClass("is-valid").addClass("is-invalid");
-            return available_uid = false
-          }            
-        }
-      })
-      .fail(function() {
-          console.log('Failed to fetch search results.');
-      });
-    }
+            if(data.content[0].state == "healthy" && data.content[0].destination == 'mating'){
+              current_input.removeClass("is-invalid").addClass("is-valid");
+              return available_uid = true
+            }else if(data.content[0].state != "healthy"){
+              console.log("This bunny is not healthy")
+              feed_back.text("Ce lapin est malade ! \n S'il s'agit d'une erreur, veuillez mettre à jour ses informations");
+              current_input.removeClass("is-valid").addClass("is-invalid");
+              return available_uid = false
+            }else if(data.content[0].destination != "mating"){
+              console.log("This bunny is not reproductible")
+              feed_back.text("Ce lapin n'est pas destiné à se reproduire ! \n S'il s'agit d'une erreur, veuillez mettre à jour ses informations");
+              current_input.removeClass("is-valid").addClass("is-invalid");
+              return available_uid = false
+            }            
+          }
+        })
+        .fail(function() {
+            console.log('Failed to fetch search results.');
+        });
+      }
 
 
     $('#mating-form').click(function(){

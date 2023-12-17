@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BunnyController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\FarmerController;
 use App\Http\Controllers\MatingController;
 use App\Http\Controllers\PalpationController;
@@ -63,4 +64,5 @@ Route::middleware(['auth'])->group(function () {
 
     //Farmer Informations
     Route::get('/FarmerProfile', [FarmerController::class,'index'])->name('Farmer.profile');
+    Route::get('/farm-name', [Controller::class, 'getFarmname'])->name('farm-name');
  });
