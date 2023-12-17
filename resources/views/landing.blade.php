@@ -9,9 +9,7 @@
     <style>
         :root {
             --foreground-rgb: 0, 0, 0;
-            /* --background-start-rgb: 197, 250, 175; */
             --background-start-rgb: 214, 219, 220;
-            /* --background-end-rgb: 255, 255, 255; */
             --background-end-rgb: 221, 255, 207, 1;
         }
 
@@ -34,10 +32,7 @@
             padding: 2% 0px 70px 25px;
             width: 60%;
             height: 100%;
-            /* color: #FE7600; */
             color: #333;
-            /*#e46a00*/
-            background-color: #DDFFCF;
             display: grid;
 
             background: linear-gradient(to top, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
@@ -54,6 +49,7 @@
         }
 
         #wave-text {
+            width: 95%;
             font-size: 30px;
             line-height: normal;
         }
@@ -61,13 +57,11 @@
         .background {
             width: 45%;
             display: grid;
-            /* background: linear-gradient(to top, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb)); */
             background: url('{{ asset("assets/img/rabbit01.jpg") }}') no-repeat;
             background-size: cover;
         }
 
         .right-side {
-            /* background-color: #DDFFCF; */
             padding: 20px;
             backdrop-filter: blur(10px);
             background-attachment: #FFFFFF;
@@ -116,7 +110,6 @@
         }
 
         .footer {
-            /* color: #b5b4b4; */
             color: #ddd;
             text-align: center;
         }
@@ -176,7 +169,6 @@
             }
 
             .right-side {
-                /* overflow: hidden; */
                 gap: 0;
                 padding: 35px 0;
             }
@@ -206,7 +198,6 @@
                 width: 80%;
                 height: 50px;
                 font-size: 17px;
-                /* font-weight: normal; */
             }
 
             #wave-text {
