@@ -219,7 +219,7 @@
 
             .footer {
                 position: absolute;
-                bottom: -30%;
+                bottom: -40%;
                 color: #777;
             }
         }
@@ -286,7 +286,7 @@
                 backDelay: 2000,
                 startDelay: 0,
                 cursorChar: ' <img type="image/png" width="20px" height="16px" style="" src="{{ asset("assets/img/favicon/rabbit1.svg") }}">',
-                
+
                 // cursorChar: '<span style="font-size: 2rem; font-weight:bold"> _</span>',
                 smartBackspace: true,
                 loop: true
