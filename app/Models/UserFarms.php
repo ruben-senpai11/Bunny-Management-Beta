@@ -14,6 +14,6 @@ class UserFarms extends Model
     }
     public function farm()
     {
-        return $this->belongsTo(FarmHouse::class);
+        return $this->belongsTo(FarmHouse::class,'id');
     }
 }

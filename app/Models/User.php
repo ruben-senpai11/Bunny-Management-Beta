@@ -51,6 +51,6 @@ class User extends Authenticatable
 
     public function userFarms()
     {
-        return $this->hasMany(UserFarms::class);
+        return $this->hasMany(UserFarms::class,'users_id');
     }
 }

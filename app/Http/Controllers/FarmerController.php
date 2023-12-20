@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
 
 class FarmerController extends Controller
@@ -12,7 +13,8 @@ class FarmerController extends Controller
      */
     public function index()
     {
-        return view("pages.farmer-profile");
+        $user = Auth::user();
+        return view("pages.farmer-profile",compact('user'));
     }
 
     /**
@@ -40,17 +42,17 @@ class FarmerController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for updating the specified resource.
      */
-    public function edit(User $user)
+    public function updateUserInformation(Request $request,User $user)
     {
         //
     }
 
     /**
-     * Update the specified resource in storage.
+     * Show the form for updating the specified resource.
      */
-    public function update(Request $request, User $user)
+    public function updateUserPassword(Request $request,User $user)
     {
         //
     }
