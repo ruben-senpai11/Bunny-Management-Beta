@@ -32,7 +32,7 @@
             padding: 2% 0px 70px 25px;
             width: 60%;
             height: 100%;
-            color: #333;
+            color: #FE7600;
             display: grid;
 
             background: linear-gradient(to top, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
@@ -40,7 +40,7 @@
 
         .header {
             display: flex;
-            color: #FE7600;
+            gap: 5px;
         }
 
         .header img {
@@ -155,7 +155,7 @@
                 padding: 5%;
                 padding-top: 34;
                 background: none;
-                max-height: 50%;
+                max-height: 48%;
                 overflow: hidden;
             }
 
@@ -186,7 +186,7 @@
                 flex-direction: column;
                 padding: 0;
                 margin: auto;
-                gap: 20px
+                gap: 25px
             }
 
             .buttons .button {
@@ -196,7 +196,7 @@
                 padding: 0;
                 margin: auto;
                 width: 80%;
-                height: 50px;
+                height: 55px;
                 font-size: 17px;
             }
 
@@ -219,7 +219,7 @@
 
             .footer {
                 position: absolute;
-                bottom: -40%;
+                bottom: -30%;
                 color: #777;
             }
         }
@@ -270,8 +270,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 
-    <script>
-        if (window.innerWidth < 800) {
+    <script>    
+    /*    if (window.innerWidth < 800) {*/
 
             var typed = new Typed('#wave-text', {
                 strings: [
@@ -286,32 +286,12 @@
                 backDelay: 2000,
                 startDelay: 0,
                 cursorChar: ' <img type="image/png" width="20px" height="16px" style="" src="{{ asset("assets/img/favicon/rabbit1.svg") }}">',
-
                 // cursorChar: '<span style="font-size: 2rem; font-weight:bold"> _</span>',
                 smartBackspace: true,
                 loop: true
             });
 
-        } else {
-            var typed = new Typed('#wave-text', {
-                strings: [
-                    '<h1 class="fw-bold">Bienvenue</h1> sur votre ferme en ligne ',
-                    '<h1 class="fw-bold">Gérez</h1> efficacement votre élevage de lapins ',
-                    '<h1 class="fw-bold">Collectez</h1> facilement les informations relatives au poids, à l\'alimentation, la santé etc ',
-                    '<h1 class="fw-bold">Organisez</h1> et planifiez vos tâches : nourir les lapins, nettoyer les cages, vacciner etc ',
-                    '<h1 class="fw-bold">Obtenez</h1> des analyses détaillées sur les performances de votre élevage : le taux de mortalité, le rendement '
-                ],
-                typeSpeed: 20,
-                backSpeed: 10,
-                backDelay: 2000,
-                startDelay: 0,
-               // cursorChar: ' <img type="image/png" width="20px" height="16px" style="" src="{{ asset("assets/img/favicon/rabbit1.svg") }}">',
-                cursorChar: '<span style="font-size: 2.5rem; font-weight:bold"> _</span>',
-                smartBackspace: true,
-                loop: true
-            });
-
-        }
+       /* } */
     </script>
 </body>
 
