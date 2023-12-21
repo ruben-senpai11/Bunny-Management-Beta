@@ -64,5 +64,6 @@ Route::middleware(['auth'])->group(function () {
 
     //Farmer Informations
     Route::get('/FarmerProfile', [FarmerController::class,'index'])->name('Farmer.profile');
-    Route::get('/farm-name', [Controller::class, 'getFarmname'])->name('farm-name');
- });
+    Route::post('/edit-user-info', [FarmerController::class, 'editBunnyData'])->name("edit-bunny");
+
+});

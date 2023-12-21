@@ -46,7 +46,7 @@ class FarmerController extends Controller
      */
     public function updateUserInformation(Request $request,User $user)
     {
-        //
+        dd("oki");
     }
 
     /**

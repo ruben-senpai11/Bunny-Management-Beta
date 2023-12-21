@@ -8,7 +8,8 @@
     <div class="col-12 col-xl-8" style="order: 2;">
         <div class="card card-body border-0 shadow mb-4">
             <h2 class="h5 mb-4">General information</h2>
-            <form>
+            <form action="{{}}" method="post">
+                @csrf
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <div><label for="first_name">First Name</label> <input class="form-control" id="first_name" name="inputFirstName"

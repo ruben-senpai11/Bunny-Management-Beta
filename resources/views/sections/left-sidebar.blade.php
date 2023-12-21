@@ -60,11 +60,16 @@
             <li class="nav-item">
 
                 <a href="#" class="nav-link d-flex align-items-center">
-                    <!-- <i class="bi bi-rabbit"></i> -->
-                    <span class="sidebar-icon">
-                        <img src="{{ asset('assets/img/favicon/rabbit.svg') }}" height="20" width="20" alt="Logo" style="margin-right: 8px;">
-                    </span>
-                    <span class="mt-1 ms-1 sidebar-text farm_name" style="font-weight: 600; font-size: 20px;">Farm</span>
+                    <div class="">
+                        <span class="sidebar-icon">
+                            <img src="{{ asset('assets/img/favicon/rabbit.svg') }}" height="20" width="20" alt="Logo"
+                                style="margin-right: 8px;">
+                        </span>
+                        <span class="mt-1 ms-1 sidebar-text fit-content " style="font-weight: 500; font-size: 18px;">
+                            <p style="overflow: hidden;text-overflow: ellipsis;width: 200px;">
+                                {{\Auth::user()->userFarms()->first()->farm()->first()->farm_name}}</p>
+                        </span>
+                    </div>
                 </a>
             </li>
             <li class="nav-item  {{\Route::currentRouteName() == 'home' ? 'active' : ''}}">
@@ -276,27 +281,3 @@
         </ul>
     </div>
 </nav>
-
-<script src="{{ asset('vendor/jquery/jquery-3.6.3.js') }}"></script>
-
-<script>
-
-  $(document).ready(function(){
-
-    let url = "farm-name"
-    const apiUrl = url;
-        $.get(apiUrl, {})
-      .done(function(data) {
-        console.log(data.farmName)
-           
-        $(".farm_name").text(data.farmName)
-        
-      })
-      .fail(function() {
-          console.log('Failed to fetch search results.');
-      });
-    
-
-  })
-
-</script>
