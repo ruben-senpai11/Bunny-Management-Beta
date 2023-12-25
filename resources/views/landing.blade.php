@@ -105,8 +105,8 @@
             border-radius: 0.4rem;
         }
 
-        .buttons button:hover {
-            background-color: #3C46FF;
+        .buttons .button:hover {
+            background-color: #0001ffaa;
         }
 
         .footer {
@@ -219,7 +219,7 @@
 
             .footer {
                 position: absolute;
-                bottom: -30%;
+                bottom: -40%;
                 color: #777;
             }
         }
@@ -285,7 +285,7 @@
                 backSpeed: 10,
                 backDelay: 2000,
                 startDelay: 0,
-                cursorChar: ' <img type="image/png" width="20px" height="16px" style="" src="{{ asset("assets/img/favicon/rabbit1.svg") }}">',
+                cursorChar: ' <img type="image/png" width="20px" height="16px" style="" src="{{ asset("assets/img/favicon/rabbit.svg") }}">',
                 // cursorChar: '<span style="font-size: 2rem; font-weight:bold"> _</span>',
                 smartBackspace: true,
                 loop: true

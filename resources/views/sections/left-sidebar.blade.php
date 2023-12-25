@@ -25,8 +25,7 @@
                 <div class="d-block">
                     <h2 class="h5 mb-3">Hi, {{\Auth::user()->last_name}} {{\Auth::user()->first_name}}</h2>
                     <a href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                                                         document.getElementById('logout-form').submit();"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                         class="btn btn-secondary btn-sm d-inline-flex align-items-center">
                         <svg class="icon icon-xxs me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
@@ -59,15 +58,14 @@
         <ul class="nav flex-column pt-3 pt-md-0">
             <li class="nav-item">
 
-                <a href="#" class="nav-link d-flex align-items-center">
-                    <div class="">
+                <a href="#" class="nav-link">
+                    <div class="d-flex align-items-center">
                         <span class="sidebar-icon">
                             <img src="{{ asset('assets/img/favicon/rabbit.svg') }}" height="20" width="20" alt="Logo"
                                 style="margin-right: 8px;">
                         </span>
-                        <span class="mt-1 ms-1 sidebar-text fit-content " style="font-weight: 500; font-size: 18px;">
-                            <p style="overflow: hidden;text-overflow: ellipsis;width: 200px;">
-                                {{\Auth::user()->userFarms()->first()->farm()->first()->farm_name}}</p>
+                        <span class="sidebar-text fit-content overflow: hidden;text-overflow: ellipsis;width: 200px;" style="font-weight: 500; font-size: 20px;">
+                            {{\Auth::user()->userFarms()->first()->farm()->first()->farm_name}}
                         </span>
                     </div>
                 </a>
