@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\FarmHouse;
+use App\Models\UserFarms;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -69,7 +71,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'email' => $data['email'],
             'first_name' => $data['inputFirstName'],
             'last_name' => $data['inputLastName'],
@@ -80,5 +82,31 @@ class RegisterController extends Controller
             'ZIP' => $data['inputZip'],
             'password' => Hash::make($data['password']),
         ]);
+        //register farm if its farmer registration
+        try {
+            $farm = new FarmHouse();
+            
+            $farm->farm_name = $data['farmName'];
+            $farm->farm_ifu = $data['farm_ifu'];
+            $farm->phone_number = $data['inputPhoneNumber'] ?? "00000";
+
+            $farm->save();
+
+            $user_farm = new UserFarms();
+            $user_farm->role = 'owner';
+            $user_farm->users_id = $user->id;
+            $user_farm->farm_houses_id = $farm->id;
+            $user_farm->save();
+        }
+
+        // If we catch an exception, we will roll back so nothing gets messed
+        // up in the database. Then we'll re-throw the exception so it can
+        // be handled how the developer sees fit for their applications.
+        catch (\Exception $e) {
+
+            throw $e;
+        }
+
+        return $user;
     }
 }
