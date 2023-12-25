@@ -8,7 +8,7 @@
     <div class="col-12 col-xl-8" style="order: 2;">
         <div class="card card-body border-0 shadow mb-4">
             <h2 class="h5 mb-4">General information</h2>
-            <form action="{{}}" method="post">
+            <form action="{{ route('edit-bunny', ) }}" method="post">
                 @csrf
                 <div class="row">
                     <div class="col-md-6 mb-3">
@@ -119,8 +119,8 @@
         <div class="row">
             <div class="col-12 mb-4">
                 <div class="card shadow border-0 text-center p-0">
-                    <div class="profile-cover rounded-top" data-background="../assets/img/profile-cover.jpg"></div>
-                    <div class="card-body pb-5"><img src="../assets/img/team/profile-picture-1.jpg"
+                    <div class="profile-cover rounded-top" data-background="{{ asset('assets/img/cover-bunny-pic.jpg') }}"></div>
+                    <div class="card-body pb-5"><img src="{{ asset('assets/img/profile-user_64572.png') }}"
                             class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait">
                         <h4 class="h3">{{$user->first_name}} {{$user->last_name}}</h4>
                         <h5 class="fw-normal">@if ($user->userFarms->first()->role)
