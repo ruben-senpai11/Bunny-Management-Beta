@@ -7,16 +7,16 @@
 <div class="row">
     <div class="col-12 col-xl-8" style="order: 2;">
         <div class="card card-body border-0 shadow mb-4">
-            <h2 class="h5 mb-4">General information</h2>
+            <h2 class="h5 mb-4">Informations Générales</h2>
             <form action="{{ route('edit-bunny', ) }}" method="post">
                 @csrf
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <div><label for="first_name">First Name</label> <input class="form-control" id="first_name" name="inputFirstName"
+                        <div><label for="first_name">Prénom</label> <input class="form-control" id="first_name" name="inputFirstName"
                                 type="text" placeholder="{{$user->first_name}}" required></div>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <div><label for="last_name">Last Name</label> <input class="form-control" id="last_name" name="inputLastName"
+                        <div><label for="last_name">Nom</label> <input class="form-control" id="last_name" name="inputLastName"
                                 type="text" placeholder="{{$user->last_name}}" required></div>
                     </div>
                 </div>
@@ -26,20 +26,20 @@
                                 type="email" placeholder="{{$user->email}}" required></div>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <div class="form-group"><label for="phone">Phone</label> <input class="form-control" name="inputName" id="phone"
+                        <div class="form-group"><label for="phone">Téléphone</label> <input class="form-control" name="inputName" id="phone"
                                 type="number" placeholder="{{$user->number}}" required></div>
                     </div>
                 </div>
-                <h2 class="h5 my-4">Location</h2>
+                <h2 class="h5 my-4">Emplacement</h2>
                 <div class="row">
                     <div class="col-sm-12 mb-3">
-                        <div class="form-group"><label for="address">Address</label> <input name="inputAddress" class="form-control"
+                        <div class="form-group"><label for="address">Addresse</label> <input name="inputAddress" class="form-control"
                                 id="address" type="text" placeholder="{{$user->address}}" required></div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4 mb-3">
-                        <div class="form-group"><label for="inputCity" class="form-label">Cité</label>
+                        <div class="form-group"><label for="inputCity" class="form-label">Ville</label>
                             <input  type="text" class="form-control" id="inputCity" name="inputCity" placeholder="{{$user->city}}">
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                                 type="tel" placeholder="{{$user->ZIP}}" required></div>
                     </div>
                 </div>
-                <div class="mt-3"><button class="btn btn-gray-800 mt-2 animate-up-2" type="submit">Save all</button>
+                <div class="mt-3"><button class="btn btn-gray-800 mt-2 animate-up-2" type="submit">Enregistrer</button>
                 </div>
             </form>
         </div>
@@ -71,18 +71,18 @@
                                 required></div>
                     </div>
                 </div>
-                <div class="mt-3"><button class="btn btn-gray-800 mt-2 animate-up-2" type="submit">Save all</button>
+                <div class="mt-3"><button class="btn btn-gray-800 mt-2 animate-up-2" type="submit">Enregistrer</button>
                 </div>
             </form>
         </div>
        
         <div class="card card-body border-0 shadow mb-4 mb-xl-0">
-            <h2 class="h5 mb-4">Alerts & Notifications</h2>
+            <h2 class="h5 mb-4">Alertes et Notifications</h2>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item d-flex align-items-center justify-content-between px-0 border-bottom">
                     <div>
-                        <h3 class="h6 mb-1">Company News</h3>
-                        <p class="small pe-4">Get Rocket news, announcements, and product updates</p>
+                        <h3 class="h6 mb-1">Nouvelles de la ferme</h3>
+                        <p class="small pe-4">Soyez informés de l'état des lapin, du matériel et des stocks de provendres et médicaments</p>
                     </div>
                     <div>
                         <div class="form-check form-switch"><input class="form-check-input" type="checkbox"
@@ -92,8 +92,8 @@
                 </li>
                 <li class="list-group-item d-flex align-items-center justify-content-between px-0 border-bottom">
                     <div>
-                        <h3 class="h6 mb-1">Account Activity</h3>
-                        <p class="small pe-4">Get important notifications about you or activity you've missed</p>
+                        <h3 class="h6 mb-1">Sécurité du conmpte</h3>
+                        <p class="small pe-4">Recevez des notifications importantes sur votre activité ou ce que vous avez manqué</p>
                     </div>
                     <div>
                         <div class="form-check form-switch"><input class="form-check-input" type="checkbox"
@@ -103,8 +103,8 @@
                 </li>
                 <li class="list-group-item d-flex align-items-center justify-content-between px-0">
                     <div>
-                        <h3 class="h6 mb-1">Meetups Near You</h3>
-                        <p class="small pe-4">Get an email when a Dribbble Meetup is posted close to my location</p>
+                        <h3 class="h6 mb-1">Fermiers à côté de vous</h3>
+                        <p class="small pe-4">Recevez des notification sur l'activité des éleveurs près de chez vous.</p>
                     </div>
                     <div>
                         <div class="form-check form-switch"><input class="form-check-input" type="checkbox"
