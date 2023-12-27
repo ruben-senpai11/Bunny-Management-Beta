@@ -439,7 +439,7 @@
                 }
             });
 
-            $("#submit1").click(function () {
+            $("#submit1").click(function () {w
                 allFieldsEmpty = true;
 
                 // Code à exécuter lorsqu'on appuie sur le bouton

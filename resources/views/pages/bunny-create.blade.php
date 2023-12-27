@@ -67,7 +67,7 @@
                             
                             <div class="mb-3">
                                 <label for="color">Couleurs</label>
-                                <select class="no_nullable_bunny_field color" type="text" name="color" placeholder="Blanc, noir..." multiple >
+                                <select class="no_nullable_bunny_field color" type="text" name="color" placeholder="Sélectionner" multiple >
                                     @foreach( App\Models\Color::all('color_name') as $color){
                                         <option value="{{$color->color_name}}">{{$color->color_name}}</option>
                                         }
@@ -189,7 +189,7 @@
 
                             <div class="mb-3">
                                 <label for="g_color">Couleurs</label>
-                                <select class="no_nullable_bunny_field g_color" type="text" name="g_color" id="g_color" placeholder="Blanc, noir..." multiple>
+                                <select class="no_nullable_bunny_field g_color" type="text" name="g_color" id="g_color" placeholder="Sélectionner" multiple>
                                     @foreach( App\Models\Color::all('color_name') as $color){
                                     <option value="{{$color->color_name}}">{{$color->color_name}}</option>
                                     }
@@ -254,7 +254,7 @@
                         <div class="col-lg-4 col-sm-6">
                             <div class="mb-3">
                                 <label for="g_race">Race</label>
-                                <select class="no_nullable_bunny_field g_race" name="g_race" id="g_race" placeholder="Locale" multiple required>
+                                <select class="no_nullable_bunny_field g_race" name="g_race" id="g_race" placeholder="Sélectionner" multiple required>
                                     @foreach( App\Models\Race::all('race_name') as $race){
                                     <option value="{{$race->race_name}}">{{$race->race_name}}</option>
                                     }
@@ -425,7 +425,7 @@
         newBabyBunnyColor =
             '<div class="mb-3">' +
             '<label for="color.' + i + '">Couleurs</label>' +
-            '<select class="no_nullable_bunny_field color" type="text" name="color.' + i + '" id="color.' + i + '" placeholder="Blanc, noir..." multiple >' +
+            '<select class="no_nullable_bunny_field color" type="text" name="color.' + i + '" id="color.' + i + '" placeholder="Sélectionner" multiple >' +
             '@foreach( App\Models\Color::all("color_name") as $color){' +
             '<option value="{{$color->color_name}}">{{$color->color_name}}</option>' +
             '}@endforeach' +
@@ -501,7 +501,7 @@
         newBunnyColor =
             '<div class="mb-3">' +
             '<label for="g_color' + i + '">Couleurs</label>' +
-            '<select class="no_nullable_bunny_field g_color" type="text" name="g_color' + i + '" id="g_color' + i + '" placeholder="Blanc, noir..." multiple >' +
+            '<select class="no_nullable_bunny_field g_color" type="text" name="g_color' + i + '" id="g_color' + i + '" placeholder="Sélectionner" multiple >' +
             '@foreach( App\Models\Color::all("color_name") as $color){' +
             '<option value="{{$color->color_name}}">{{$color->color_name}}</option>' +
             '}@endforeach' +
@@ -511,7 +511,7 @@
         newBunnyRace =
             '<div class="mb-3">' +
             '<label for="g_race' + j + '">Race</label>' +
-            '<select class="no_nullable_bunny_field g_race" name="g_race' + j + '" id="g_race' + j + '" placeholder="Locale" multiple required>' +
+            '<select class="no_nullable_bunny_field g_race" name="g_race' + j + '" id="g_race' + j + '" placeholder="Sélectionner" multiple required>' +
             '@foreach( App\Models\Race::all("race_name") as $race){ ' +
             '<option value="{{$race->race_name}}">{{$race->race_name}}</option> }' +
             '@endforeach' +

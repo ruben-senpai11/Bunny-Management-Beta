@@ -126,6 +126,6 @@ class RegisterController extends Controller
 
         event(new Registered($user = $this->create($request->all())));
 
-        return redirect($this->redirectTo)->with('message', 'Registered successfully, please login...!');
+        return redirect($this->redirectTo)->with('message', 'Votre compte a été créé avec succès. Veuillez vous connecter !');
     }
 }

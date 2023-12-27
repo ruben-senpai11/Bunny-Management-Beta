@@ -237,7 +237,7 @@
         },
         {
           data: null,
-          defaultContent: '<div class="btn-group"><button class="btn btn-gray-600">Prévisualiser</button><a href="#" id="editt" class="btn btn-secondary" style="font-weight:600">Modifier</a><a href="#" id="delete" class="btn btn-danger">Supprimer</button></a>',
+          defaultContent: '<div class="btn-group"><button class="btn btn-gray-700">Prévisualiser</button><a href="#" id="editt" class="btn btn-secondary" style="font-weight:600">Modifier</a><a href="#" id="delete" class="btn btn-danger">Supprimer</button></a>',
           targets: -1
         },
       

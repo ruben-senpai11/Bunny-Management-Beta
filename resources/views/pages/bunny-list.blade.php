@@ -18,9 +18,9 @@
       <tr>
         <th>Id</th>
         <th>Uid</th>
-        <th>Gender</th>
-        <th>Destination</th>
-        <th>Date birth</th>
+        <th>Sexe</th>
+        <th>Emplacement</th>
+        <th>Date de Naissance</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -28,9 +28,9 @@
      <tr>
         <th>Id</th>
         <th>Uid</th>
-        <th>Gender</th>
-        <th>Destination</th>
-        <th>Date birth</th>
+        <th>Sexe</th>
+        <th>Emplacement</th>
+        <th>Date de Naissance</th>
         <th>Action</th>
       </tr>
     </tfoot>
@@ -125,7 +125,7 @@
         },
         {
           data: null,
-          defaultContent: '<div class="btn-group"><button class="btn btn-primary " >Preview</button><a href="#" id="edit" class="btn btn-primary">Edit</a><a href="#" id="delete" class="btn btn-danger">delete</button></a>',
+          defaultContent: '<div class="btn-group"><button class="btn btn-gray-700">Prévisualiser</button><a href="#" id="edit" class="btn btn-secondary" style="font-weight:600">Modifier</a><a href="#" id="delete" class="btn btn-danger">Supprimer</button></a>',
           targets: -1
         },
       

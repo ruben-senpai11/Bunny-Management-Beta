@@ -150,12 +150,6 @@ class BunnyController extends Controller
                         
                         $bunny->save();
                         
-                        foreach (explode(',', $g_race) as $race) {
-                            $bunnyRace = new BunnyRace();
-                            $bunnyRace->race_id = $race;
-                            $bunnyRace->bunny_id = $bunny->id;
-                            $bunnyRace->save();
-                        }
                     } catch (\Exception $e) {
                         throw $e;
                     }
