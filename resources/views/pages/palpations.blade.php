@@ -50,12 +50,12 @@
             {{ session('message') }}
         </div>
         @endif
+        @if(session('alrdy_mated'))
+          <div class="alert alert-danger">
+            {{ session('alrdy_mated') }}
+          </div>
+        @endif
         <div class="reproduction-form mt-4">
-            @if (session()->has('g_message'))
-            <div class="alert alert-success">
-                {{ session('g_message') }}
-            </div>
-            @endif
             <div id="palpation" class="card-header d-flex align-items-center bg-gray-700">
                 <h2 class="fs-5 fw-normal mb-0" style="color: #FFF">Enregistrer une Palpation</h2>
                 <div class="ms-auto">
@@ -96,6 +96,23 @@
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
+                            <fieldset>
+                                <legend class="h6">État de la femelle</legend>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="palpation_result" id="palpation_resulta" value="success" required>
+                                    <label class="form-check-label" for="palpation_resulta">
+                                        Enceinte
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="palpation_result" id="palpation_resultb" value="fail" required>
+                                    <label class="form-check-label" for="palpation_resultb">
+                                        Non enceinte
+                                    </label>
+                                </div>
+                            </fieldset>
+                          </div>
+                        <div class="col-lg-4 col-sm-6">
                             <div>
                                 <label for="remark">Remarque</label>
                                 <textarea type="text" class="form-control" name="remark" id="remark" rows='2'></textarea>
@@ -121,6 +138,14 @@
                         <h2 class="fs-5 fw-bold mb-0">Aide </h2>
                         <div class="ms-auto"><a class="fw-bold d-inline-flex align-items-center" href="#">?</a></div>
                     </div>
+                    <div class="p-3 pb-0">
+                        <ol>
+                            <li>Veuillez saisir l'identifiant de la femelle manuellement (n'utilisez pas les suggestions).</li>
+                            <li>Renseignez tous les champs.</li>
+                            <li>Voud pouvez enregistrer plusieurds accouplements à la fois.</strong>.
+                            </li>
+                        </ol>
+                    </div>
                 </div>
             </div>
 
@@ -136,7 +161,7 @@
       <tr>
         <th>N°</th>
         <th>Uid Femelle</th>
-        <th>Uid Male</th>
+        <th>Résultat</th>
         <th>Date</th>
         <th>Action</th>
       </tr>
@@ -145,7 +170,7 @@
      <tr>
         <th>N°</th>
         <th>Uid Femelle</th>
-        <th>Uid Male</th>
+        <th>Résultat</th>
         <th>Date</th>
         <th>Action</th>
       </tr>
@@ -167,8 +192,8 @@
         <ul>
           <li><strong>Identifiant :</strong> <span id="modalId"></span></li>
           <li><strong>UID Femelle :</strong> <span id="modalFemalUid"></span></li>
-          <li><strong>UID Mâle :</strong> <span id="modalMaleUID"></span></li>
-          <li><strong>Date de l'accouplement :</strong> <span id="modalDate"></span></li>
+          <li><strong>Résultat de la palpation :</strong> <span id="modalPalpationResult"></span></li>
+          <li><strong>Date de la palpation :</strong> <span id="modalDate"></span></li>
           <!-- Ajoutez d'autres propriétés ici selon vos besoins -->
         </ul>
       </div>
@@ -184,10 +209,10 @@
 @section('script')
 
 <script>
-  let matings_url  = "{{route('get-matings')}}"
-  // let matings_url = "{{route('get-list-bunny')}}"
+  let palpations_url  = "{{route('get-palpations')}}"
+  // let palpations_url = "{{route('get-list-bunny')}}"
   
-    var table = new DataTable('#matingTable', {
+    var table = new DataTable('#palpationTable', {
       scrollX: true,
       responsive: true, 
       dom: 'Bfrtip',
@@ -224,16 +249,19 @@
       }
       ],
       ajax: {
-        url: matings_url,
-        dataSrc: 'matings'
+        url: palpations_url,
+        dataSrc: 'palpations'
       },
       processing: true,
       columns: [
         { data: 'id' },
         { data:'female_uid' },
-        { data: 'male_uid' },
         { 
-          data: 'mating_date',
+          data: 'palpation_result',
+          visible: true
+        },
+        { 
+          data: 'palpation_date',
           visible: true
         },
         {
@@ -255,13 +283,13 @@
       let data = table.row(e.target.closest('tr')).data();
       console.log(data);
       // Modifier le contenu du <h5> dans le modal-header
-      $('#bunnyModalLabel').text('Information de l\'accouplement n°'+data['id']);
+      $('#bunnyModalLabel').text('Information de la palpation n°'+data['id']);
       
       //Modifier le contenu du modal-body 
       $('#modalId').text(data.id);
       $('#modalFemalUid').text(data.female_uid);
-      $('#modalMaleUID').text(data.male_uid);
-      $('#modalDate').text(data.mating_date);
+      $('#modalPalpationResult').text(data.palpation_result);
+      $('#modalDate').text(data.palpation_date);
 
       // Afficher le modal
       $('#bunnyModal').modal('show'); 
@@ -281,7 +309,7 @@
       console.log(table.row(e.target.closest('tr')));
      
       // Afficher une boîte de dialogue de confirmation
-      if (confirm('Êtes-vous sûr de vouloir supprimer cet accouplement ?')) {
+      if (confirm('Êtes-vous sûr de vouloir supprimer cette palpation?')) {
         // L'utilisateur a confirmé, effectuer la suppression
         supprimerElement(table,$(this).parents('tr'),data.id);
        
@@ -292,7 +320,7 @@
     function supprimerElement(table,row,id) {
      
       $.ajax({
-        url: '{{ route("delete-mating-ajax") }}',
+        url: '{{ route("delete-palpation-ajax") }}',
         type: 'POST',
         data: {
           _token: '{{ csrf_token() }}', 
@@ -302,7 +330,7 @@
         },
         success: function(response) {
           // Traitement en cas de succès de la suppression
-          alert('Accouplement supprimé avec succès !');
+          alert('Palpation supprimée avec succès !');
           //delete the concerned row
           table.row( row ).remove().draw();
           
@@ -326,7 +354,7 @@
 <script>
     function initVirtualSelect() {
         VirtualSelect.init({
-            ele: '.mating3',
+            ele: '.palpation3',
             multiple: false,    
             // Text to show when no options to show
             noOptionsText: 'Aucune donnée',
@@ -383,6 +411,23 @@
       '</div>'+
       '<div class="invalid-feedback">Veuillez renseigner une date</div>'+
       '</div>'+
+      '</div>'+
+      '<div class="col-lg-4 col-sm-6">'+
+      '<fieldset>'+
+      '<legend class="h6">État de la femelle</legend>'+
+      '<div class="form-check">'+
+      '<input class="form-check-input" type="radio" name="palpation_result_' + p + '" id="palpation_result_' + p + 'a" value="success" required>'+
+      '<label class="form-check-label" for="palpation_result_' + p + 'a">'+
+      'Enceinte'+
+      '</label>'+
+      '</div>'+
+      '<div class="form-check">'+
+      '<input class="form-check-input" type="radio" name="palpation_result_' + p + '" id="palpation_result_' + p + 'b" value="fail" required>'+
+      '<label class="form-check-label" for="palpation_result_' + p + 'b">'+
+      'Non enceinte'+
+      '</label>'+
+      '</div>'+
+      '</fieldset>'+
       '</div>'+
       '<div class="col-lg-4 col-sm-6">'+
       '<div>'+

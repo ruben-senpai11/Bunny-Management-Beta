@@ -35,21 +35,31 @@ class PalpationController extends Controller
 
     public function savePalpation(Request $request)
     {
-        // dd($request->all());
+        //dd($request->all());
         $current_farm = getUserId();
 
-        // $female_id = intval(Bunny::where("uid", $female_uid)->value('id'));
-        // $palpation_id = intVal(Mating::where('female_id', intval(Bunny::where('uid', $request->female_uid)))->value('id'));
-        $palpation_id = intVal(optional(Bunny::where('uid', $request->female_uid)->first())->mating->female_id);
+        $female_uid = $request->female_uid;
+        $female_id = intval(Bunny::where("uid", $female_uid)->value('id'));
 
+        $mating_id = intVal(Mating::where('female_id', $female_id)->where('mating_date', $request->mating_date)->value('id'));
+      
+        if(intval(Palpation::where("mating_id", $mating_id)->value("id"))){
 
+            session()->flash('alrdy_mated', 'Enregistrement non effectué ! 
+             Une palpation a déjà été effectuée pour cet accouplement.
+             Vous pouvez la modifier.');
+
+            return Redirect()->route('palpations');
+            
+        }
         try {
             $palpation = new Palpation();
-            $palpation->mating_id = $palpation_id;
-            $palpation->palpation_date = $request->mating_date;
-            $palpation->palpation_result = $request->palpation_date;
-            $palpation->comment = $request->remark;
+
             $palpation->farm_houses_id = $current_farm;
+            $palpation->mating_id = $mating_id;
+            $palpation->palpation_date = $request->palpation_date;
+            $palpation->palpation_result = $request->palpation_result;  
+            $palpation->comments = $request->remark;
 
             $palpation->save();
         } catch (\Exception $e) {
@@ -100,18 +110,6 @@ class PalpationController extends Controller
     public function getMatingId(Request $request)
     {
 
-        // $user = Auth()->user();
-        // $current_farm = getUserId();
-        // $bunnies = Bunny::where('farm_houses_id', intval($current_farm))->where('uid', $request->search)->get();
-        // return response()->json(['content' => $bunnies]);
-
-        // if ($bunnies) {
-        //     return response()->json(['response' => true]);
-        // } else {
-        //     return response()->json(['response' => false]);
-        // }
-
-
         $user = Auth()->user();
         $current_farm = getUserId();
         try {
@@ -127,55 +125,54 @@ class PalpationController extends Controller
     }
 
     
-// --------------------Matings List-----------------------------------
+// --------------------Palpations List-----------------------------------
 
-    public function getMatingData()
+    public function getPalpationData()
     {
         $user = Auth()->user();
         $current_user = getUserId();
-        $matings = Mating::where('farm_houses_id', intval($current_user))->get();
-        $matingDatas = $matings->map(function ($mating) {
-            $female_uid = Bunny::where('id', $mating->female_id)->pluck('uid');
-            $male_uid = Bunny::where('id', $mating->male_id)->pluck('uid');
-            $mating["female_uid"] = $female_uid->first();
-            $mating["male_uid"] = $male_uid->first();
-            return $mating;
+        $palpations = Palpation::where('farm_houses_id', intval($current_user))->get();
+        $palpationDatas = $palpations->map(function ($palpation) {
+            $female_id = Mating::where('id', $palpation->mating_id)->value('id');
+            $female_uid = Bunny::where('id', $female_id)->pluck('uid');
+            $palpation["female_uid"] = $female_uid;
+            return $palpation;
         });
-        return response()->json(['matings' => $matingDatas]);
+        return response()->json(['palpations' => $palpationDatas]);
     }
 
-    public function showMatingDataById(int $id)
+    public function showPalpationDataById(int $id)
     {
-        $bunny = Mating::findOrFail($id);
+        $bunny = Palpation::findOrFail($id);
         $maleParentUid = null;
         $femaleParentUid = null;
         if ($bunny->gestation_id) {
             $gestation = Gestation::find($bunny->gestation_id);
-            $maleParentUid = Mating::find(Mating::find($gestation->mating_id)->bunny_male_id)->uid;
-            $femaleParentUid = Mating::find(Mating::find($gestation->mating_id)->bunny_female_id)->uid;
+            $maleParentUid = Palpation::find(Palpation::find($gestation->palpation_id)->bunny_male_id)->uid;
+            $femaleParentUid = Palpation::find(Palpation::find($gestation->palpation_id)->bunny_female_id)->uid;
         }
         return view('pages.bunny-profile', ['bunny' => $bunny, 'maleUid' => $maleParentUid, 'femaleUid' => $femaleParentUid]);
     }
 
 
-    public function deleteMatingById(Request $request)
+    public function deletePalpationById(Request $request)
     {
-        $bunny = Mating::findOrFail($request->id);
+        $bunny = Palpation::findOrFail($request->id);
         $bunny->delete();
         return Redirect::route('list-bunny');
     }
 
-    public function deleteMatingByIdWithAjax(Request $request)
+    public function deletePalpationByIdWithAjax(Request $request)
     {
-        $mating = Mating::findOrFail($request->id);
-        $mating->delete();
+        $palpation = Palpation::findOrFail($request->id);
+        $palpation->delete();
         return response()->json(['response' => true]);
     }
 
-    public function editMatingData(EditMatingByidRequest $request)
+    public function editPalpationData(EditPalpationByidRequest $request)
     {
-        if ($request->idMating) {
-            $bunny = Mating::find($request->idMating);
+        if ($request->idPalpation) {
+            $bunny = Palpation::find($request->idPalpation);
             $bunny->uid = $request->uid;
             $bunny->gender = $request->genre;
             $bunny->gender = $request->genre;

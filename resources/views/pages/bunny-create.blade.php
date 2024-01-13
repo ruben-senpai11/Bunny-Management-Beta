@@ -293,11 +293,20 @@
     <div class="col-12 col-xl-3 p-4">
         <div class="row">
 
-            <div class="col-12 mb-4 p-0">
+            <div class="col-12 p-0">
                 <div class="card notification-card border-0 shadow">
                     <div class="card-header d-flex align-items-center bg-light ">
                         <h2 class="fs-5 fw-bold mb-0">Aide </h2>
                         <div class="ms-auto"><a class="fw-bold d-inline-flex align-items-center" href="#">?</a></div>
+                    </div>
+                    <div class="p-3 pb-0">
+                        <ol>
+                            <li>Veuillez renseigner toutes les informations. Seul le champ couleur est optionnel.</li>
+                            <li>Vous pouvez choisir une ou plusieurs races, de même pour les couleurs.</li>
+                            <li>Avec le bouton <strong>Ajouter</strong> vous pouvez enregistrer plusieurs lapins à la fois. <br> 
+                                Vous pouvez aussi supprimer les formulaires créés dynamiquement avec le bouton <strong>Supprimer</strong>.
+                            </li>
+                        </ol>
                     </div>
                     <!-- <div class="card-body">
                         <div class="list-group list-group-flush list-group-timeline">

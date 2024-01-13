@@ -145,72 +145,7 @@
                     </ul>
                 </div>
             </li>
-            <li class="nav-item"><span class="nav-link collapsed d-flex justify-content-between align-items-center"
-                    data-bs-toggle="collapse" data-bs-target="#submenu-pages"><span><span class="sidebar-icon"><img
-                                src="{{ asset('assets/img/stats.svg') }}" alt=""
-                                style="max-height: 20px;max-width: 20px; margin-right: 10px;"></span><span
-                            class="sidebar-text disabled">Statistiques</span>
-                    </span><span class="link-arrow disabled "><svg class="icon icon-sm" fill="currentColor"
-                            viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                clip-rule="evenodd"></path>
-                        </svg></span></span>
-                <div class="multi-level collapse" role="list" id="submenu-pages" aria-expanded="false">
-                    <ul class="flex-column nav">
-                        <li class="nav-item"><a class="nav-link" href="#">
-                                <!-- <span class="icon icon-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
-                                        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4 9h8a.5.5 0 0 0 .374-.832l-4-4.5a.5.5 0 0 0-.748 0l-4 4.5A.5.5 0 0 0 4 11z" />
-                                    </svg></span> -->
-                                <span class="sidebar-text disabled">Natalité</span>
-                            </a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">
-                                <!-- <span class="icon icon-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-square" viewBox="0 0 16 16">
-                                        <path d="M3.626 6.832A.5.5 0 0 1 4 6h8a.5.5 0 0 1 .374.832l-4 4.5a.5.5 0 0 1-.748 0l-4-4.5z" />
-                                        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2z" />
-                                    </svg></span>  -->
-                                <span class="sidebar-text disabled">Mortalité</span>
-                            </a></li>
-                        <li class="nav-item"><a class="nav-link" href="#l">
-                                <!-- <span class="icon icon-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-slash-minus" viewBox="0 0 16 16">
-                                        <path d="m1.854 14.854 13-13a.5.5 0 0 0-.708-.708l-13 13a.5.5 0 0 0 .708.708ZM4 1a.5.5 0 0 1 .5.5v2h2a.5.5 0 0 1 0 1h-2v2a.5.5 0 0 1-1 0v-2h-2a.5.5 0 0 1 0-1h2v-2A.5.5 0 0 1 4 1Zm5 11a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5A.5.5 0 0 1 9 12Z" />
-                                    </svg></span>  -->
-                                <span class="sidebar-text disabled">Total</span>
-                            </a></li>
-                    </ul>
-                </div>
-            </li>
-            <li class="nav-item"><span class="nav-link collapsed d-flex justify-content-between align-items-center"
-                    data-bs-toggle="collapse" data-bs-target="#submenu-components"><span><span class="sidebar-icon"><svg
-                                class="icon icon-xs me-2" width="20" height="20" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
-                            </svg> </span><span class="sidebar-text disabled">Gestion des inputs</span> </span><span
-                        class="link-arrow disabled "><svg class="icon icon-sm" fill="currentColor" viewbox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                clip-rule="evenodd"></path>
-                        </svg></span></span>
-                <div class="multi-level collapse" role="list" id="submenu-components" aria-expanded="false">
-                    <ul class="flex-column nav">
-                        <li class="nav-item"><a class="nav-link" href="#">
-                                <!-- <span class="icon icon-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16" fill="currentColor">
-                                        <path d="M0 192c0-35.3 28.7-64 64-64c.5 0 1.1 0 1.6 0C73 91.5 105.3 64 144 64c15 0 29 4.1 40.9 11.2C198.2 49.6 225.1 32 256 32s57.8 17.6 71.1 43.2C339 68.1 353 64 368 64c38.7 0 71 27.5 78.4 64c.5 0 1.1 0 1.6 0c35.3 0 64 28.7 64 64c0 11.7-3.1 22.6-8.6 32H8.6C3.1 214.6 0 203.7 0 192zm0 91.4C0 268.3 12.3 256 27.4 256H484.6c15.1 0 27.4 12.3 27.4 27.4c0 70.5-44.4 130.7-106.7 154.1L403.5 452c-2 16-15.6 28-31.8 28H140.2c-16.1 0-29.8-12-31.8-28l-1.8-14.4C44.4 414.1 0 353.9 0 283.4z" />                                    
-                                    </svg></span>  -->
-                                <span class="sidebar-text disabled">Provendres</span>
-                            </a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">
-                                <!-- <span class="icon icon-sm"><svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429l4.243 4.242Z" />
-                                    </svg></span> -->
-                                <span class="sidebar-text disabled">Médicaments</span>
-                            </a></li>
-
-                    </ul>
-                </div>
-            </li>
+           
             <li class="nav-item">
                 <span class="nav-link collapsed d-flex justify-content-between align-items-center"
                     data-bs-toggle="collapse" data-bs-target="#submenu-transactions">
@@ -251,7 +186,78 @@
                     </ul>
                 </div>
             </li>
+            <li class="nav-item"><span class="nav-link collapsed d-flex justify-content-between align-items-center"
+                    data-bs-toggle="collapse" data-bs-target="#submenu-components"><span><span class="sidebar-icon"><svg
+                                class="icon icon-xs me-2" width="20" height="20" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                            </svg> </span><span class="sidebar-text disabled">Gestion des inputs</span> </span><span
+                        class="link-arrow disabled "><svg class="icon icon-sm" fill="currentColor" viewbox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd"></path>
+                        </svg></span></span>
+                <div class="multi-level collapse" role="list" id="submenu-components" aria-expanded="false">
+                    <ul class="flex-column nav">
+                        <li class="nav-item"><a class="nav-link" href="#">
+                                <!-- <span class="icon icon-sm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16" fill="currentColor">
+                                        <path d="M0 192c0-35.3 28.7-64 64-64c.5 0 1.1 0 1.6 0C73 91.5 105.3 64 144 64c15 0 29 4.1 40.9 11.2C198.2 49.6 225.1 32 256 32s57.8 17.6 71.1 43.2C339 68.1 353 64 368 64c38.7 0 71 27.5 78.4 64c.5 0 1.1 0 1.6 0c35.3 0 64 28.7 64 64c0 11.7-3.1 22.6-8.6 32H8.6C3.1 214.6 0 203.7 0 192zm0 91.4C0 268.3 12.3 256 27.4 256H484.6c15.1 0 27.4 12.3 27.4 27.4c0 70.5-44.4 130.7-106.7 154.1L403.5 452c-2 16-15.6 28-31.8 28H140.2c-16.1 0-29.8-12-31.8-28l-1.8-14.4C44.4 414.1 0 353.9 0 283.4z" />                                    
+                                    </svg></span>  -->
+                                <span class="sidebar-text disabled">Provendres</span>
+                            </a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">
+                                <!-- <span class="icon icon-sm"><svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429l4.243 4.242Z" />
+                                    </svg></span> -->
+                                <span class="sidebar-text disabled">Médicaments</span>
+                            </a></li>
 
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item"><span class="nav-link collapsed d-flex justify-content-between align-items-center"
+                    data-bs-toggle="collapse" data-bs-target="#submenu-pages"><span><span class="sidebar-icon"><img
+                                src="{{ asset('assets/img/stats.svg') }}" alt=""
+                                style="max-height: 20px;max-width: 20px; margin-right: 10px;"></span><span
+                            class="sidebar-text disabled">Statistiques</span>
+                    </span><span class="link-arrow disabled "><svg class="icon icon-sm" fill="currentColor"
+                            viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd"></path>
+                        </svg></span></span>
+                <div class="multi-level collapse" role="list" id="submenu-pages" aria-expanded="false">
+                    <ul class="flex-column nav">
+                        <li class="nav-item"><a class="nav-link" href="#">
+                                <!-- <span class="icon icon-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
+                                        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4 9h8a.5.5 0 0 0 .374-.832l-4-4.5a.5.5 0 0 0-.748 0l-4 4.5A.5.5 0 0 0 4 11z" />
+                                    </svg></span> -->
+                                <span class="sidebar-text disabled">Revenus</span>
+                            </a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">
+                                <!-- <span class="icon icon-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
+                                        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4 9h8a.5.5 0 0 0 .374-.832l-4-4.5a.5.5 0 0 0-.748 0l-4 4.5A.5.5 0 0 0 4 11z" />
+                                    </svg></span> -->
+                                <span class="sidebar-text disabled">Natalité</span>
+                            </a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">
+                                <!-- <span class="icon icon-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-square" viewBox="0 0 16 16">
+                                        <path d="M3.626 6.832A.5.5 0 0 1 4 6h8a.5.5 0 0 1 .374.832l-4 4.5a.5.5 0 0 1-.748 0l-4-4.5z" />
+                                        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2z" />
+                                    </svg></span>  -->
+                                <span class="sidebar-text disabled">Mortalité</span>
+                            </a></li>
+                        <li class="nav-item"><a class="nav-link" href="#l">
+                                <!-- <span class="icon icon-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-slash-minus" viewBox="0 0 16 16">
+                                        <path d="m1.854 14.854 13-13a.5.5 0 0 0-.708-.708l-13 13a.5.5 0 0 0 .708.708ZM4 1a.5.5 0 0 1 .5.5v2h2a.5.5 0 0 1 0 1h-2v2a.5.5 0 0 1-1 0v-2h-2a.5.5 0 0 1 0-1h2v-2A.5.5 0 0 1 4 1Zm5 11a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5A.5.5 0 0 1 9 12Z" />
+                                    </svg></span>  -->
+                                <span class="sidebar-text disabled">Total</span>
+                            </a></li>
+                    </ul>
+                </div>
+            </li>
             <li class="nav-item"><a href="#" class="nav-link"><span class="sidebar-icon"><svg class="icon icon-xs me-2"
                             fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path
