@@ -159,7 +159,7 @@
                                src="{{ asset('assets/img/profile.svg') }}">
                               
                             <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                                <span class="mb-0 font-small fw-bold text-gray-900">{{\Auth::user()->last_name}} {{\Auth::user()->first_name}}</span>
+                                <span class="mb-0 font-small fw-bold text-gray-900"> {{\Auth::user()->first_name}} {{\Auth::user()->last_name}}</span>
                             </div>
                         </div>
                     </a>
