@@ -104,7 +104,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="weight">Poids (g)</label>
-                                <input class="form-control no_nullable_baby_field" type="text" name="weight" id="weight" value="200">
+                                <input class="form-control no_nullable_baby_field" type="text" name="weight" id="weight" value="400">
                             </div>
                             
                             <fieldset class="mb-2">
@@ -231,7 +231,7 @@
 
                             <div class="mb-3">
                                 <label for="weight">Poids (g)</label>
-                                <input class="form-control no_nullable_bunny_field" type="number" name="g_weight" id="g_weight" value="400">
+                                <input class="form-control no_nullable_bunny_field" type="number" name="g_weight" id="g_weight" value="1400">
                             </div>
 
                             <fieldset>
@@ -299,7 +299,7 @@
                         <h2 class="fs-5 fw-bold mb-0">Aide </h2>
                         <div class="ms-auto"><a class="fw-bold d-inline-flex align-items-center" href="#">?</a></div>
                     </div>
-                    <div class="p-3 pb-0">
+                    <div class="p-3 pb-2">
                         <ol>
                             <li>Veuillez renseigner toutes les informations. Seul le champ couleur est optionnel.</li>
                             <li>Vous pouvez choisir une ou plusieurs races, de même pour les couleurs.</li>
@@ -465,7 +465,7 @@
             '<div class=" col-lg-4 col-sm-6">' +
             '<div class="mb-3">' +
             '<label for="weight' + i + '">Poids (g)</label>' +
-            '<input class="form-control no_nullable_baby_field" type="text" name="weight.' + i + '" id="weight.' + i + '" value="200">' +
+            '<input class="form-control no_nullable_baby_field" type="text" name="weight.' + i + '" id="weight.' + i + '" value="400">' +
             '</div>' +
 
             '<fieldset class="mb-2">' +
@@ -520,7 +520,7 @@
         newBunnyRace =
             '<div class="mb-3">' +
             '<label for="g_race' + j + '">Race</label>' +
-            '<select class="no_nullable_bunny_field g_race" name="g_race' + j + '" id="g_race' + j + '" placeholder="Sélectionner" multiple required>' +
+            '<select class="no_nullable_bunny_field g_race" name="g_race_' + j + '" id="g_race_' + j + '" placeholder="Sélectionner" multiple required>' +
             '@foreach( App\Models\Race::all("race_name") as $race){ ' +
             '<option value="{{$race->race_name}}">{{$race->race_name}}</option> }' +
             '@endforeach' +
@@ -561,7 +561,7 @@
             '</div>' +
             '<div class="mb-3">' +
             '<label for="weight">Poids (g)</label>' +
-            '<input class="form-control no_nullable_bunny_field" type="number" name="g_weight.' + j + '" id="g_weight.' + j + '" value="400">' +
+            '<input class="form-control no_nullable_bunny_field" type="number" name="g_weight.' + j + '" id="g_weight.' + j + '" value="1400">' +
             '</div>' +
             '<fieldset>' +
             '<legend class="h6">Destination</legend>' +

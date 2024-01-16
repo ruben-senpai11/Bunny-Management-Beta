@@ -120,12 +120,11 @@
                         <h2 class="fs-5 fw-bold mb-0">Aide </h2>
                         <div class="ms-auto"><a class="fw-bold d-inline-flex align-items-center" href="#">?</a></div>
                     </div>  
-                    <div class="p-3 pb-0">
+                    <div class="p-3 pb-2">
                         <ol>
-                            <li>Veuillez saisir l'identifiant de la femelle manuellement (n'utilisez pas les suggestions).</li>
+                            <li>Veuillez saisir l'identifiant de manuellement (n'utilisez pas les suggestions)</li>
                             <li>Renseignez tous les champs.</li>
-                            <li>Voud pouvez enregistrer plusieurds accouplements à la fois.</strong>.
-                            </li>
+                            <li>Vous pouvez enregistrer plusieurs accouplements à la fois.</li>
                         </ol>
                     </div>
                 </div>
@@ -198,6 +197,8 @@
       scrollX: true,
       responsive: true, 
       dom: 'Bfrtip',
+      stripeClasses: ['even', 'odd'],
+      pageLength: 10,
       buttons: [
       {
       extend: 'copy',
