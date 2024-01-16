@@ -20,6 +20,7 @@
         <th>Uid</th>
         <th>Sexe</th>
         <th>Emplacement</th>
+        <th>Race</th>
         <th>Date de Naissance</th>
         <th>Action</th>
       </tr>
@@ -30,6 +31,7 @@
         <th>Uid</th>
         <th>Sexe</th>
         <th>Emplacement</th>
+        <th>Race</th>
         <th>Date de Naissance</th>
         <th>Action</th>
       </tr>
@@ -57,6 +59,7 @@
           <li><strong>Age :</strong> <span id="modalAge"></span></li>
           <li><strong>Etat de santé :</strong> <span id="modalState"></span></li>
           <li><strong>Poids :</strong> <span id="modalWeight"></span></li>
+          <li><strong>Race :</strong> <span id="modalRace"></span></li>
           <!-- Ajoutez d'autres propriétés ici selon vos besoins -->
         </ul>
       </div>
@@ -77,6 +80,8 @@
       scrollX: true,
       responsive: true, 
       dom: 'Bfrtip',
+      stripeClasses: ['even', 'odd'],
+      pageLength: 10,
       buttons: [
       {
       extend: 'copy',
@@ -119,6 +124,7 @@
         { data: 'uid' },
         { data:'gender' },
         { data: 'destination' },
+        { data: 'race' },
         { 
           data: 'date_birth',
           visible: false
@@ -153,6 +159,7 @@
       $('#modalAge').text(data.age);
       $('#modalState').text(data.state);
       $('#modalWeight').text(data.weight);
+      $('#modalRace').text(data.race);
 
       // Afficher le modal
       $('#bunnyModal').modal('show'); 

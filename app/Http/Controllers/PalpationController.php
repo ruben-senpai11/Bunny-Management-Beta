@@ -39,63 +39,61 @@ class PalpationController extends Controller
         $current_farm = getUserId();
 
         $female_uid = $request->female_uid;
-        $female_id = intval(Bunny::where("uid", $female_uid)->value('id'));
-
+        $female_id = intval(Bunny::where("gender", "female")->where("uid", $female_uid)->value('id'));
         $mating_id = intVal(Mating::where('female_id', $female_id)->where('mating_date', $request->mating_date)->value('id'));
       
         if(intval(Palpation::where("mating_id", $mating_id)->value("id"))){
 
             session()->flash('alrdy_mated', 'Enregistrement non effectué ! 
-             Une palpation a déjà été effectuée pour cet accouplement.
-             Vous pouvez la modifier.');
+             Une palpation a déjà été enregistrée pour cet accouplement.
+             Vous pouvez la supprimer avant de procéder.');
 
-            return Redirect()->route('palpations');
-            
-        }
-        try {
-            $palpation = new Palpation();
+            return Redirect()->route('palpations');             
+        }else{
+        
+            try {
+                $palpation = new Palpation();
 
-            $palpation->farm_houses_id = $current_farm;
-            $palpation->mating_id = $mating_id;
-            $palpation->palpation_date = $request->palpation_date;
-            $palpation->palpation_result = $request->palpation_result;  
-            $palpation->comments = $request->remark;
+                $palpation->farm_houses_id = $current_farm;
+                $palpation->mating_id = $mating_id;
+                $palpation->palpation_date = $request->palpation_date;
+                $palpation->palpation_result = $request->palpation_result;  
+                $palpation->comments = $request->remark;
 
-            $palpation->save();
-        } catch (\Exception $e) {
-            throw $e;
-        };
-        //  dd($request->all());
+                $palpation->save();
+            } catch (\Exception $e) {
+                throw $e;
+            };
+            //  dd($request->all());
 
-        // Enregistrer les donnees des forms dynamiques
-        foreach ($request->all() as $key => $value) {
-            // dd($request->all());
+            // Enregistrer les donnees des forms dynamiques
+            foreach ($request->all() as $key => $value) {
+                // dd($request->all());
 
-            if (Str::startsWith($key, 'female_uid_')) {
-                $index = substr($key, strlen('female_uid_')); // Récupérer la partie numérique du nom de champ (par exemple, uid_1 -> 1)
-
-                $female_uid = $request->input('female_uid_' . $index);
-                $male_uid = $request->input('male_uid_' . $index);
-                
-                $male_id = intval(Bunny::where("uid", $male_uid)->value('id'));
-                $female_id = intval(Bunny::where("uid", $female_uid)->value('id'));
-                $date = $request->input('palpation_date_' . $index);
-                $remark = $request->input('remark_' . $index);
-
-                try {
-                    $palpation = new Palpation();
-                    $palpation->male_id = $male_id;
-                    $palpation->female_id = $female_id;
-                    $palpation->palpation_date = $date;
-                    $palpation->remark = $remark;
-                    $palpation->farm_houses_id = $current_farm;
+                if (Str::startsWith($key, 'female_uid_')) {
+                    $index = substr($key, strlen('female_uid_')); // Récupérer la partie numérique du nom de champ (par exemple, uid_1 -> 1)
                     
-                    $palpation->save();
-                } catch (\Exception $e) {
-                    throw $e;
+                    $female_uid = $request->input('female_uid_' . $index);
+                    $female_id = intval(Bunny::where("gender", "female")->where("uid", $female_uid)->value('id'));
+                    $mating_id = intVal(Mating::where('female_id', $female_id)->where('mating_date', $request->input('mating_date_' . $index))->value('id'));
+                    $date = $request->input('palpation_date_' . $index);
+                    $remark = $request->input('remark_' . $index);
+                    
+                    try {
+                        $palpation = new Palpation();
+                        $palpation->farm_houses_id = $current_farm;
+                        $palpation->mating_id = $mating_id;
+                        $palpation->palpation_date = $request->palpation_date;
+                        $palpation->palpation_result = $request->palpation_result;  
+                        $palpation->comments = $request->remark;
+                        
+                        $palpation->save();
+                    } catch (\Exception $e) {
+                        throw $e;
+                    }
                 }
-            }
-        } 
+            } 
+        }
         session()->flash('message', 'Enregistrement effectué.');
 
         return Redirect()->route('palpations');
@@ -133,8 +131,8 @@ class PalpationController extends Controller
         $current_user = getUserId();
         $palpations = Palpation::where('farm_houses_id', intval($current_user))->get();
         $palpationDatas = $palpations->map(function ($palpation) {
-            $female_id = Mating::where('id', $palpation->mating_id)->value('id');
-            $female_uid = Bunny::where('id', $female_id)->pluck('uid');
+            $female_id = Mating::where('id', $palpation->mating_id)->value('female_id');
+            $female_uid = Bunny::where("gender", "female")->where('id', $female_id)->pluck('uid');
             $palpation["female_uid"] = $female_uid;
             return $palpation;
         });

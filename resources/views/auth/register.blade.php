@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="{{ asset('vendor/virtual-select-master/dist/virtual-select.min.css') }}" />
     <!-- Votre CSS personnalisé -->
     <style>
+        html, body{
+            height: max-content;
+        }
         *,
         *:after,
         *:before {
@@ -24,6 +27,7 @@
         body {
             background-color: #FFFFDB;  
             /* background: radial-gradient(rgb(255, 255, 255) 13%, rgb(205, 205, 205) 95%); */
+            /* background: linear-gradient(to top, transparent, rgba(221, 255, 207, 1)) rgba(214, 219, 220, 1); */
         }
 
         .form-step {
@@ -131,8 +135,8 @@
     </style>
 </head>
 
-<body @if (session('authGoogle')) data-google="{{ session('authGoogle') }}" data-user="{{session('User')}}" @endif>
-    <div class="container my-2">
+<body @if (session('authGoogle')) data-google="{{ session('authGoogle') }}" data-user="{{session('User')}}" @endif class="d-flex align-items-center py-4">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 @if ($errors->any())
@@ -151,15 +155,15 @@
                     <!-- Étape 1 -->
                     <div class="form-step active" id="step1">
                         <h4>Étape 1 : Informations personnelles</h4>
-                        <div class="row g-3">
+                        <div class="row g-3 pt-2">
                             <div class="col-md-6">
-                                <label for="inputFirstName" class="form-label">Nom</label>
+                                <label for="inputFirstName" class="form-label">Prénom(s)</label>
                                 <input type="text" class="form-control" id="inputFirstName" name="inputFirstName">
 
                             </div>
 
                             <div class="col-md-6">
-                                <label for="inputLastName" class="form-label">Prénom</label>
+                                <label for="inputLastName" class="form-label">Nom</label>
                                 <input type="text" class="form-control" id="inputLastName" name="inputLastName">
 
                             </div>
@@ -206,9 +210,9 @@
                             </div>
                         </div>
 
-                        <div class="col-12 text-center">
-                            <span>-OR CONNECT WITH-</span>
-                            <p>
+                        <div class="col-12 text-center ">
+                            <span>-ou s'inscrire avec-</span>
+                            <p class="pt-2">
                                 <!-- Lien de redirection vers Google -->
                                 <a href="{{ url('auth/google') }}" class="btn btn-outline-primary">
                                     <svg class="fill-current w-4 h-4 mr-2" viewBox="0 0 533.5 544.3"
@@ -226,7 +230,7 @@
                                             d="M272.1 107.7c38.8-.6 76.3 14 104.4 40.8l77.7-77.7C405 24.6 339.7-.8 272.1 0 169.2 0 75.1 58 28.9 150l90.4 70.1c21.5-64.5 81.8-112.4 152.8-112.4z"
                                             fill="#ea4335" />
                                     </svg>
-                                    <span>Google</span>
+                                    <span class="">Google</span>
                                 </a>
 
                             </p>

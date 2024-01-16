@@ -40,8 +40,8 @@ class MatingController extends Controller
         $female_uid = $request->female_uid;
         $male_uid = $request->male_uid;
 
-        $male_id = intval(Bunny::where("uid", $male_uid)->value('id'));
-        $female_id = intval(Bunny::where("uid", $female_uid)->value('id'));
+        $male_id = intval(Bunny::where("gender", "male")->where("uid", $male_uid)->value('id'));
+        $female_id = intval(Bunny::where("gender", "female")->where("uid", $female_uid)->value('id'));
 
         try {
             $mating = new Mating();
@@ -67,8 +67,8 @@ class MatingController extends Controller
                 $female_uid = $request->input('female_uid_' . $index);
                 $male_uid = $request->input('male_uid_' . $index);
                 
-                $male_id = intval(Bunny::where("uid", $male_uid)->value('id'));
-                $female_id = intval(Bunny::where("uid", $female_uid)->value('id'));
+                $male_id = intval(Bunny::where("gender", "male")->where("uid", $male_uid)->value('id'));
+                $female_id = intval(Bunny::where("gender", "female")->where("uid", $female_uid)->value('id'));
                 $date = $request->input('mating_date_' . $index);
                 $remark = $request->input('remark_' . $index);
 
