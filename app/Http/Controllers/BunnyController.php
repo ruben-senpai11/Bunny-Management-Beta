@@ -44,17 +44,34 @@ class BunnyController extends Controller
         $current_farm = getUserId();
 
         if ($request->babyBunnyForm) {
+          
+            $date_birth = (string)(Gestation::where("id", $request->gestation_id)->value('gestation_date'));
+
+            $mating_id = intval(Gestation::where("id", $request->gestation_id)->value('mating_id'));
+            $male_id = intval(Mating::where("id", $mating_id)->value('male_id'));
+            $female_id = intval(Mating::where("id", $mating_id)->value('female_id'));
+
+            $male_races = (string)(Bunny::where('id', $male_id)->value('race'));
+            $female_races = (string)(Bunny::where('id', $female_id)->value('race'));
+
+            $races = explode(",", $male_races.','.$female_races);
+
+            $filter_races = array_unique($races);
+            
+            $bunny_races = implode(", ", $filter_races);
+
 
             try {
                 $babyBunny = new Bunny();
                 $babyBunny->uid = $request->uid;
                 $babyBunny->gender = $request->gender;
                 $babyBunny->destination = $request->destination;
-                $babyBunny->gestation_id = $request->gestation_id;
+                $babyBunny->date_birth = $date_birth;
                 $babyBunny->state = $request->state;
                 $babyBunny->color = $request->color;
-                $babyBunny->race = $request->race;
+                $babyBunny->race = $bunny_races;
                 $babyBunny->weight = $request->weight;
+                $babyBunny->gestation_id = $request->gestation_id;
                 $babyBunny->farm_houses_id = $current_farm;
 
                 $babyBunny->save();

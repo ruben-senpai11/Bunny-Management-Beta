@@ -3,9 +3,11 @@
 use App\Http\Controllers\BunnyController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\FarmerController;
+use App\Http\Controllers\GestationController;
 use App\Http\Controllers\MatingController;
 use App\Http\Controllers\PalpationController;
 use App\Http\Controllers\ReproductionController;
+use App\Models\Gestation;
 use App\Models\Palpation;
 use Illuminate\Support\Facades\Route;
 
@@ -66,7 +68,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/get-palpations', [PalpationController::class, 'getPalpationData'])->name('get-palpations');
     Route::post('/delete-palpation-ajax', [PalpationController::class, 'deletePalpationByIdWithAjax'])->name("delete-palpation-ajax");
 
-    Route::get('/gestations', [ReproductionController::class, 'getGestations'])->name('gestations');
+    Route::get('/gestations', [GestationController::class, 'render'])->name('gestations');
+    Route::post('/gestations', [GestationController::class, 'saveGestation'])->name('gestations');
+    
+    Route::get('/get-gestations', [GestationController::class, 'getGestationData'])->name('get-gestations');
+    Route::post('/delete-gestation-ajax', [GestationController::class, 'deleteGestationByIdWithAjax'])->name("delete-gestation-ajax");
+    Route::get('/get-gestateds', [GestationController::class, 'getGestatedData'])->name('get-gestateds');
 
     //Farmer Informations
     Route::get('/FarmerProfile', [FarmerController::class,'index'])->name('Farmer.profile');

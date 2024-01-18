@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('gestations', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('farm_houses_id')->nullable();
+            $table->foreign('farm_houses_id')->references('id')->on('farm_houses');
             $table->unsignedBigInteger('mating_id')->nullable();
             $table->foreign('mating_id')->references('id')->on('matings');
+            $table->unsignedBigInteger('female_id');
+            $table->foreign('female_id')->references('id')->on('bunnies')->onDelete('cascade');
             $table->string('babies_number');
-            $table->date('date_gestation');
-            $table->text('observations')->nullable();
+            $table->date('gestation_date');
+            $table->text('remark')->nullable();
             $table->text('veterinary_follow_up')->nullable();
             $table->timestamps();
         });

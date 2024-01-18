@@ -76,16 +76,17 @@ class PalpationController extends Controller
                     $female_uid = $request->input('female_uid_' . $index);
                     $female_id = intval(Bunny::where("gender", "female")->where("uid", $female_uid)->value('id'));
                     $mating_id = intVal(Mating::where('female_id', $female_id)->where('mating_date', $request->input('mating_date_' . $index))->value('id'));
-                    $date = $request->input('palpation_date_' . $index);
+                    $palpation_date = $request->input('palpation_date_' . $index);
+                    $palpation_result = $request->input('palpation_result_' . $index);
                     $remark = $request->input('remark_' . $index);
                     
                     try {
                         $palpation = new Palpation();
                         $palpation->farm_houses_id = $current_farm;
                         $palpation->mating_id = $mating_id;
-                        $palpation->palpation_date = $request->palpation_date;
-                        $palpation->palpation_result = $request->palpation_result;  
-                        $palpation->comments = $request->remark;
+                        $palpation->palpation_date = $palpation_date;
+                        $palpation->palpation_result = $palpation_result;  
+                        $palpation->comments = $remark;
                         
                         $palpation->save();
                     } catch (\Exception $e) {

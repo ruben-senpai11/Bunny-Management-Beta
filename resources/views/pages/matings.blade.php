@@ -122,7 +122,7 @@
                     </div>  
                     <div class="p-3 pb-2">
                         <ol>
-                            <li>Veuillez saisir l'identifiant de manuellement (n'utilisez pas les suggestions)</li>
+                            <li>Veuillez saisir l'identifiant manuellement (n'utilisez pas les suggestions)</li>
                             <li>Renseignez tous les champs.</li>
                             <li>Vous pouvez enregistrer plusieurs accouplements à la fois.</li>
                         </ol>
@@ -360,7 +360,7 @@
   $("#addMatingField").click(function() {
   
   newMatingForm =
-      '<div id="addedMatingField" class="row mb-4 pt-2" style="border: 1px solid lightgray; border-radius: 10px;" >' +
+      '<div id="addedMatingField" class="row mb-4 pt-3" style="border: 1px solid lightgray; border-radius: 10px;" >' +
       '<p class="text-bold">' + m + 'ème accouplement</p>' +
       '<div class="col-lg-4 col-sm-6">'+
       '<div class="mb-3">'+
@@ -396,7 +396,7 @@
       '<textarea type="text" class="form-control" name="remark_' + m + '" id="remark_' + m + '" rows="2"></textarea>'+
       '</div>'+
       '</div>'+
-      '<div class="my-2" style="float:right">' +
+      '<div class="my-3" style="float:right">' +
       '<button type="button" id="deleteMatingField" class="btn btn-gray-300" style="float:right;">Retirer -</button>&nbsp;' +
       '</div>' +
       '</div>';
@@ -433,6 +433,11 @@
             if(data.content[0].state == "healthy" && data.content[0].destination == 'mating'){
               current_input.removeClass("is-invalid").addClass("is-valid");
               return available_uid = true
+            }else if(data.content[0].gender == "male"){
+              console.log("This bunny is not a female")
+              feed_back.text("Ce lapin est un mâle ! \n S'il s'agit d'une erreur, veuillez mettre à jour ses informations");
+              current_input.removeClass("is-valid").addClass("is-invalid");
+              return available_uid = false
             }else if(data.content[0].state != "healthy"){
               console.log("This bunny is not healthy")
               feed_back.text("Ce lapin est malade ! \n S'il s'agit d'une erreur, veuillez mettre à jour ses informations");

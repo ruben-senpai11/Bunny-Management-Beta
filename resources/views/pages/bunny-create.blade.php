@@ -12,7 +12,7 @@
 
     @keyframes change_box-shadow {
         0% {
-            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .07), 0 0 0 0.18rem rgba(31, 41, 55, .25);
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .07), 0 0 0 0.18rem rgba(31, 41, 55, .20);
         }
 
         50% {
@@ -20,7 +20,7 @@
         }
 
         100% {
-            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .07), 0 0 0 0.18rem rgba(31, 41, 55, .25);
+            box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .07), 0 0 0 0.18rem rgba(31, 41, 55, .20);
         }
     }
 
@@ -30,7 +30,7 @@
         background-color: #fff;
         border-color: #4d6689;
         outline: 0;
-        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .07), 0 0 0 0.18rem rgba(31, 41, 55, .25);
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .07), 0 0 0 0.18rem rgba(31, 41, 55, .20);
         animation: change_box-shadow 2s infinite;
     }
     .fw-400{
@@ -47,20 +47,20 @@
         @endif
         <div class="baby-bunny-form">
             <div class="card-header d-flex align-items-center bg-success">
-                <h2 class="fs-5 fw-400 mb-0" style="color: #cfcfcf">Enregistrer un Lapereau</h2>
-                <div class="ms-auto"><a class="fw-normal d-inline-flex align-items-center" href="#" style="color: #cfcfcf"><svg class="icon icon-xxs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <h2 class="fs-5 fw-400 mb-0" style="color: #fff">Enregistrer un Lapereau</h2>
+                <div class="ms-auto"><a class="fw-normal d-inline-flex align-items-center" href="#" style="color: #fff"><svg class="icon icon-xxs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
                             <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
                         </svg> Voir tout</a></div>
             </div>
-            <!-- <div class="card card-body border-0 shadow mb-4">
+            <div class="card card-body border-0 shadow mb-4">
                 <form action="" method="post">
                     @csrf
                     <div id="babyForm" class="row mb-3">
                         <div class="col-lg-4 col-sm-6">
                             
                             <div class="mb-3">
-                                <label for="uid" class="">Saisir un identifiant</label>
+                                <label for="uid" class="">Créer un identifiant</label>
                                 <input type="text" class="form-control default-red uid" name="uid" id="uid" placeholder="M-001" required>
                                 <div class="invalid-feedback">Attention, cet identifiant est dejà utilisé !</div>
                             </div>
@@ -96,11 +96,9 @@
                         </div>
                         <div class=" col-lg-4 col-sm-6">
                             <div class="mb-3">
-                                <label for="">Identifier de la génitrice</label>
-                                <select style="width: 100%" class="form-control no_nullable_baby_field">
-                                    <option value="default" selected>Choose a UID</option>
-                                </select>
-                                <span class="text-danger"></span>
+                                <label for="">Identifier de la mère</label>
+                                <input type="text" class="form-control default-red mother_uid" name="mother_uid" id="mother_uid" placeholder="F-001" required>
+                                <div class="invalid-feedback"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="weight">Poids (g)</label>
@@ -127,9 +125,7 @@
                         <div class="col-lg-4 col-sm-6">
                             <div class="mb-3">
                                 <label for="">Identifier la gestation</label>
-                                <select style="width: 100%" name="gestation_id" class="form-control no_nullable_baby_field">
-                                    <option value="12014" selected>Choose one</option>
-                                    <option value="120214">Choose two</option>
+                                <select style="width: 100%" name="gestation_id" class="form-control no_nullable_baby_field gestation_id">
                                 </select>
                                 <span class="text-danger" id="error2"></span>
                             </div>
@@ -158,7 +154,7 @@
                         <button type="button" id="submitBabyForm" name="babyBunnyForm" value="1" class="btn btn-success" style="color: white; ">Enregistrer</button>
                     </div>
                 </form>
-            </div> -->
+            </div>
         </div>
         <div class="bunny-form mt-4">
             @if (session()->has('g_message'))
@@ -431,16 +427,6 @@
 <script type="text/javascript">
     let i = 2
     $("#addBabyField").click(function() {
-        newBabyBunnyColor =
-            '<div class="mb-3">' +
-            '<label for="color.' + i + '">Couleurs</label>' +
-            '<select class="no_nullable_bunny_field color" type="text" name="color.' + i + '" id="color.' + i + '" placeholder="Sélectionner" multiple >' +
-            '@foreach( App\Models\Color::all("color_name") as $color){' +
-            '<option value="{{$color->color_name}}">{{$color->color_name}}</option>' +
-            '}@endforeach' +
-            '...' +
-            '</select>' +
-            '</div>'
         newBabyForm =
             '<div id="addedBabyField" class="row mb-4 pt-4" style="border: 1px solid lightgray; border-radius: 10px;" >' +
             '<p class="text-bold">' + i + 'ème lapereau</p>' +
@@ -479,7 +465,15 @@
             '</fieldset>' +
             '</div>' +
             '<div class="col-lg-4 col-sm-6">' +
-            newBabyBunnyColor +
+            '<div class="mb-3">' +
+            '<label for="color.' + i + '">Couleurs</label>' +
+            '<select class="no_nullable_bunny_field color" type="text" name="color.' + i + '" id="color.' + i + '" placeholder="Sélectionner" multiple >' +
+            '@foreach( App\Models\Color::all("color_name") as $color){' +
+            '<option value="{{$color->color_name}}">{{$color->color_name}}</option>' +
+            '}@endforeach' +
+            '...' +
+            '</select>' +
+            '</div>'
             '<fieldset class="mb-2">' +
             '<legend class="h6">Destination</legend>' +
             '<div class="form-check">' +
@@ -717,7 +711,7 @@
             }
         });
 
-        // Validation inputs uid avec Ajax
+        // Validation inputs uid 
         let url = "{{route('get-bunnies-id')}}"
         let available_uid
 
@@ -742,6 +736,45 @@
         }
 
 
+
+
+        let mUrl = "{{route('get-gestateds')}}"
+        function performMotherSearch(search_uid, current_input, feed_back, date_field) {
+            const apiUrl = mUrl;
+            $.get(apiUrl, {
+            search: search_uid
+            })
+            .done(function(data) {
+                console.log("No results found")
+            if(!data.gestations[0].id){
+                date_field.empty();
+                feed_back.text("Aucune gestation trouvée pour cet identifiant");
+                current_input.removeClass("is-valid").addClass("is-invalid");
+                return available_uid = false
+            }else{
+                console.log(data.gestations)
+                current_input.removeClass("is-invalid").addClass("is-valid");
+                date_field.empty();
+                $.each(data.gestations, function(index, gestation){
+                    let female_uid = gestation.female_uid;
+                    let gestation_date = gestation.gestation_date;
+                    date_field.append('<option value="'+ gestation.id +'">'+ female_uid + ' ੶ ' + gestation_date +'</option>')
+                })
+
+                return available_uid = true
+            }
+            })
+            .fail(function() {
+                console.log('Failed to fetch search results.');
+                date_field.empty();
+                feed_back.text("Aucun accouplement trouvé pour cet identifiant");
+                current_input.removeClass("is-valid").addClass("is-invalid");
+                return available_uid = false
+            });
+        }
+
+
+
         let uid_inputs = $('#uid, #g_uid');
 
         uid_inputs.each(function() {
@@ -750,6 +783,21 @@
                 let search_uid = $(this).val();
                 $(this).removeClass('default-red');
                 performSearch(search_uid, current_input);
+            })
+        })
+
+        let mother_uid_inputs = $('#mother_uid');
+        mother_uid_inputs.each(function() {
+            $(this).on('input', function(event) {
+                event.preventDefault();
+                let current_input = $(this);
+                let feed_back = $(this).next('.invalid-feedback');
+                let date_field = $(this).closest('.col-lg-4').nextAll('.col-lg-4').find('.gestation_id');
+
+                let search_uid = $(this).val();
+                $(this).removeClass('default-red');
+                console.log(date_field.length);
+                performMotherSearch(search_uid, current_input, feed_back, date_field);
             })
         })
 
@@ -766,7 +814,25 @@
                     performSearch(search_uid, current_input);
                 })
             })
+
+
+            let mother_uid_inputs = $('.mother_uid');
+            mother_uid_inputs.each(function() {
+                $(this).on('input', function(event) {
+                    event.preventDefault();
+                    let current_input = $(this);
+                    let feed_back = $(this).next('.invalid-feedback');
+                    let date_field = $(this).closest('.col-lg-4').nextAll('.col-lg-4').find('.gestation_date');
+
+                    let search_uid = $(this).val();
+                    $(this).removeClass('default-red');
+                    console.log(date_field.length);
+                    performMotherSearch(search_uid, current_input, feed_back, date_field);
+                })
+            })
         })
+
+        
 
     });
 </script>

@@ -79,7 +79,7 @@ class RegisterController extends Controller
             'last_name' => $data['inputLastName'],
             'provider_id' => $data['password'],
             'address' => $data['inputAddress'],
-            'number' => $data['inputPhoneNumber'],
+            'number' => $data['dialCode']+ $data['inputPhoneNumber'],
             'city' => $data['inputCity'],
             'ZIP' => $data['inputZip'],
             'password' => Hash::make($data['password']),

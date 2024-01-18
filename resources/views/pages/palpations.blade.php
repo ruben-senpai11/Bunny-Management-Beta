@@ -101,7 +101,7 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="palpation_result" id="palpation_resulta" value="success" required>
                                     <label class="form-check-label" for="palpation_resulta">
-                                        Enceinte
+                                        Enceinte  
                                     </label>
                                 </div>
                                 <div class="form-check">
@@ -140,7 +140,7 @@
                     </div>
                     <div class="p-3 pb-2">
                         <ol>
-                            <li>Veuillez saisir l'identifiant de manuellement (n'utilisez pas les suggestions)</li>
+                            <li>Veuillez saisir l'identifiant manuellement (n'utilisez pas les suggestions)</li>
                             <li>Renseignez tous les champs.</li>
                             <li>Vous pouvez enregistrer plusieurs palpations à la fois.</li>
                             <!-- <li>Évitez d'enregistrer deux palpations pour une même lapine en même temps.</li> -->
@@ -383,7 +383,7 @@
   $("#addPalpationField").click(function() {
   
   newPalpationForm =
-      '<div id="addedPalpationField" class="row mb-4 pt-2" style="border: 1px solid lightgray; border-radius: 10px;" >' +
+      '<div id="addedPalpationField" class="row mb-4 pt-3" style="border: 1px solid lightgray; border-radius: 10px;" >' +
       '<p class="text-bold">' + p + 'ème palpation</p>' +
       '<div class="col-lg-4 col-sm-6">'+
       '<div class="mb-3">'+
@@ -437,7 +437,7 @@
       '<textarea type="text" class="form-control" name="remark_' + p + '" id="remark_' + p + '" rows="2"></textarea>'+
       '</div>'+
       '</div>'+
-      '<div class="my-2" style="float:right">' +
+      '<div class="my-3" style="float:right">' +
       '<button type="button" id="deletePalpationField" class="btn btn-gray-300" style="float:right;">Retirer -</button>&nbsp;' +
       '</div>' +
       '</div>';

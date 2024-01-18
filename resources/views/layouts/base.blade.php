@@ -25,7 +25,7 @@
     <link type="text/css" href="{{ asset('vendor/notyf/notyf.min.css') }}" rel="stylesheet">
 
     <!-- Volt CSS -->
-    <link type="text/css" href="   {{ asset('css/volt.css') }}" rel="stylesheet">
+    <link type="text/css" href="   {{ asset('css/volt.css?v=2') }}" rel="stylesheet">
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>            

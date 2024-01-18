@@ -183,6 +183,9 @@
                                     placeholder="Apartment, studio, or floor">
 
                             </div>
+
+                            <input type="text" id="dialCode" style="display: none; width:0; height:0" name="dialCode" value="229">
+
                             <div class="col-12">
                                 <label for="inputPhoneNumber" class="form-label">Numéro de téléphone </label>
                                 <br>
@@ -256,9 +259,11 @@
                             <label for="rabbitRaces">Catégories de races élevées</label>
                             <select id="rabbitRaces" name="rabbitRaces" required multiple>
                                 <option value="locales">Locales</option>
-                                <option value="imported">Importées</option>
-                                <option value="crossed">Croisées</option>
-                                <option value="modified">Modifiées</option>
+                                <option value="nouvelle-zel blanc">Nouvelle-Zélande blanc</option>
+                                <option value="chinchilla">Chinchilla</option>
+                                <option value="californien">Californien</option>
+                                <option value="rex">Rex</option>
+                                <option value="autre">Autre</option>
                             </select>
 
                             <div><span class="text-danger" id="rabbitRacesError"></span></div>
@@ -339,6 +344,8 @@
         });
         $("#inputPhoneNumber").on("input ", function () {
             var countryData = iti.getSelectedCountryData();
+            console.log(countryData.dialCode)
+            $('#dialCode').val(countryData.dialCode);
             console.log(countryData.iso2)
             $("#country").countrySelect("setCountry", countryData.name);
         })
