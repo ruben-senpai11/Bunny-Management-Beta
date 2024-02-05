@@ -58,7 +58,7 @@
         <ul class="nav flex-column pt-3 pt-md-0">
             <li class="nav-item">
 
-                <a href="#" class="nav-link">
+                <a href="{{ route('home', []) }}" class="nav-link">
                     <div class="d-flex align-items-center">
                         <span class="sidebar-icon">
                             <img src="{{ asset('assets/img/favicon/rabbit.svg') }}" height="20" width="20" alt="Logo"

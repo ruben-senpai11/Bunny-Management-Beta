@@ -102,7 +102,7 @@ class BunnyController extends Controller
                         $babyBunny->gestation_id = $gestation_id;
                         $babyBunny->state = $state;
                         $babyBunny->color = $color;
-                        $babyBunny->race = $race;
+                        $babyBunny->race = $bunny_races;
                         $babyBunny->weight = $weight;
                         $babyBunny->farm_houses_id = $current_farm;
 

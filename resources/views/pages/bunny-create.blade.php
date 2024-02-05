@@ -33,7 +33,8 @@
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .07), 0 0 0 0.18rem rgba(31, 41, 55, .20);
         animation: change_box-shadow 2s infinite;
     }
-    .fw-400{
+
+    .fw-400 {
         font-weight: 400;
     }
 </style>
@@ -58,41 +59,12 @@
                     @csrf
                     <div id="babyForm" class="row mb-3">
                         <div class="col-lg-4 col-sm-6">
-                            
+
                             <div class="mb-3">
                                 <label for="uid" class="">Créer un identifiant</label>
                                 <input type="text" class="form-control default-red uid" name="uid" id="uid" placeholder="M-001" required>
                                 <div class="invalid-feedback">Attention, cet identifiant est dejà utilisé !</div>
                             </div>
-                            
-                            <div class="mb-3">
-                                <label for="color">Couleurs</label>
-                                <select class="no_nullable_bunny_field color" type="text" name="color" placeholder="Sélectionner" multiple >
-                                    @foreach( App\Models\Color::all('color_name') as $color){
-                                        <option value="{{$color->color_name}}">{{$color->color_name}}</option>
-                                        }
-                                    @endforeach
-                                    ...
-                                </select>
-                            </div>
-                            
-                            <fieldset>
-                                <legend class="h6">Santé</legend>
-                                <div class="form-check">
-                                    <input class="form-check-input no_nullable_baby_field" type="radio" name="state" id="statea" value="healthy">
-                                    <label class="form-check-label" for="statea">
-                                        Bien portant
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input no_nullable_baby_field" type="radio" name="state" id="stateb" value="sick_bunny">
-                                    <label class="form-check-label" for="stateb">
-                                        Malade
-                                    </label>
-                                </div>
-                                
-                            </fieldset>
-                            
                         </div>
                         <div class=" col-lg-4 col-sm-6">
                             <div class="mb-3">
@@ -100,27 +72,6 @@
                                 <input type="text" class="form-control default-red mother_uid" name="mother_uid" id="mother_uid" placeholder="F-001" required>
                                 <div class="invalid-feedback"></div>
                             </div>
-                            <div class="mb-3">
-                                <label for="weight">Poids (g)</label>
-                                <input class="form-control no_nullable_baby_field" type="text" name="weight" id="weight" value="400">
-                            </div>
-                            
-                            <fieldset class="mb-2">
-                                <legend class="h6">Destination</legend>
-                                <div class="form-check">
-                                    <input class="form-check-input no_nullable_baby_field" type="radio" name="destination" id="destinationa" value="fattening">
-                                    <label class="form-check-label" for="destinationa">
-                                        Engraissement
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input no_nullable_baby_field" type="radio" name="destination" id="destinationb" value="mating">
-                                    <label class="form-check-label" for="destinationb">
-                                        Reproduction
-                                    </label>
-                                </div>
-                                
-                            </fieldset>
                         </div>
                         <div class="col-lg-4 col-sm-6">
                             <div class="mb-3">
@@ -129,7 +80,26 @@
                                 </select>
                                 <span class="text-danger" id="error2"></span>
                             </div>
-                            
+                        </div>
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label for="color">Couleurs</label>
+                                <select class="no_nullable_bunny_field color" type="text" name="color" placeholder="Sélectionner" multiple>
+                                    @foreach( App\Models\Color::all('color_name') as $color){
+                                    <option value="{{$color->color_name}}">{{$color->color_name}}</option>
+                                    }
+                                    @endforeach
+                                    ...
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label for="weight">Poids (g)</label>
+                                <input class="form-control no_nullable_baby_field" type="text" name="weight" id="weight" value="400">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6">
                             <fieldset class="mb-2">
                                 <legend class="h6">Sexe</legend>
                                 <div class="form-check">
@@ -144,7 +114,42 @@
                                         Femelle
                                     </label>
                                 </div>
-                                
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-4 col-sm-6">
+                            <fieldset class="mb-2">
+                                <legend class="h6">Santé</legend>
+                                <div class="form-check">
+                                    <input class="form-check-input no_nullable_baby_field" type="radio" name="state" id="statea" value="healthy">
+                                    <label class="form-check-label" for="statea">
+                                        Bien portant
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input no_nullable_baby_field" type="radio" name="state" id="stateb" value="sick_bunny">
+                                    <label class="form-check-label" for="stateb">
+                                        Malade
+                                    </label>
+                                </div>
+
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-4 col-sm-6">
+                            <fieldset class="mb-2">
+                                <legend class="h6">Destination</legend>
+                                <div class="form-check">
+                                    <input class="form-check-input no_nullable_baby_field" type="radio" name="destination" id="destinationa" value="fattening">
+                                    <label class="form-check-label" for="destinationa">
+                                        Engraissement
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input no_nullable_baby_field" type="radio" name="destination" id="destinationb" value="mating">
+                                    <label class="form-check-label" for="destinationb">
+                                        Reproduction
+                                    </label>
+                                </div>
+
                             </fieldset>
                         </div>
                     </div>
@@ -183,6 +188,8 @@
                                 <div class="invalid-feedback">Attention, cet identifiant est dejà utilisé !</div>
                             </div>
 
+                        </div>
+                        <div class="col-lg-4 col-sm-6">
                             <div class="mb-3">
                                 <label for="g_color">Couleurs</label>
                                 <select class="no_nullable_bunny_field g_color" type="text" name="g_color" id="g_color" placeholder="Sélectionner" multiple>
@@ -194,7 +201,42 @@
                                 </select>
                             </div>
 
-                            <fieldset>
+                        </div>
+                        <div class="col-lg-4 col-sm-6">
+                            <!-- Form -->
+                            <div class="mb-3">
+                                <label for="g_date_birth">Date de Naissance</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <input class="form-control no_nullable_bunny_field" name="g_date_birth" id="g_date_birth" type="date" placeholder="dd/mm/yyyy">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label for="g_race">Race</label>
+                                <select class="no_nullable_bunny_field g_race" name="g_race" id="g_race" placeholder="Sélectionner" multiple required>
+                                    @foreach( App\Models\Race::all('race_name') as $race){
+                                    <option value="{{$race->race_name}}">{{$race->race_name}}</option>
+                                    }
+                                    @endforeach
+                                    ...
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label for="weight">Poids (g)</label>
+                                <input class="form-control no_nullable_bunny_field" type="number" name="g_weight" id="g_weight" value="1400">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6">
+                            <fieldset class="mb-3">
                                 <legend class="h6">Santé</legend>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="g_state" id="g_statea" value="healthy">
@@ -212,25 +254,7 @@
                             </fieldset>
                         </div>
                         <div class="col-lg-4 col-sm-6">
-                            <!-- Form -->
-                            <div class="mb-3">
-                                <label for="g_date_birth">Date de Naissance</label>
-                                <div class="input-group">
-                                    <span class="input-group-text">
-                                        <svg class="icon icon-xs text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </span>
-                                    <input class="form-control no_nullable_bunny_field" name="g_date_birth" id="g_date_birth" type="date" placeholder="dd/mm/yyyy">
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="weight">Poids (g)</label>
-                                <input class="form-control no_nullable_bunny_field" type="number" name="g_weight" id="g_weight" value="1400">
-                            </div>
-
-                            <fieldset>
+                            <fieldset class="mb-3">
                                 <legend class="h6">Destination</legend>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="g_destination" id="g_destinationa" value="fattening">
@@ -248,17 +272,6 @@
                             </fieldset>
                         </div>
                         <div class="col-lg-4 col-sm-6">
-                            <div class="mb-3">
-                                <label for="g_race">Race</label>
-                                <select class="no_nullable_bunny_field g_race" name="g_race" id="g_race" placeholder="Sélectionner" multiple required>
-                                    @foreach( App\Models\Race::all('race_name') as $race){
-                                    <option value="{{$race->race_name}}">{{$race->race_name}}</option>
-                                    }
-                                    @endforeach
-                                    ...
-                                </select>
-                            </div>
-
                             <fieldset>
                                 <legend class="h6">Sexe</legend>
                                 <div class="form-check">
@@ -299,7 +312,7 @@
                         <ol>
                             <li>Veuillez renseigner toutes les informations. Seul le champ couleur est optionnel.</li>
                             <li>Vous pouvez choisir une ou plusieurs races, de même pour les couleurs.</li>
-                            <li>Avec le bouton <strong>Ajouter</strong> vous pouvez enregistrer plusieurs lapins à la fois. <br> 
+                            <li>Avec le bouton <strong>Ajouter</strong> vous pouvez enregistrer plusieurs lapins à la fois. <br>
                                 Vous pouvez aussi supprimer les formulaires créés dynamiquement avec le bouton <strong>Supprimer</strong>.
                             </li>
                         </ol>
@@ -436,6 +449,36 @@
             '<input type="text" name="uid.' + i + '" class="form-control default-red uid" placeholder="M-001" required>' +
             '<div class="invalid-feedback">Attention, cet identifiant est dejà utilisé !</div>' +
             '</div>' +
+            '</div>' +
+            '<div class=" col-lg-4 col-sm-6">' +
+            '<div class="mb-3">' +
+            '<label for="weight' + i + '">Poids (g)</label>' +
+            '<input class="form-control no_nullable_baby_field" type="text" name="weight.' + i + '" id="weight.' + i + '" value="400">' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-lg-4 col-sm-6">' +
+            '<div class="mb-3">' +
+            '<label for="color.' + i + '">Couleurs</label>' +
+            '<select class="no_nullable_bunny_field color" type="text" name="color.' + i + '" id="color.' + i + '" placeholder="Sélectionner" multiple >' +
+            '@foreach( App\Models\Color::all("color_name") as $color){' +
+            '<option value="{{$color->color_name}}">{{$color->color_name}}</option>' +
+            '}@endforeach' +
+            '...' +
+            '</select>' +
+            '</div>' +
+            '</div>' +
+            '<div class=" col-lg-4 col-sm-6">' +
+            '<fieldset class="mb-2">' +
+            '<legend class="h6">Santé</legend>' +
+            '<div class="form-check">' +
+            '<input class="form-check-input" type="radio" name="state.' + i + '" id="statea.' + i + '" value="healthy" required>' +
+            '<label class="form-check-label" for="statea.' + i + '">Bien portant</label></div>' +
+            '<div class="form-check">' +
+            '<input class="form-check-input" type="radio" name="state.' + i + '" id="stateb.' + i + '" value="sick_bunny" required>' +
+            '<label class="form-check-label" for="stateb.' + i + '">Malade</label></div>' +
+            '</fieldset>' +
+            '</div>' +
+            '<div class=" col-lg-4 col-sm-6">' +
             '<fieldset class="mb-2">' +
             '<legend class="h6">Sexe</legend>' +
             '<div class="form-check">' +
@@ -449,31 +492,6 @@
             '</fieldset>' +
             '</div>' +
             '<div class=" col-lg-4 col-sm-6">' +
-            '<div class="mb-3">' +
-            '<label for="weight' + i + '">Poids (g)</label>' +
-            '<input class="form-control no_nullable_baby_field" type="text" name="weight.' + i + '" id="weight.' + i + '" value="400">' +
-            '</div>' +
-
-            '<fieldset class="mb-2">' +
-            '<legend class="h6">Santé</legend>' +
-            '<div class="form-check">' +
-            '<input class="form-check-input" type="radio" name="state.' + i + '" id="statea.' + i + '" value="healthy" required>' +
-            '<label class="form-check-label" for="statea.' + i + '">Bien portant</label></div>' +
-            '<div class="form-check">' +
-            '<input class="form-check-input" type="radio" name="state.' + i + '" id="stateb.' + i + '" value="sick_bunny" required>' +
-            '<label class="form-check-label" for="stateb.' + i + '">Malade</label></div>' +
-            '</fieldset>' +
-            '</div>' +
-            '<div class="col-lg-4 col-sm-6">' +
-            '<div class="mb-3">' +
-            '<label for="color.' + i + '">Couleurs</label>' +
-            '<select class="no_nullable_bunny_field color" type="text" name="color.' + i + '" id="color.' + i + '" placeholder="Sélectionner" multiple >' +
-            '@foreach( App\Models\Color::all("color_name") as $color){' +
-            '<option value="{{$color->color_name}}">{{$color->color_name}}</option>' +
-            '}@endforeach' +
-            '...' +
-            '</select>' +
-            '</div>'
             '<fieldset class="mb-2">' +
             '<legend class="h6">Destination</legend>' +
             '<div class="form-check">' +
@@ -501,26 +519,6 @@
 
     let j = 2
     $("#addBunnyField").click(function() {
-        newBunnyColor =
-            '<div class="mb-3">' +
-            '<label for="g_color' + i + '">Couleurs</label>' +
-            '<select class="no_nullable_bunny_field g_color" type="text" name="g_color' + i + '" id="g_color' + i + '" placeholder="Sélectionner" multiple >' +
-            '@foreach( App\Models\Color::all("color_name") as $color){' +
-            '<option value="{{$color->color_name}}">{{$color->color_name}}</option>' +
-            '}@endforeach' +
-            '...' +
-            '</select>' +
-            '</div>'
-        newBunnyRace =
-            '<div class="mb-3">' +
-            '<label for="g_race' + j + '">Race</label>' +
-            '<select class="no_nullable_bunny_field g_race" name="g_race_' + j + '" id="g_race_' + j + '" placeholder="Sélectionner" multiple required>' +
-            '@foreach( App\Models\Race::all("race_name") as $race){ ' +
-            '<option value="{{$race->race_name}}">{{$race->race_name}}</option> }' +
-            '@endforeach' +
-            '...' +
-            '</select>' +
-            '</div>'
         newBunnyForm =
             '<div id="addedBunnyField" class="row mb-4 pt-4" style="border: 1px solid lightgray; border-radius: 10px;" >' +
             '<p class="text-bold">' + j + 'ème lapin</p>' +
@@ -529,8 +527,20 @@
             '<label for="g_uid.' + j + '">Saisir un identifiant</label>' +
             '<input type="text" class="form-control default-red g_uid" name="g_uid.' + j + '" placeholder="F-001" required>' +
             '<div class="invalid-feedback">Attention, cet identifiant est dejà utilisé !</div>' +
+            '</div>' +    
             '</div>' +
-            newBunnyColor +
+            '<div class="col-lg-4 col-sm-6">' +        
+            '<div class="mb-3">' +
+            '<label for="g_color' + i + '">Couleurs</label>' +
+            '<select class="no_nullable_bunny_field g_color" type="text" name="g_color' + i + '" id="g_color' + i + '" placeholder="Sélectionner" multiple >' +
+            '@foreach( App\Models\Color::all("color_name") as $color){' +
+            '<option value="{{$color->color_name}}">{{$color->color_name}}</option>' +
+            '}@endforeach' +
+            '...' +
+            '</select>' +
+            '</div>'+
+            '</div>' +
+            '<div class="col-lg-4 col-sm-6">' +
             '<fieldset>' +
             '<legend class="h6">Santé</legend>' +
             '<div class="form-check">' +
@@ -553,10 +563,14 @@
             '<input class="form-control no_nullable_bunny_field" name="g_date_birth.' + j + '" id="g_date_birth.' + j + '" type="date" placeholder="dd/mm/yyyy">' +
             '</div>' +
             '</div>' +
+            '</div>' +
+            '<div class="col-lg-4 col-sm-6">' +
             '<div class="mb-3">' +
             '<label for="weight">Poids (g)</label>' +
             '<input class="form-control no_nullable_bunny_field" type="number" name="g_weight.' + j + '" id="g_weight.' + j + '" value="1400">' +
             '</div>' +
+            '</div>' +
+            '<div class="col-lg-4 col-sm-6">' +
             '<fieldset>' +
             '<legend class="h6">Destination</legend>' +
             '<div class="form-check">' +
@@ -569,8 +583,18 @@
             '</div>' +
             '</fieldset>' +
             '</div>' +
+            '<div class="col-lg-4 col-sm-6">' +            
+            '<div class="mb-3">' +
+            '<label for="g_race' + j + '">Race</label>' +
+            '<select class="no_nullable_bunny_field g_race" name="g_race_' + j + '" id="g_race_' + j + '" placeholder="Sélectionner" multiple required>' +
+            '@foreach( App\Models\Race::all("race_name") as $race){ ' +
+            '<option value="{{$race->race_name}}">{{$race->race_name}}</option> }' +
+            '@endforeach' +
+            '...' +
+            '</select>' +
+            '</div>'+
+            '</div>' +
             '<div class="col-lg-4 col-sm-6">' +
-            newBunnyRace +
             '<fieldset>' +
             '<legend class="h6">Sexe</legend>' +
             '<div class="form-check">' +
@@ -739,38 +763,40 @@
 
 
         let mUrl = "{{route('get-gestateds')}}"
+
         function performMotherSearch(search_uid, current_input, feed_back, date_field) {
             const apiUrl = mUrl;
             $.get(apiUrl, {
-            search: search_uid
-            })
-            .done(function(data) {
-                console.log("No results found")
-            if(!data.gestations[0].id){
-                date_field.empty();
-                feed_back.text("Aucune gestation trouvée pour cet identifiant");
-                current_input.removeClass("is-valid").addClass("is-invalid");
-                return available_uid = false
-            }else{
-                console.log(data.gestations)
-                current_input.removeClass("is-invalid").addClass("is-valid");
-                date_field.empty();
-                $.each(data.gestations, function(index, gestation){
-                    let female_uid = gestation.female_uid;
-                    let gestation_date = gestation.gestation_date;
-                    date_field.append('<option value="'+ gestation.id +'">'+ female_uid + ' ੶ ' + gestation_date +'</option>')
+                    search: search_uid
                 })
+                .done(function(data) {
+                    if (!data.gestations[0]) {
+                        console.log("No results found")
+                        date_field.empty();
+                        feed_back.text("Aucune gestation trouvée pour cet identifiant");
+                        current_input.removeClass("is-valid").addClass("is-invalid");
+                        return available_uid = false
+                    } else {
+                        console.log(data.gestations)
+                        console.log("Results found")
+                        current_input.removeClass("is-invalid").addClass("is-valid");
+                        date_field.empty();
+                        $.each(data.gestations, function(index, gestation) {
+                            let female_uid = gestation.female_uid;
+                            let gestation_date = gestation.gestation_date;
+                            date_field.append('<option value="' + gestation.id + '">' + female_uid + ' ੶ ' + gestation_date + '</option>')
+                        })
 
-                return available_uid = true
-            }
-            })
-            .fail(function() {
-                console.log('Failed to fetch search results.');
-                date_field.empty();
-                feed_back.text("Aucun accouplement trouvé pour cet identifiant");
-                current_input.removeClass("is-valid").addClass("is-invalid");
-                return available_uid = false
-            });
+                        return available_uid = true
+                    }
+                })
+                .fail(function() {
+                    console.log('Failed to fetch search results.');
+                    date_field.empty();
+                    feed_back.text("Aucun accouplement trouvé pour cet identifiant");
+                    current_input.removeClass("is-valid").addClass("is-invalid");
+                    return available_uid = false
+                });
         }
 
 
@@ -801,7 +827,7 @@
             })
         })
 
-        $('#newBabyField, #newBunnyField').click(function() {          
+        $('#newBabyField, #newBunnyField').click(function() {
 
             let uid_inputs = $('.uid, .g_uid');
             uid_inputs.each(function() {
@@ -832,7 +858,7 @@
             })
         })
 
-        
+
 
     });
 </script>
