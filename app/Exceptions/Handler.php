@@ -6,11 +6,13 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Log;
+use ErrorException;
 
 class Handler extends ExceptionHandler
 {
@@ -66,21 +68,29 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+
         if ($exception instanceof ModelNotFoundException ||
             $exception instanceof NotFoundHttpException) {
             return response()->view('errors.404', [], 404);
         } elseif ($exception instanceof HttpException) {
-            return response()->view('errors.500', [], 500);            
+            $statusCode = $exception->getStatusCode();
+            if (App::environment('production')) {
+                return response()->view('errors.500', [], 500);
+            } else {
+                return response()->view("errors.{$statusCode}", [], $statusCode);
+            }
+        } 
+        if ($exception instanceof ErrorException) {
+            Log::error('An ErrorException occurred: ' . $exception->getMessage());
+
+            if (App::environment('production')) {
+                return response()->view('errors.500', [], 500);
+            } else {
+                return parent::render($request, $exception);
+            }
         }
-
-        if (App::environment('production')) {
-            return response()->view('errors.500', [], 500);
-        } else {
-            return parent::render($request, $exception);
-        }
-
-
-        //return response()->view('errors.500', [], 500);
-        //return parent::render($request, $exception);
+        return parent::render($request, $exception);
+            
+        
     }
 }
