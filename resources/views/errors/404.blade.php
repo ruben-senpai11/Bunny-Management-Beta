@@ -1,11 +1,13 @@
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
     .container, .back-button{
         display: flex;
         justify-content: center;
         align-items: center;
-        
+        width: 100%;
+        margin: 0;
+        padding: 0;
     }
     h1{
         text-align: center;
@@ -13,8 +15,7 @@
     }
     .back-button{
         width: 300px;
-        margin: 0% auto;
-        margin-top: 5%;
+        margin: 5% auto;
         gap: 5px;
         background-color: #333333;
         border-radius: 5px;
@@ -25,6 +26,20 @@
     .back-button .icon{
         width: 20px;
         color: white;
+    }
+
+    @media screen and (max-width: 768px) {
+        .container{
+            height: 100%;
+        }
+        .row{
+            width: 90%;
+            margin: auto;
+        }
+        .back-button{
+            width: 90%;
+            margin: 15% auto;
+        }        
     }
 </style>
 
