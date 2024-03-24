@@ -57,13 +57,13 @@
         .background {
             width: 45%;
             display: grid;
-            background: url('{{ asset("assets/img/rabbit01.jpg") }}') no-repeat;
+            background: url('{{ asset("assets/img/future-rabbit.png") }}') no-repeat;
             background-size: cover;
         }
 
         .right-side {
             padding: 20px;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             background-attachment: #FFFFFF;
             display: grid;
             align-content: space-between;
@@ -83,7 +83,7 @@
             padding-top: 1%;
             font-weight: bold;
             text-align: center;
-            color: #333;
+            color: #222;
         }
 
         .buttons {
