@@ -57,13 +57,13 @@
         .background {
             width: 45%;
             display: grid;
-            background: url('{{ asset("assets/img/future-rabbit.png") }}') no-repeat;
+            background: url('{{ asset("assets/img/future-rabbit.webp") }}') no-repeat;
             background-size: cover;
         }
 
         .right-side {
             padding: 20px;
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(10px);
             background-attachment: #FFFFFF;
             display: grid;
             align-content: space-between;
