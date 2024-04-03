@@ -1,6 +1,18 @@
 @extends('layouts.base')
 
 @section('content')
+
+<style>
+  .nowrap{
+    white-space: nowrap;
+  }
+  .dt-buttons{
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+</style>
+
+
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
   <h3>Catalogue de Lapins</h3>
   <a href="{{ route('create-bunny', []) }}" class="btn btn-gray-700  dashed-outline new-card"><svg
@@ -17,22 +29,22 @@
     <thead>
       <tr>
         <th>Id</th>
-        <th>Uid</th>
+        <th class="nowrap">Identifiant</th>
         <th>Sexe</th>
         <th>Emplacement</th>
         <th>Race</th>
-        <th>Date de Naissance</th>
+        <th class="nowrap" >Enregistré le</th>
         <th>Action</th>
       </tr>
     </thead>
    <tfoot>
      <tr>
         <th>Id</th>
-        <th>Uid</th>
+        <th class="nowrap">Identifiant</th>
         <th>Sexe</th>
         <th>Emplacement</th>
         <th>Race</th>
-        <th>Date de Naissance</th>
+        <th class="nowrap" >Enregistré le</th>
         <th>Action</th>
       </tr>
     </tfoot>
@@ -51,11 +63,11 @@
       </div>
       <div class="modal-body">
         <ul>
-          <li><strong>Identifiant :</strong> <span id="modalId"></span></li>
-          <li><strong>UID :</strong> <span id="modalUid"></span></li>
+          <!-- <li><strong>Identifiant :</strong> <span id="modalId"></span></li> -->
+          <li><strong>Identifiant :</strong> <span id="modalUid"></span></li>
           <li><strong>Genre :</strong> <span id="modalGender"></span></li>
           <li><strong>Destination :</strong> <span id="modalDestination"></span></li>
-          <li><strong>Date de naissance :</strong> <span id="modalBirth"></span></li>
+          <li><strong>Date d'enregsistrement :</strong> <span id="modalBirth"></span></li>
           <li><strong>Age :</strong> <span id="modalAge"></span></li>
           <li><strong>Etat de santé :</strong> <span id="modalState"></span></li>
           <li><strong>Poids :</strong> <span id="modalWeight"></span></li>
@@ -120,14 +132,36 @@
       },
       processing: true,
       columns: [
-        { data: 'id' },
-        { data: 'uid' },
-        { data:'gender' },
-        { data: 'destination' },
+        { data: 'id',
+          visible: false
+        },
+        { data: 'uid',},
+        { data:'gender',
+          render: function(data, type, row) {
+            if (row.gender === 'male') {
+              return '<span style="color: blufe;"> M </span>'; 
+            } else if (row.gender === 'female') {
+              return '<span style="color: redf;"> F </span>'; 
+            } else {
+              return data;
+            }
+          }
+        },
+        { data: 'destination',
+          render: function(data, type, row) {
+            if (row.destination === 'mating') {
+              return '<span style="color: blufe;"> Accouplement </span>'; 
+            } else if (row.destination === 'fattening') {
+              return '<span style="color: redf;"> Engraissement </span>'; 
+            } else {
+              return data;
+            }
+          }
+        },
         { data: 'race' },
         { 
           data: 'date_birth',
-          visible: false
+          visible: true,
         },
         {
           data: null,

@@ -96,7 +96,7 @@
                         <div class="col-lg-4 col-sm-6">
                             <div class="mb-3">
                                 <label for="weight">Poids (g)</label>
-                                <input class="form-control no_nullable_baby_field" type="text" name="weight" id="weight" value="400">
+                                <input class="form-control no_nullable_baby_field" type="text" name="weight" id="weight" value="200">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
@@ -232,7 +232,7 @@
                         <div class="col-lg-4 col-sm-6">
                             <div class="mb-3">
                                 <label for="weight">Poids (g)</label>
-                                <input class="form-control no_nullable_bunny_field" type="number" name="g_weight" id="g_weight" value="1400">
+                                <input class="form-control no_nullable_bunny_field" type="number" name="g_weight" id="g_weight" value="1100">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6">
@@ -453,7 +453,7 @@
             '<div class=" col-lg-4 col-sm-6">' +
             '<div class="mb-3">' +
             '<label for="weight' + i + '">Poids (g)</label>' +
-            '<input class="form-control no_nullable_baby_field" type="text" name="weight.' + i + '" id="weight.' + i + '" value="400">' +
+            '<input class="form-control no_nullable_baby_field" type="text" name="weight.' + i + '" id="weight.' + i + '" value="200">' +
             '</div>' +
             '</div>' +
             '<div class="col-lg-4 col-sm-6">' +
@@ -567,7 +567,7 @@
             '<div class="col-lg-4 col-sm-6">' +
             '<div class="mb-3">' +
             '<label for="weight">Poids (g)</label>' +
-            '<input class="form-control no_nullable_bunny_field" type="number" name="g_weight.' + j + '" id="g_weight.' + j + '" value="1400">' +
+            '<input class="form-control no_nullable_bunny_field" type="number" name="g_weight.' + j + '" id="g_weight.' + j + '" value="1100">' +
             '</div>' +
             '</div>' +
             '<div class="col-lg-4 col-sm-6">' +
