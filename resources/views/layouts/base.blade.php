@@ -4,11 +4,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- Primary Meta Tags -->
-    <title>Bunny management</title>
+    <title>Ma ferme en ligne</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="title" content="Bunny management">
-    <meta name="author" content="Rodias & Senpai">
-    <meta name="description" content="Bunny management">
+    <meta name="title" content="Ma ferme en ligne">
+    <meta name="author" content="bunny Management Inc">
+    <meta name="description" content="Gérez efficacement votre élevage de lapins">
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('assets/img/favicon/rabbit.svg') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/img/favicon/rabbit.svg') }}">
@@ -76,7 +76,7 @@
                     <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
                         <li class="breadcrumb-item"><a href="#"><span class="fas fa-home"></span></a></li>
                         <li class="breadcrumb-item"><a href="#">Bunny Farm</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{ Current Page }</li>
+                        <li class="breadcrumb-item text-capitalize active" aria-current="page">{{ \Route::currentRouteName() }}</li>
                     </ol>
                 </nav>
                 <!-- <h2 class="h4">Widgets</h2>
