@@ -20,7 +20,7 @@
       @endif
       <div class="row">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-4">
-          <h2 class="p-0 m-0">Planifications</h2>          
+          <h2 class="p-0 m-0">Planifications</h2>
           <form class="navbar-search form-inline" id="navbar-search-main">
             <div class="input-group input-group-merge search-bar">
               <span class="input-group-text" id="topbar-addon">
@@ -31,22 +31,40 @@
                     clip-rule="evenodd"></path>
                 </svg>
               </span>
-              <input type="text" class="form-control" id="topbarInputIconLeft" placeholder="Rechercher un lapin (identifiant)" aria-label="Search"
-                aria-describedby="topbar-addon">
+              <input type="text" class="form-control" id="topbarInputIconLeft"
+                placeholder="Rechercher un lapin (identifiant)" aria-label="Search" aria-describedby="topbar-addon">
             </div>
           </form>
         </div>
         <div class="col-6">
-          <div id="today-mating" class="card-header d-flex align-items-center bg-success">
-            <h2 class="fs-5 fw-normal mb-0" style="color: #FFF">Accouplement du jour</h2>
-            <div class="ms-auto">
-            </div>
+          <div id="" class="card-header d-flex align-items-center bg-success">
+            <h2 class="fs-5 fw-normal mb-0" style="color: #FFF">Accouplements du jour</h2>
           </div>
           <div id="" class="card card-body border-0 shadow mb-4">
+            <div class="card p-2">
+              <table id="todayMating" class="hover" style="width:100%">
+                <thead>
+                  <tr>
+                    <th>Femelle</th>
+                    <th class="nowrap">Mâle</th>
+                    <th>Délai</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>Femelle</th>
+                    <th class="nowrap">Mâle</th>
+                    <th>Délai</th>
+                    <th></th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
           </div>
         </div>
         <div class="col-6">
-          <div id="today-mating" class="card-header d-flex align-items-center bg-info">
+          <div id="" class="card-header d-flex align-items-center bg-info">
             <h2 class="fs-5 fw-normal mb-0" style="color: #FFF">Accouplements à venir</h2>
             <div class="ms-auto">
             </div>
@@ -55,16 +73,39 @@
           </div>
         </div>
         <div class="col-6">
-          <div id="today-mating" class="card-header d-flex align-items-center bg-danger">
+          <div id="" class="card-header d-flex align-items-center bg-danger">
             <h2 class="fs-5 fw-normal mb-0" style="color: #FFF">Accouplements interdits</h2>
             <div class="ms-auto">
             </div>
           </div>
           <div id="" class="card card-body border-0 shadow mb-4">
+            <div class="card p-2">
+              <table id="bunnyTable" class="hover" style="width:100%">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th class="nowrap">Identifiant</th>
+                    <th class="nowrap">Identifiant</th>
+                    <th class="nowrap" >Enregistré le</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+               <tfoot>
+                 <tr>
+                  <th>Id</th>
+                  <th class="nowrap">Identifiant</th>
+                  <th class="nowrap">Identifiant</th>
+                  <th class="nowrap" >Enregistré le</th>
+                  <th>Action</th>
+                  </tr>
+                </tfoot>
+              </table>
+            
+            </div>
           </div>
         </div>
         <div class="col-6">
-          <div id="today-mating" class="card-header d-flex align-items-center bg-gray-700">
+          <div id="" class="card-header d-flex align-items-center bg-gray-700">
             <h2 class="fs-5 fw-normal mb-0" style="color: #FFF">Programmer un accouplement</h2>
             <div class="ms-auto">
             </div>
@@ -83,7 +124,109 @@
 
 @endsection
 @section('script')
+<script>
+  let url = "{{route('get-list-bunny')}}"
+  
+    var table = new DataTable('#bunnyTableDD', {
+      scrollX: true,
+      responsive: true, 
+      dom: 'Bfrtip',
+      stripeClasses: ['even', 'odd'],
+      pageLength: 10,
+      buttons: [
+      ],
+      ajax: {
+        url: url,
+        dataSrc: 'bunnies'
+      },
+      processing: true,
+      columns: [
+        { data: 'id',
+          visible: false
+        },
+        { data: 'uid'},
+        { data:'gender',
+          render: function(data, type, row) {
+            if (row.gender === 'male') {
+              return '<span style="color: blufe;"> M </span>'; 
+            } else if (row.gender === 'female') {
+              return '<span style="color: redf;"> F </span>'; 
+            } else {
+              return data;
+            }
+          }
+        },
+        { 
+          data: 'date_birth',
+          visible: true,
+        },
+        {
+          data: null,
+          defaultContent: '<div class="btn-group"><button class="btn btn-gray-700">Prévisualiser</button><button class="btn btn-success">Prévisualiser</button>',
+          targets: -1
+        },
+      
+      ],columnDefs: [
+        {
+          targets: 4,
+          render: DataTable.render.date('D MMM YYYY')
+        },
+      ]
+    });
 
 
+    table.on('click', '#edit', function (e) {
+      let data = table.row(e.target.closest('tr')).data();
+      console.log(data);
+      let url='{{ route("get-bunny-data", ["%s"]) }}';
+      url=url.replace('%s',data['id']);
+      window.location.href =url ;
+    });
 
+    // Capturer l'événement de clic sur le bouton de suppression
+    table.on('click', '#delete', function (e) {
+      let data = table.row(e.target.closest('tr')).data();
+      console.log(table.row(e.target.closest('tr')));
+     
+      // Afficher une boîte de dialogue de confirmation
+      if (confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')) {
+        // L'utilisateur a confirmé, effectuer la suppression
+        supprimerElement(table,$(this).parents('tr'),data.id);
+       
+      }
+    });
+
+    // Fonction pour effectuer la suppression avec AJAX
+    function supprimerElement(table,row,id) {
+     
+      $.ajax({
+        url: '{{ route("delete-bunny-ajax") }}',
+        type: 'POST',
+        data: {
+          _token: '{{ csrf_token() }}', 
+          id:id
+          // Ajouter le jeton CSRF pour la sécurité
+          // Ajouter d'autres données de la suppression si nécessaire (par exemple, l'ID de l'élément à supprimer)
+        },
+        success: function(response) {
+          // Traitement en cas de succès de la suppression
+          alert('Élément supprimé avec succès !');
+          //delete the concerned row
+          table.row( row ).remove().draw();
+          
+          //location.reload()
+          // Vous pouvez ajouter d'autres actions après la suppression si nécessaire
+        },
+        error: function(xhr, status, error) {
+          // Traitement en cas d'erreur lors de la suppression
+          alert('Erreur lors de la suppression : ' + error);
+        }
+      });
+    }
+
+    $(document).ready(function () {
+      $('.dataTable_button.searchPanes_button').text('Filtrer les résultats')
+    })
+    
+</script>
 @endsection
