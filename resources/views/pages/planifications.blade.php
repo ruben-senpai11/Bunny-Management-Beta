@@ -1,6 +1,54 @@
 @extends('layouts.base')
 @section('style')
 <link href="{{ asset('vendor/virtual-select-master/dist/virtual-select.min.css') }}" rel="stylesheet">
+
+<style>
+  .label {
+    font-size: 12px;
+  }
+
+  .label,
+  .value {
+    text-wrap: nowrap;
+  }
+
+  .pl-actions button {
+    text-wrap: nowrap;
+    padding: 2px 4px;
+    color: white
+  }
+
+  .pl-actions .btn-info {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0
+  }
+
+  .pl-actions .btn-success {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .pl-actions .btn-success:hover {
+    color: white
+  }
+
+  .pl-deadline {
+    border-radius: 8px;
+  }
+
+  .pl-deadline.close {
+    padding: 2px 4px;
+    color: black;
+    background-color: #f0bc74;
+  }
+
+  .pl-deadline.next {
+    padding: 2px 4px;
+    color: white;
+    background-color: #10b981;
+  }
+</style>
+
 @endsection
 @section('content')
 
@@ -32,38 +80,82 @@
                 </svg>
               </span>
               <input type="text" class="form-control" id="topbarInputIconLeft"
-                placeholder="Rechercher un lapin (identifiant)" aria-label="Search" aria-describedby="topbar-addon">
+                placeholder="Rechercher un identifiant" aria-label="Search" aria-describedby="topbar-addon">
             </div>
           </form>
         </div>
-        <div class="col-6">
+        <div class="col-lg-6 col-md-6 col-sm-12">
           <div id="" class="card-header d-flex align-items-center bg-success">
-            <h2 class="fs-5 fw-normal mb-0" style="color: #FFF">Accouplements du jour</h2>
+            <h2 class="fs-5 fw-normal " style="color: #FFF">Accouplements du jour</h2>
           </div>
-          <div id="" class="card card-body border-0 shadow mb-4">
-            <div class="card p-2">
-              <table id="todayMating" class="hover" style="width:100%">
-                <thead>
-                  <tr>
-                    <th>Femelle</th>
-                    <th class="nowrap">Mâle</th>
-                    <th>Délai</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tfoot>
-                  <tr>
-                    <th>Femelle</th>
-                    <th class="nowrap">Mâle</th>
-                    <th>Délai</th>
-                    <th></th>
-                  </tr>
-                </tfoot>
-              </table>
+          <div id="" class="card card-body border-0 shadow mb-4 gap-2 p-0">
+            <div class="p-0">
+              <ul class="list-group">
+                <li class="list-group-item p-2 d-flex justify-content-between px-3 py-2">
+                  <div class="p-1 d-grid ">
+                    <span class="label">Femelle</span>
+                    <span class="value">F-004</span>
+                  </div>
+                  <div class="p-1 d-grid ">
+                    <span class="label">Mâle</span>
+                    <span class="value">M-012</span>
+                  </div>
+                  <div class="p-1 d-grid ">
+                    <span class="label">Délai</span>
+                    <span class="value pl-deadline next ">11-18 avril</span>
+                  </div>
+                  <div class="p-1 d-flex ">
+                    <div class="pl-actions d-flex py-1">
+                      <button class="btn btn-info">Fait 🗸</button>
+                      <button class="btn btn-success">Commencer</button>
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item p-2 d-flex justify-content-between px-3 py-2">
+                  <div class="p-1 d-grid ">
+                    <span class="label">Femelle</span>
+                    <span class="value">F-004</span>
+                  </div>
+                  <div class="p-1 d-grid ">
+                    <span class="label">Mâle</span>
+                    <span class="value">M-012</span>
+                  </div>
+                  <div class="p-1 d-grid ">
+                    <span class="label">Délai</span>
+                    <span class="value pl-deadline close ">11-18 avril</span>
+                  </div>
+                  <div class="p-1 d-flex ">
+                    <div class="pl-actions d-flex py-1">
+                      <button class="btn btn-info">Fait 🗸</button>
+                      <button class="btn btn-success">Commencer</button>
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item p-2 d-flex justify-content-between px-3 py-2">
+                  <div class="p-1 d-grid ">
+                    <span class="label">Femelle</span>
+                    <span class="value">F-004</span>
+                  </div>
+                  <div class="p-1 d-grid ">
+                    <span class="label">Mâle</span>
+                    <span class="value">M-012</span>
+                  </div>
+                  <div class="p-1 d-grid ">
+                    <span class="label">Délai</span>
+                    <span class="value pl-deadline  ">11-18 avril</span>
+                  </div>
+                  <div class="p-1 d-flex ">
+                    <div class="pl-actions d-flex py-1">
+                      <button class="btn btn-info">Fait 🗸</button>
+                      <button class="btn btn-success">Commencer</button>
+                    </div>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-lg-6 col-md-6 col-sm-12">
           <div id="" class="card-header d-flex align-items-center bg-info">
             <h2 class="fs-5 fw-normal mb-0" style="color: #FFF">Accouplements à venir</h2>
             <div class="ms-auto">
@@ -72,7 +164,7 @@
           <div id="" class="card card-body border-0 shadow mb-4">
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-lg-6 col-md-6 col-sm-12">
           <div id="" class="card-header d-flex align-items-center bg-danger">
             <h2 class="fs-5 fw-normal mb-0" style="color: #FFF">Accouplements interdits</h2>
             <div class="ms-auto">
@@ -86,25 +178,25 @@
                     <th>Id</th>
                     <th class="nowrap">Identifiant</th>
                     <th class="nowrap">Identifiant</th>
-                    <th class="nowrap" >Enregistré le</th>
+                    <th class="nowrap">Enregistré le</th>
                     <th>Action</th>
                   </tr>
                 </thead>
-               <tfoot>
-                 <tr>
-                  <th>Id</th>
-                  <th class="nowrap">Identifiant</th>
-                  <th class="nowrap">Identifiant</th>
-                  <th class="nowrap" >Enregistré le</th>
-                  <th>Action</th>
+                <tfoot>
+                  <tr>
+                    <th>Id</th>
+                    <th class="nowrap">Identifiant</th>
+                    <th class="nowrap">Identifiant</th>
+                    <th class="nowrap">Enregistré le</th>
+                    <th>Action</th>
                   </tr>
                 </tfoot>
               </table>
-            
+
             </div>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-lg-6 col-md-6 col-sm-12">
           <div id="" class="card-header d-flex align-items-center bg-gray-700">
             <h2 class="fs-5 fw-normal mb-0" style="color: #FFF">Programmer un accouplement</h2>
             <div class="ms-auto">
@@ -127,7 +219,7 @@
 <script>
   let url = "{{route('get-list-bunny')}}"
   
-    var table = new DataTable('#bunnyTableDD', {
+    var table = new DataTable('#bunnyTabled', {
       scrollX: true,
       responsive: true, 
       dom: 'Bfrtip',
