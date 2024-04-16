@@ -100,7 +100,7 @@
                 clip-rule="evenodd"></path>
             </svg>
           </span>
-          <span class="sidebar-text ">Planifications</span></a>
+          <span class="sidebar-text ">Calendrier</span></a>
       </li>
 
       <li class="nav-item"><span class="nav-link collapsed d-flex justify-content-between align-items-center"
@@ -119,15 +119,20 @@
           class="multi-level collapse {{\Route::currentRouteName() == 'planifications' || \Route::currentRouteName() == 'matings' || \Route::currentRouteName() == 'palpations'|| \Route::currentRouteName() == 'gestations' ? 'show' : '' }}"
           role="list" id="submenu-app" aria-expanded="false">
           <ul class="flex-column nav">
+            <!-- heatcycles -->
+            <li class="nav-item d-non {{ \Route::currentRouteName() == 'heatcycles' ? 'active' : '' }}"><a
+                class="nav-link" href="#"><span
+                  class="sidebar-text-contracted">C</span> <span class="sidebar-text ">Cycles de chaleur</span></a>
+            </li>
             <!-- planifications -->
-            <li class="nav-item d-none {{ \Route::currentRouteName() == 'planifications' ? 'active' : '' }}"><a
+            {{-- <li class="nav-item d-non {{ \Route::currentRouteName() == 'planifications' ? 'active' : '' }}"><a
                 class="nav-link" href="{{ route('planifications', []) }} "><span
                   class="sidebar-text-contracted">P</span> <span class="sidebar-text ">Planifications</span></a>
-            </li>
+            </li> --}}
             <li class="nav-item {{ \Route::currentRouteName() == 'matings' ? 'active' : '' }}"><a class="nav-link"
                 href="{{ route('matings', []) }}"><span class="sidebar-text-contracted">A</span>
                 <span class="sidebar-text">Accouplements</span></a></li>
-            <!-- <li class="nav-item {{ \Route::currentRouteName() == 'palpations' ? 'active' : '' }}"><a class="nav-link" href="{{ route('palpations').'#palpation' }}"><span class="sidebar-text-contracted">P</span> <span class="sidebar-text">Palpations</span></a></li> -->
+             {{-- <li class="nav-item {{ \Route::currentRouteName() == 'palpations' ? 'active' : '' }}"><a class="nav-link" href="{{ route('palpations').'#palpation' }}"><span class="sidebar-text-contracted">P</span> <span class="sidebar-text">Palpations</span></a></li> --}}
             <li class="nav-item {{ \Route::currentRouteName() == 'palpations' ? 'active' : '' }}"><a class="nav-link"
                 href="{{ route('palpations', []) }}"><span class="sidebar-text-contracted">P</span> <span
                   class="sidebar-text">Palpations</span></a></li>
@@ -136,7 +141,7 @@
                   class="sidebar-text">Gestations</span></a></li>
           </ul>
         </div>
-      </li>
+      </li> 
 
       <li class="nav-item">
         <span class="nav-link collapsed d-flex justify-content-between align-items-center" data-bs-toggle="collapse"

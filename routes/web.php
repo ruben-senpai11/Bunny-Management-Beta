@@ -6,6 +6,8 @@ use App\Http\Controllers\FarmerController;
 use App\Http\Controllers\GestationController;
 use App\Http\Controllers\MatingController;
 use App\Http\Controllers\PalpationController;
+use App\Http\Controllers\PlanificationController;
+use App\Http\Controllers\Planifications;
 use App\Http\Controllers\ReproductionController;
 use App\Models\Gestation;
 use App\Models\Palpation;
@@ -55,7 +57,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/get-list-bunny', [BunnyController::class, 'getBunnyData'])->name("get-list-bunny");
     Route::get('/get-bunnies-id', [BunnyController::class, 'getBunnyId'])->name("get-bunnies-id");
 
-    Route::get('/planifications', [ReproductionController::class, 'getPlanifications'])->name('planifications');
+    Route::get('/planifications', [PlanificationController::class, 'render'])->name('planifications');
+    Route::get('/get-planifications', [BunnyController::class, 'getBunnyId'])->name("get-planifications");
 
     Route::get('/matings', [MatingController::class, 'render'])->name('matings');
     Route::post('/matings', [MatingController::class, 'saveMating'])->name('matings');

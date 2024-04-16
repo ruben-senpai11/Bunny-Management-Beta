@@ -155,6 +155,15 @@
             </div>
           </div>
         </div>
+        {{-- <div class="col-lg-6 col-md-6 col-sm-12">
+          <div id="" class="card-header d-flex align-items-center bg-secondary">
+            <h2 class="fs-5 fw-normal mb-0" style="color: #FFFdddd">Accouplements manqués</h2>
+            <div class="ms-auto">
+            </div>
+          </div>
+          <div id="" class="card card-body border-0 shadow mb-4">
+          </div>
+        </div> --}}
         <div class="col-lg-6 col-md-6 col-sm-12">
           <div id="" class="card-header d-flex align-items-center bg-info">
             <h2 class="fs-5 fw-normal mb-0" style="color: #FFF">Accouplements à venir</h2>
