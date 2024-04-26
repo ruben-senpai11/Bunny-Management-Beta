@@ -120,10 +120,10 @@
           role="list" id="submenu-app" aria-expanded="false">
           <ul class="flex-column nav">
             <!-- heatcycles -->
-            <li class="nav-item d-non {{ \Route::currentRouteName() == 'heatcycles' ? 'active' : '' }}"><a
+            {{-- <li class="nav-item d-non {{ \Route::currentRouteName() == 'heatcycles' ? 'active' : '' }}"><a
                 class="nav-link" href="#"><span
                   class="sidebar-text-contracted">C</span> <span class="sidebar-text ">Cycles de chaleur</span></a>
-            </li>
+            </li> --}}
             <!-- planifications -->
             {{-- <li class="nav-item d-non {{ \Route::currentRouteName() == 'planifications' ? 'active' : '' }}"><a
                 class="nav-link" href="{{ route('planifications', []) }} "><span
