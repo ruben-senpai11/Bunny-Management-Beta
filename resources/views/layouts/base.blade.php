@@ -7,7 +7,7 @@
     <title>Ma ferme en ligne</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="title" content="Ma ferme en ligne">
-    <meta name="author" content="bunny Management Inc">
+    <meta name="author" content="Bunny Management Corporation">
     <meta name="description" content="Gérez efficacement votre élevage de lapins">
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('assets/img/favicon/rabbit.svg') }}">
