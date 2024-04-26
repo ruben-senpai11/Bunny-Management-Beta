@@ -240,7 +240,7 @@
         <div class="left-side">
             <div class="header">
                 <h3 class="fw-bold">Ma ferme en ligne</h3>
-                <img type="image/png" width="26px" height="26px" src="{{ asset('assets/img/favicon/rabbit.svg') }}">
+                <img type="image/png" width="26px" height="26px" src="{{ asset('assets/img/favicon/rabbit.svg') }} alt='logo' ">
             </div>
             <div class="landing-text">
                 <span id="wave-text"></span>
@@ -293,7 +293,7 @@
                 backSpeed: 10,
                 backDelay: 2000,
                 startDelay: 0,
-                cursorChar: ' <img type="image/png" width="20px" height="16px" style="" src="{{ asset("assets/img/favicon/rabbit.svg") }}">',
+                cursorChar: ' <img type="image/png" width="20px" height="16px" style="" src="{{ asset("assets/img/favicon/rabbit.svg") }}" alt="logo">',
                 // cursorChar: '<span style="font-size: 2rem; font-weight:bold"> _</span>',
                 smartBackspace: true,
                 loop: true

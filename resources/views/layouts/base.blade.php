@@ -90,9 +90,9 @@
 
     </main>
     
-    <!-- <div class="loading-area">
+    {{-- <div class="loading-area">
         <img src="{{ asset('loading.gif') }}" alt="">
-    </div> -->
+    </div> --}}
     <!-- Core -->
     <script src="{{ asset('vendor/@popperjs/core/dist/umd/popper.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
