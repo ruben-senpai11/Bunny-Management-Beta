@@ -240,7 +240,7 @@
         <div class="left-side">
             <div class="header">
                 <h3 class="fw-bold">Ma ferme en ligne</h3>
-                <img type="image/png" width="26px" height="26px" src="{{ asset('assets/img/favicon/rabbit.svg') }} alt='logo' ">
+                <img type="image/png" width="26px" height="26px" src="{{ asset('assets/img/favicon/rabbit.svg') }}" alt="logo">
             </div>
             <div class="landing-text">
                 <span id="wave-text"></span>
