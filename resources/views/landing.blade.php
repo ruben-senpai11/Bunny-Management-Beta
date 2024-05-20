@@ -71,7 +71,7 @@
 
         .right-side {
             padding: 20px;
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(9px);
             background-attachment: #FFFFFF;
             display: grid;
             align-content: space-between;
@@ -89,13 +89,14 @@
 
         .login-text {
             padding-top: 1%;
+            /* padding-bottom: 5px; */
             font-weight: bold;
             text-align: center;
-            color: #111;
+            color: #eee;
         }
 
         .buttons {
-            padding-top: 2%;
+            padding-top: 10px;
             display: flex;
             flex-wrap: nowrap;
             justify-content: center;
@@ -240,7 +241,7 @@
         <div class="left-side">
             <div class="header">
                 <h3 class="fw-bold">Ma ferme en ligne</h3>
-                <img type="image/png" width="26px" height="26px" src="{{ asset('assets/img/favicon/rabbit.svg') }} alt='logo' ">
+                <img type="image/png" width="26px" height="26px" src="{{ asset('assets/img/favicon/rabbit.svg') }}" alt="logo">
             </div>
             <div class="landing-text">
                 <span id="wave-text"></span>
