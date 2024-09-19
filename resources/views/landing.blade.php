@@ -65,15 +65,15 @@
         .background {
             width: 45%;
             display: grid;
-            background-color: #FE7600; 
+            /* background-color: #f38b23;  */
             /* background: linear-gradient(to top, transparent, white) #000; */
-            /* background: url('https://whitedevs.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ffuture-rabbit.941178e7.png&w=2048&q=75') no-repeat; */
+            background: url('https://whitedevs.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ffuture-rabbit.941178e7.png&w=2048&q=75') no-repeat;
             background-size: cover;
         }
 
         .right-side {
             padding: 20px;
-            backdrop-filter: blur(9px);
+            backdrop-filter: blur(20px);
             background-attachment: #FFFFFF;
             display: grid;
             align-content: space-between;
@@ -94,7 +94,7 @@
             /* padding-bottom: 5px; */
             font-weight: bold;
             text-align: center;
-            color: #eee;
+            color: #fff;
         }
 
         .buttons {
@@ -121,7 +121,7 @@
         }
 
         .footer {
-            color: #ddd;
+            color: #eee;
             text-align: center;
         }
 
