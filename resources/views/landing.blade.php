@@ -40,7 +40,7 @@
             padding: 2% 0px 70px 25px;
             width: 60%;
             height: 100%;
-            color: #FE7600;
+            color: #FE7600;       
             display: grid;
 
             background: linear-gradient(to top, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
@@ -65,7 +65,9 @@
         .background {
             width: 45%;
             display: grid;
-            background: url('https://whitedevs.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ffuture-rabbit.941178e7.png&w=2048&q=75') no-repeat;
+            background-color: #FE7600; 
+            /* background: linear-gradient(to top, transparent, white) #000; */
+            /* background: url('https://whitedevs.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ffuture-rabbit.941178e7.png&w=2048&q=75') no-repeat; */
             background-size: cover;
         }
 
